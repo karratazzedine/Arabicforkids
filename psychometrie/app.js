@@ -35,6 +35,27 @@ let timerId = null;
 let toetsHandler = null;  // sneltoetsen voor het huidige scherm
 
 /* =========================================================
+   Icoontjes (eenvoudige lijntekeningen)
+   ========================================================= */
+const ICOON_PADEN = {
+  oefenen: '<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/>',
+  toets: '<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M9 2h6"/>',
+  kaarten: '<rect x="3" y="7" width="14" height="14" rx="2"/><path d="M7 3h12a2 2 0 0 1 2 2v12"/>',
+  spss: '<path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="5" rx="1"/><rect x="12" y="8" width="3" height="9" rx="1"/><rect x="17" y="5" width="3" height="12" rx="1"/>',
+  voortgang: '<path d="m3 17 6-6 4 4 8-8"/><path d="M14 7h7v7"/>',
+  check: '<path d="M20 6 9 17l-5-5"/>',
+  lamp: '<path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V16h8v-1.3A7 7 0 0 0 12 2Z"/>',
+  vlam: '<path d="M12 22c4 0 7-3 7-7 0-4-3-6-4-9-1 2-2 3-4 3 0-2 0-4-2-7-1 4-6 7-6 13 0 4 4 7 9 7Z"/>',
+  boek: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5v14Z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/>',
+  ster: '<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9Z"/>',
+  pauze: '<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>',
+  kruis: '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
+  doel: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>'
+};
+const icoon = naam => `<svg class="icoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICOON_PADEN[naam] || ''}</svg>`;
+const icoonChip = (naam, kleur, klasse = 'tegel-icoon') => `<span class="${klasse} kleur-${kleur}">${icoon(naam)}</span>`;
+
+/* =========================================================
    Hulpfuncties
    ========================================================= */
 const app = document.getElementById('app');
@@ -170,19 +191,38 @@ function strookHTML() {
   const laatste = proef[proef.length - 1];
   const vorige = proef[proef.length - 2];
   let trend = '';
-  if (laatste && vorige) trend = laatste.cijfer > vorige.cijfer ? ' ↑' : laatste.cijfer < vorige.cijfer ? ' ↓' : ' →';
+  if (laatste && vorige) trend = laatste.cijfer > vorige.cijfer ? '<span class="trend-op" aria-label="omhoog">↑</span>'
+    : laatste.cijfer < vorige.cijfer ? '<span class="trend-neer" aria-label="omlaag">↓</span>' : '<span class="zacht">→</span>';
   const reeks = dagenOpRij();
-  const item = (label, waarde, deel, totaal) => `
+  const item = (ic, kleur, label, waarde, deel, totaal) => `
     <div class="strook-item">
+      ${icoonChip(ic, kleur, 'strook-icoon')}
       <span class="strook-label">${label}</span>
-      <span class="strook-waarde">${waarde}</span>
-      ${totaal !== undefined ? `<div class="mini-balk" aria-hidden="true"><div style="width:${procent(deel, totaal)}%"></div></div>` : ''}
+      <span class="strook-waarde">${waarde}
+        ${totaal !== undefined ? `<span class="mini-balk kleur-${kleur}" style="background:var(--vlak-2)" aria-hidden="true"><div style="width:${procent(deel, totaal)}%"></div></span>` : ''}</span>
     </div>`;
   return `<div class="strook-binnen">
-    ${item('Vragen onder de knie', `${b.beheerst}/${b.totaal}`, b.beheerst, b.totaal)}
-    ${item('Begrippen geleerd', `${geleerd}/${DATA.begrippen.length}`, geleerd, DATA.begrippen.length)}
-    ${item('Laatste proeftoets', laatste ? cijferTekst(laatste.cijfer) + trend : '–')}
-    ${item('Dagen op rij', reeks ? `${reeks} ${reeks === 1 ? 'dag' : 'dagen'}` : '–')}
+    ${item('check', 1, 'Vragen onder de knie', `${b.beheerst}/${b.totaal}`, b.beheerst, b.totaal)}
+    ${item('kaarten', 3, 'Begrippen geleerd', `${geleerd}/${DATA.begrippen.length}`, geleerd, DATA.begrippen.length)}
+    ${item('ster', 2, 'Laatste proeftoets', laatste ? `${cijferTekst(laatste.cijfer)} ${trend}` : '–')}
+    ${item('vlam', 4, 'Dagen op rij', reeks ? `${reeks} ${reeks === 1 ? 'dag' : 'dagen'}` : '–')}
+  </div>`;
+}
+
+function stofProcent() {
+  const b = beheersing();
+  const bg = DATA.begrippen.length;
+  const deelVragen = b.totaal ? b.beheerst / b.totaal : 0;
+  const deelBegrip = bg ? begrippenGeleerd() / bg : deelVragen;
+  return Math.round(100 * (0.65 * deelVragen + 0.35 * deelBegrip));
+}
+
+function ringHTML(pct) {
+  const r = 52, omtrek = 2 * Math.PI * r;
+  return `<div class="ring" role="img" aria-label="${pct} procent van de stof onder de knie">
+    <svg viewBox="0 0 120 120"><circle class="ring-spoor" cx="60" cy="60" r="${r}"></circle>
+      <circle class="ring-vul" cx="60" cy="60" r="${r}" stroke-dasharray="${omtrek}" stroke-dashoffset="${omtrek * (1 - pct / 100)}"></circle></svg>
+    <div class="ring-tekst"><b>${pct}%</b><span>van de stof<br>onder de knie</span></div>
   </div>`;
 }
 
@@ -338,52 +378,53 @@ function startScherm() {
 
   const verder = [];
   if (TOETS) verder.push(`
-    <div class="kaart verder">
-      <div class="rij-tussen">
-        <div><strong>${TOETS.modus === 'toets' ? 'Proeftoets' : 'Oefenronde'} openstaan</strong><br>
+    <div class="kaart verder banner">
+      ${icoonChip(TOETS.modus === 'toets' ? 'toets' : 'oefenen', 1)}
+      <div class="banner-tekst"><strong>${TOETS.modus === 'toets' ? 'Je proeftoets staat nog open' : 'Je oefenronde staat nog open'}</strong>
         <span class="zacht klein">Vraag ${TOETS.huidig + 1} van ${TOETS.vragen.length} · ${Object.keys(TOETS.antwoorden).length} beantwoord${TOETS.modus === 'toets' ? ` · nog ${klok(TOETS.rest)} tijd` : ''}</span></div>
-        <a class="knop" href="#toets">Verder waar je was</a>
-      </div>
+      <a class="knop" href="#toets">Verder waar je was</a>
     </div>`);
   if (kaartSessie && kaartSessie.rij && kaartSessie.rij.length && (kaartSessie.goed + kaartSessie.fout) > 0) verder.push(`
-    <div class="kaart verder">
-      <div class="rij-tussen">
-        <div><strong>Flitskaarten-ronde openstaan</strong><br><span class="zacht klein">Nog ${kaartSessie.rij.length} kaarten in deze ronde</span></div>
-        <a class="knop licht" href="#kaarten">Verder met kaarten</a>
-      </div>
+    <div class="kaart verder banner">
+      ${icoonChip('kaarten', 3)}
+      <div class="banner-tekst"><strong>Je flitskaarten-ronde staat nog open</strong><span class="zacht klein">Nog ${kaartSessie.rij.length} kaarten in deze ronde</span></div>
+      <a class="knop licht" href="#kaarten">Verder met kaarten</a>
     </div>`);
 
   app.innerHTML = `
-    <div class="groet">
-      <h1>${groet()}, ${esc(NAAM)}!</h1>
-      <p>${esc(zin)}</p>
-    </div>
+    <section class="hero">
+      <div class="hero-tekst">
+        <div class="dagdeel">${new Date().toLocaleDateString('nl-NL', { weekday: 'long', day: 'numeric', month: 'long' })}</div>
+        <h1>${groet()}, ${esc(NAAM)}!</h1>
+        <p>${esc(zin)}</p>
+      </div>
+      ${ringHTML(stofProcent())}
+      ${!TOETS ? `<div class="rij hero-actie"><a class="knop groot" href="#toets">${icoon('oefenen')} Begin met oefenen</a></div>` : ''}
+    </section>
 
     ${verder.join('')}
 
     ${!TOETS && zwak.length ? `
-      <div class="kaart tip-kaart">
-        <div class="rij-tussen">
-          <div><strong>Tip voor vandaag</strong><br>
-          <span class="klein">Oefen <strong>${esc(zwak[0].onderwerp)}</strong>: daar had je ${procent(zwak[0].goed, zwak[0].totaal)}% goed. Met uitleg bij elke vraag.</span></div>
-          <button class="knop" id="oefenZwak">Oefen dit onderwerp</button>
-        </div>
+      <div class="kaart tip-kaart banner">
+        ${icoonChip('lamp', 2)}
+        <div class="banner-tekst"><strong>Tip voor vandaag</strong>
+          <span class="klein">Oefen <strong style="display:inline">${esc(zwak[0].onderwerp)}</strong>: daar had je ${procent(zwak[0].goed, zwak[0].totaal)}% goed. Met uitleg bij elke vraag.</span></div>
+        <button class="knop" id="oefenZwak">Oefen dit onderwerp</button>
       </div>` : ''}
 
     ${!TOETS && b.fout ? `
-      <div class="kaart">
-        <div class="rij-tussen">
-          <div><strong>${b.fout} ${b.fout === 1 ? 'vraag' : 'vragen'} nog niet goed</strong><br>
+      <div class="kaart banner">
+        ${icoonChip('doel', 4)}
+        <div class="banner-tekst"><strong>${b.fout} ${b.fout === 1 ? 'vraag' : 'vragen'} nog niet goed</strong>
           <span class="zacht klein">Oefen precies de vragen die je de laatste keer fout had.</span></div>
-          <button class="knop licht" id="oefenFouten">Mijn fouten oefenen</button>
-        </div>
+        <button class="knop licht" id="oefenFouten">Mijn fouten oefenen</button>
       </div>` : ''}
 
     <div class="raster">
-      <a class="tegel" href="#toets"><h3>Oefenen of proeftoets</h3><p>Oefenen: meteen uitleg bij elke vraag. Proeftoets: met timer en cijfer, net als de echte.</p></a>
-      <a class="tegel" href="#kaarten"><h3>Flitskaarten</h3><p>${teHerhalen ? `${teHerhalen} begrippen staan klaar om te herhalen.` : 'Alles herhaald voor vandaag!'}</p></a>
-      <a class="tegel" href="#spss"><h3>SPSS-opdrachten</h3><p>Open vragen over de juiste analyse kiezen en output lezen.</p></a>
-      <a class="tegel" href="#voortgang"><h3>Voortgang</h3><p>Je cijfers over tijd en je zwakke onderwerpen.</p></a>
+      <a class="tegel" href="#toets">${icoonChip('oefenen', 1)}<h3>Oefenen of proeftoets</h3><p>Meteen uitleg bij elke vraag, of een proeftoets met timer en cijfer.</p><span class="pijl">Starten →</span></a>
+      <a class="tegel" href="#kaarten">${icoonChip('kaarten', 3)}<h3>Flitskaarten</h3><p>${teHerhalen ? `${teHerhalen} begrippen staan klaar om te herhalen.` : 'Alles herhaald voor vandaag!'}</p><span class="pijl">Naar de kaarten →</span></a>
+      <a class="tegel" href="#spss">${icoonChip('spss', 2)}<h3>SPSS-opdrachten</h3><p>De juiste analyse kiezen en output leren lezen.</p><span class="pijl">Opdrachten →</span></a>
+      <a class="tegel" href="#voortgang">${icoonChip('voortgang', 4)}<h3>Voortgang</h3><p>Je cijfers over tijd en waar je nog op kunt letten.</p><span class="pijl">Bekijken →</span></a>
     </div>
 
     <details class="kaart" style="margin-top:16px">
@@ -460,9 +501,9 @@ function toetsScherm() {
     <div class="kaart">
       <div class="veld"><span>Wat wil je doen, ${esc(NAAM)}?</span>
         <div class="modus-keuze" role="radiogroup">
-          <label><input type="radio" name="modus" value="oefen" checked>
+          <label><input type="radio" name="modus" value="oefen" checked>${icoonChip('lamp', 1)}
             <span><strong>Oefenen met uitleg</strong><br><span class="zacht klein">Na elke vraag zie je meteen of het goed is. Bij een fout krijg je uitleg in gewone taal, rekenstappen en links naar goede uitleg online. Geen tijdsdruk.</span></span></label>
-          <label><input type="radio" name="modus" value="toets">
+          <label><input type="radio" name="modus" value="toets">${icoonChip('toets', 2)}
             <span><strong>Proeftoets</strong><br><span class="zacht klein">Net als de echte bloktoets: met timer, en pas aan het eind je cijfer en de uitleg.</span></span></label>
         </div>
       </div>
@@ -481,7 +522,7 @@ function toetsScherm() {
         </select>
       </label>
       <p class="zacht klein" id="toetsInfo"></p>
-      <button class="knop" id="startToets">Start</button>
+      <button class="knop groot" id="startToets">Start</button>
     </div>
     <p class="zacht klein">Je kunt altijd op <strong>Pauzeren</strong> drukken (of de site gewoon sluiten). Alles wordt bewaard en je gaat later verder waar je was. Bij een proeftoets staat de timer dan ook stil.</p>`;
 
@@ -560,7 +601,7 @@ function toetsVraag() {
       <div class="rij-tussen">
         <span class="klein zacht">${aantalBeantwoord} van ${n} beantwoord</span>
         <div class="rij">
-          <button class="knop licht" id="pauze">Pauzeren</button>
+          <button class="knop licht" id="pauze">${icoon('pauze')} Pauzeren</button>
           <button class="knop licht" id="inleveren">${oefen ? 'Afronden' : 'Inleveren'}</button>
         </div>
       </div>
@@ -725,12 +766,12 @@ function uitlegHTML(v, gekozen, metKop) {
   const lof = ['Goed zo', 'Helemaal goed', 'Top', 'Precies'][[...v.id].reduce((a, c) => a + c.charCodeAt(0), 0) % 4];
   if (goed) {
     return `
-      ${metKop ? `<p class="feedback-kop goed-kop">${lof}, ${esc(NAAM)}!</p>` : ''}
+      ${metKop ? `<p class="feedback-kop goed-kop"><span class="bol">${icoon('check')}</span>${lof}, ${esc(NAAM)}!</p>` : ''}
       <div class="regel juist"><strong>WAAROM ${v.juist} KLOPT</strong>${tekstHTML(v.uitleg)}</div>
       ${v.herkennen ? `<div class="regel tip"><strong>ONTHOUD DIT TRUCJE</strong>${tekstHTML(v.herkennen)}</div>` : ''}`;
   }
   return `
-    ${metKop ? `<p class="feedback-kop fout-kop">${gekozen ? `Bijna, ${esc(NAAM)}! Het juiste antwoord is ${v.juist}.` : `Het juiste antwoord is ${v.juist}.`} Zo zit het:</p>` : ''}
+    ${metKop ? `<p class="feedback-kop fout-kop"><span class="bol">${icoon('lamp')}</span>${gekozen ? `Bijna, ${esc(NAAM)}! Het is ${v.juist}.` : `Het juiste antwoord is ${v.juist}.`} Zo zit het:</p>` : ''}
     ${v.simpel ? `<div class="regel simpel"><strong>IN GEWONE TAAL</strong>${tekstHTML(v.simpel)}</div>` : ''}
     ${v.stappen.length ? `<div class="regel stappen"><strong>STAP VOOR STAP UITGEREKEND</strong>
       <ol>${v.stappen.map(s => `<li>${tekstHTML(s)}</li>`).join('')}</ol></div>` : ''}
@@ -847,12 +888,21 @@ function foutKaart(it, i) {
   const v = vraagOpId(it.id);
   if (!v) return `<div class="kaart fout-item"><p>Deze vraag (${esc(it.id)}) staat niet meer in de vragenbank.</p></div>`;
   return `
-    <div class="kaart fout-item">
-      <span class="onderwerp-label">${esc(v.onderwerp)}</span>
-      <p><strong>${i + 1}.</strong> ${tekstHTML(v.vraag)}</p>
+    <details class="kaart fout-item" ${i === 0 ? 'open' : ''}>
+      <summary>
+        <div class="fout-samenvatting">
+          <span class="onderwerp-label">${esc(v.onderwerp)}</span>
+          <p><strong>${i + 1}.</strong> ${tekstHTML(v.vraag)}</p>
+          <div class="antwoord-pillen">
+            <span class="pil-fout">Jij: ${it.gekozen ? esc(it.gekozen) : 'open gelaten'}</span>
+            <span class="pil-goed">Juist: ${esc(v.juist)}</span>
+            <span class="uitleg-open">Uitleg</span>
+          </div>
+        </div>
+      </summary>
       ${!it.gekozen ? '<div class="regel jouw"><strong>NIET BEANTWOORD</strong>Deze vraag heb je open gelaten.</div>' : ''}
       ${uitlegHTML(v, it.gekozen, false)}
-    </div>`;
+    </details>`;
 }
 
 function resultaatTekst(r) {
@@ -965,7 +1015,7 @@ function tekenKaart() {
       <h1 style="margin:0">Flitskaarten</h1>
       <span class="zacht klein">Nog ${s.rij.length} in deze ronde · ${s.goed} goed · ${s.fout} fout</span>
     </div>
-    <div class="kaart flitskaart" id="kaart" role="button" tabindex="0" aria-label="Kaart omdraaien">
+    <div class="kaart flitskaart ${s.omgedraaid ? 'omgedraaid' : ''}" id="kaart" role="button" tabindex="0" aria-label="Kaart omdraaien">
       ${s.omgedraaid
         ? `<div class="zacht klein" style="margin-bottom:8px">${esc(b.begrip)}</div>
            <div class="definitie">${tekstHTML(b.definitie)}</div>
@@ -1174,7 +1224,7 @@ function voortgangScherm() {
             ${toetsen.slice().reverse().map(t => `
               <tr>
                 <td>${datumTekst(t.datum)}${t.onderwerp ? `<br><span class="zacht klein">${esc(t.onderwerp)}</span>` : ''}</td>
-                <td>${isProeftoets(t) ? 'Proeftoets' : 'Oefenen'}</td>
+                <td><span class="soort ${isProeftoets(t) ? 'kleur-2' : 'kleur-1'}">${isProeftoets(t) ? 'Proeftoets' : 'Oefenen'}</span></td>
                 <td class="getal">${t.goed}/${t.aantal}</td>
                 <td class="getal"><strong style="color:${t.cijfer >= INSTELLINGEN.voldoende ? 'var(--goed)' : 'var(--fout)'}">${cijferTekst(t.cijfer)}</strong></td>
                 <td><a href="#resultaat/${t.id}">Bekijk</a></td>
@@ -1236,6 +1286,7 @@ function grafiekSVG(toetsen) {
         <text class="as-tekst" x="${g.l - 8}" y="${yVan(c) + 4}" text-anchor="end">${c}</text>`).join('')}
       <line class="grens" x1="${g.l}" x2="${g.b - g.r}" y1="${yVan(INSTELLINGEN.voldoende)}" y2="${yVan(INSTELLINGEN.voldoende)}"></line>
       ${p.map((q, i) => (i % stap === 0 || i === p.length - 1) ? `<text class="as-tekst" x="${q.x}" y="${g.h - 8}" text-anchor="middle">${new Date(q.t.datum).toLocaleDateString('nl-NL', { day: 'numeric', month: 'short' })}</text>` : '').join('')}
+      ${p.length > 1 ? `<polygon class="vlak-onder" points="${p[0].x},${yVan(1)} ${p.map(q => `${q.x},${q.y}`).join(' ')} ${p[p.length - 1].x},${yVan(1)}"></polygon>` : ''}
       ${p.length > 1 ? `<polyline class="lijn" points="${p.map(q => `${q.x},${q.y}`).join(' ')}"></polyline>` : ''}
       ${p.map(q => `<circle class="punt" cx="${q.x}" cy="${q.y}" r="4.5"></circle>`).join('')}
       ${p.map((q, i) => `<circle class="raak" data-i="${i}" cx="${q.x}" cy="${q.y}" r="16" tabindex="0" aria-label="${datumTekst(q.t.datum)}: cijfer ${cijferTekst(q.t.cijfer)}"></circle>`).join('')}
