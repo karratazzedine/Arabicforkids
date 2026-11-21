@@ -30,7 +30,20 @@ Er is geen installatie, geen account en geen server nodig.
 4. Online wordt `vragen.json` automatisch geladen. Pas je het bestand aan op GitHub,
    dan staan de nieuwe vragen er na een minuut op.
 
-## Nieuwe vragen toevoegen
+## Nieuwe vragen maken: elke week opnieuw (de makkelijke manier)
+
+In de site staat het onderdeel **Nieuwe vragen** (tegel op de startpagina). Zo werkt het:
+
+1. Kies waarover (standaard: Dounia's zwakste onderwerpen, automatisch bepaald uit haar resultaten) en hoeveel.
+2. Klik op **Kopieer opdracht voor Claude** en plak de opdracht in Claude. In die opdracht staan al het juiste
+   formaat, de lijst met bestaande vragen (zodat er geen dubbele komen), de volgende vrije ids en het verzoek om
+   alles uit te leggen in gewone taal, met rekenstappen.
+3. Kopieer het antwoord van Claude (het blok dat met `{` begint), plak het in de site en klik op **Vragen toevoegen**.
+   Ze kan er meteen mee oefenen.
+4. Af en toe: klik op **Download complete vragen.json** en zet dat bestand op GitHub in plaats van de oude
+   `vragen.json`. Dan staan de nieuwe vragen ook op haar andere apparaten en raak je ze nooit kwijt.
+
+## Nieuwe vragen zelf toevoegen (met de hand)
 
 Open `vragen.json` in een teksteditor (bijvoorbeeld Kladblok, TextEdit of VS Code).
 Het bestand heeft drie lijsten: `vragen` (meerkeuze), `begrippen` (flitskaarten) en `spss` (open opdrachten).
@@ -119,6 +132,10 @@ Let op:
 
 ## Hoe de site werkt
 
+- **Motivatie en humor:** "Je man is trots op je!" staat op de startpagina, bij de resultaten, na een flitskaartenronde
+  en bij een reeks goede antwoorden. Correcties zijn luchtig ("Bijna! Je brein nam de toeristische route.") en ongeveer
+  de helft van de keren staat er een psychometrie-mopje bij. Bij goede antwoorden en een voldoende komt er confetti.
+  De zinnen en mopjes staan bovenaan in `app.js` (`GOED_ZINNEN`, `FOUT_ZINNEN`, `GRAPJES`) en zijn makkelijk aan te vullen.
 - **Persoonlijk:** de site begroet Dounia per dagdeel ("Goedemorgen, Dounia!") en geeft een tip voor vandaag.
   Een andere naam? Pas `naam` aan bovenaan in `app.js` en de tekst "met Dounia" in `index.html`.
 - **Voortgang bovenaan:** op elke pagina zie je hoeveel vragen ze onder de knie heeft, hoeveel begrippen ze

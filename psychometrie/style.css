@@ -515,3 +515,77 @@ table.lijst td.getal { font-variant-numeric: tabular-nums; }
 
 @media (hover: none) { .alleen-laptop { display: none; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } html { scroll-behavior: auto; } }
+
+/* ===== Motivatie, grapjes en feest ===== */
+.trots {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 14px;
+  font-weight: 800; font-size: .92rem; color: #c2506b;
+  background: color-mix(in srgb, #f6c9d4 55%, var(--vlak)); border-radius: 999px; padding: 6px 14px 6px 10px;
+}
+.trots .icoon { width: 18px; height: 18px; fill: currentColor; animation: klop 1.6s ease-in-out infinite; }
+@keyframes klop { 0%, 100% { transform: scale(1); } 15% { transform: scale(1.22); } 30% { transform: scale(1); } 45% { transform: scale(1.12); } }
+@media (prefers-color-scheme: dark) { .trots { color: #f3a3b6; background: #3d2229; } }
+
+.hero .ster { position: absolute; z-index: 0; pointer-events: none; display: block; }
+.hero .ster svg { width: 100%; height: 100%; display: block; }
+.hero .ster path { fill: var(--accent-2); }
+.hero .ster { animation: twinkel 3.2s ease-in-out infinite; opacity: .5; }
+.hero .ster-1 { width: 18px; height: 18px; top: 16px; right: 168px; }
+.hero .ster-2 { width: 13px; height: 13px; top: 150px; right: 22px; animation-delay: 1s; }
+.hero .ster-2 path { fill: var(--accent-3); }
+.hero .ster-3 { width: 11px; height: 11px; bottom: 22px; right: 40%; animation-delay: 2s; }
+.hero .ster-3 path { fill: var(--accent); }
+@media (max-width: 560px) {
+  .hero .ster-1 { top: 12px; right: 112px; width: 14px; height: 14px; }
+  .hero .ster-2 { top: 124px; right: 14px; }
+  .hero .ster-3 { display: none; }
+}
+@keyframes twinkel { 0%, 100% { transform: scale(.8) rotate(0); opacity: .35; } 50% { transform: scale(1.15) rotate(25deg); opacity: .8; } }
+.hero .ring { filter: drop-shadow(0 6px 14px color-mix(in srgb, var(--accent) 22%, transparent)); }
+
+.hero, .raster .tegel, .inhoud > .banner { animation: binnenkomen .5s cubic-bezier(.2, .7, .3, 1) both; }
+.raster .tegel:nth-child(2) { animation-delay: .05s; }
+.raster .tegel:nth-child(3) { animation-delay: .1s; }
+.raster .tegel:nth-child(4) { animation-delay: .15s; }
+.raster .tegel:nth-child(5) { animation-delay: .2s; }
+@keyframes binnenkomen { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@media (max-width: 560px) { .tegel-nieuw { grid-column: 1 / -1; } .feedback { scroll-margin-top: 175px; } }
+.tegel-nieuw { background: linear-gradient(135deg, var(--vlak), color-mix(in srgb, var(--accent-2-zacht) 70%, var(--vlak))); }
+
+.confetti { position: fixed; inset: 0; pointer-events: none; z-index: 100; overflow: hidden; }
+.confetti i {
+  position: absolute; top: -14px; width: 9px; height: 14px; border-radius: 2px; opacity: .95;
+  animation-name: vallen; animation-timing-function: cubic-bezier(.25, .6, .4, 1); animation-fill-mode: forwards;
+}
+@keyframes vallen {
+  0% { transform: translate(0, 0) rotate(0); opacity: 1; }
+  100% { transform: translate(var(--zwaai), 105vh) rotate(720deg); opacity: .8; }
+}
+
+.feedback-kop small { display: block; font-family: var(--romp); font-size: .9rem; font-weight: 600; color: var(--tekst-zacht); margin-top: 2px; }
+.regel.mopje { background: color-mix(in srgb, #f6c9d4 35%, var(--vlak)); border-left-color: #e07a95; font-style: italic; }
+.regel.mopje strong:first-child { color: #c2506b; font-style: normal; }
+@media (prefers-color-scheme: dark) { .regel.mopje { background: #33232a; } .regel.mopje strong:first-child { color: #f3a3b6; } }
+.reeks {
+  display: flex; align-items: center; gap: 8px; margin: 14px 0 0; font-weight: 800; color: var(--accent-2);
+  background: var(--accent-2-zacht); border-radius: 12px; padding: 10px 14px;
+}
+
+/* ===== Nieuwe vragen ===== */
+.stap-kaart { display: flex; gap: 16px; align-items: flex-start; }
+.stap-nr {
+  flex: none; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center;
+  font-family: var(--kop); font-size: 1.2rem; font-weight: 600; color: var(--op-accent);
+  background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 55%, var(--accent-3)));
+}
+.stap-inhoud { flex: 1; min-width: 0; }
+.stap-inhoud h2 { margin-top: 6px; }
+.vinkje { display: flex; gap: 10px; align-items: center; margin-top: 14px; font-size: .95rem; cursor: pointer; }
+.vinkje input { width: 18px; height: 18px; accent-color: var(--accent); }
+@media (max-width: 560px) { .stap-kaart { flex-direction: column; gap: 6px; } .stap-nr { width: 34px; height: 34px; font-size: 1rem; } }
+@media (min-width: 561px) {
+  .tegel-nieuw { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 16px; }
+  .tegel-nieuw h3 { white-space: nowrap; }
+  .tegel-nieuw p { flex: 1; }
+  .tegel-nieuw .pijl { margin-top: 0; white-space: nowrap; }
+}

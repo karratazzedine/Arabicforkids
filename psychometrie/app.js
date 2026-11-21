@@ -20,7 +20,8 @@ const SLEUTEL = {
   kaarten: 'pm_kaarten',
   kaartSessie: 'pm_kaartsessie',
   spss: 'pm_spss_antwoorden',
-  dagen: 'pm_oefendagen'
+  dagen: 'pm_oefendagen',
+  extra: 'pm_extra_vragen'
 };
 
 const LETTERS = ['A', 'B', 'C', 'D'];
@@ -29,6 +30,7 @@ const WISKUNDE_ZIN = `Ik vind wiskunde en formules lastig. Leg het daarom uit in
 
 let DATA = null;          // { vragen, begrippen, spss, bronnenPerOnderwerp }
 let DATABRON = '';
+let RUW_BASIS = null;     // de vragenbank zoals ingelezen, zonder zelf toegevoegde vragen
 let WAARSCHUWINGEN = [];
 let TOETS = null;         // de toets of oefenronde die nu openstaat
 let timerId = null;
@@ -50,10 +52,99 @@ const ICOON_PADEN = {
   ster: '<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9Z"/>',
   pauze: '<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>',
   kruis: '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
-  doel: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>'
+  doel: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+  hart: '<path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/>',
+  plus: '<path d="M12 5v14"/><path d="M5 12h14"/>',
+  lach: '<circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01"/><path d="M15 9h.01"/>',
+  download: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/>',
+  kopie: '<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>'
 };
 const icoon = naam => `<svg class="icoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICOON_PADEN[naam] || ''}</svg>`;
 const icoonChip = (naam, kleur, klasse = 'tegel-icoon') => `<span class="${klasse} kleur-${kleur}">${icoon(naam)}</span>`;
+
+/* =========================================================
+   Motivatie en grapjes
+   ========================================================= */
+const TROTS = 'Je man is trots op je!';
+
+const GOED_ZINNEN = [
+  'Goed zo, {naam}!', 'Yes! Helemaal raak.', 'Kijk jou gaan, {naam}!',
+  'Raak! Daar kan geen meetfout tegenop.', 'Helemaal goed. Je man is trots op je!',
+  'Spot on! Jouw z-score voor deze vraag: torenhoog.', 'Precies goed, {naam}. Professorniveau!'
+];
+const FOUT_ZINNEN = [
+  'Oeps, {naam}! Deze vraag was even slimmer dan jij. Even.',
+  'Bijna! Je brein nam de toeristische route.',
+  'Niet erg, {naam}. Dit is gewoon een meetfout met een leerdoel.',
+  'Plot twist: het juiste antwoord is een ander.',
+  'Die vraag had een valkuil, en jij stapte er keurig in. 😄',
+  'Geen paniek, {naam}! Liever hier fout dan straks op de toets.',
+  'Creatief antwoord! Alleen niet het goede.',
+  'Ernaast, maar wel met stijl.'
+];
+const GRAPJES = {
+  'Betrouwbaarheid': [
+    'Mijn weegschaal is super betrouwbaar: hij geeft elke ochtend precies 3 kilo te weinig aan. Valide? Daar praten we niet over. 🤫',
+    'Cronbach\'s alpha ging naar relatietherapie. "We hangen gewoon niet meer samen," zeiden de items.',
+    'Twee beoordelaars kregen ruzie over een essay. Gelukkig kwam Cohen langs met zijn kappa om de vrede te bewaren.'
+  ],
+  'Validiteit': [
+    'Betrouwbaarheid en validiteit gaan uit eten. Betrouwbaarheid is elke keer precies op tijd. Validiteit ook… maar steeds bij het verkeerde restaurant.',
+    'Een horoscoop is heel betrouwbaar: elke week precies even vaag. Valide is hij helaas niet.'
+  ],
+  'Klassieke testtheorie': [
+    'Wat zei de meetfout tegen de ware score? "Zonder mij ben je maar saai."',
+    'Mijn ware score voor koken is een 9. Mijn geobserveerde score is aangebrande pasta. Dat noemen we meetfout.'
+  ],
+  'Itemanalyse': [
+    'Een item met een negatieve item-restcorrelatie zei: "Ik ben niet dwars, ik ben gewoon niet omgepoold!"',
+    'Een item met p = .99 kwam op een feestje. Iedereen kende hem al.'
+  ],
+  'Normering': [
+    'Waarom was de z-score zo zelfverzekerd? Hij wist precies hoeveel standaarddeviaties hij boven het gemiddelde zat.',
+    'Een statisticus zit met zijn hoofd in de oven en zijn voeten in de vriezer. "Gemiddeld voel ik me prima," zegt hij. (Daarom kijk je óók naar de spreiding!)'
+  ],
+  'Factoranalyse': [
+    'Hoe noem je een factor met een eigenwaarde van 0,3? Een bijzaak.',
+    'Waarom houden factoren zo van oblique rotatie? Dan mogen ze eindelijk een beetje tegen elkaar aan leunen.'
+  ],
+  'algemeen': [
+    'Wat zegt een statisticus als hij twijfelt? "Ik weet het voor 95% zeker… denk ik."',
+    'Statistici gaan nooit alleen naar een feestje. Ze nemen altijd een steekproef mee.',
+    'Waarom nam de psychometricus een ladder mee naar college? Hij had gehoord dat het over hogere-orde factoren ging.'
+  ]
+};
+
+function hashGetal(tekst) {
+  let h = 0;
+  for (const c of String(tekst)) h = (h * 31 + c.charCodeAt(0)) >>> 0;
+  return h;
+}
+const kiesUit = (lijst, zaad) => lijst[hashGetal(zaad) % lijst.length];
+const metNaam = zin => zin.replace('{naam}', NAAM);
+function grapjeVoor(onderwerp, zaad) {
+  return kiesUit([...(GRAPJES[onderwerp] || []), ...GRAPJES.algemeen], zaad + 'mop');
+}
+
+function confetti(aantal = 70) {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const laag = document.createElement('div');
+  laag.className = 'confetti';
+  laag.setAttribute('aria-hidden', 'true');
+  const kleuren = ['var(--accent)', 'var(--accent-2)', 'var(--accent-3)', 'var(--accent-4)', 'var(--let-op)'];
+  for (let i = 0; i < aantal; i++) {
+    const stukje = document.createElement('i');
+    stukje.style.left = `${Math.random() * 100}%`;
+    stukje.style.background = kleuren[i % kleuren.length];
+    stukje.style.animationDelay = `${Math.random() * .5}s`;
+    stukje.style.animationDuration = `${1.6 + Math.random() * 1.4}s`;
+    stukje.style.setProperty('--zwaai', `${(Math.random() - .5) * 160}px`);
+    if (i % 3 === 0) stukje.style.borderRadius = '50%';
+    laag.appendChild(stukje);
+  }
+  document.body.appendChild(laag);
+  setTimeout(() => laag.remove(), 3600);
+}
 
 /* =========================================================
    Hulpfuncties
@@ -221,9 +312,14 @@ function ringHTML(pct) {
   const r = 52, omtrek = 2 * Math.PI * r;
   return `<div class="ring" role="img" aria-label="${pct} procent van de stof onder de knie">
     <svg viewBox="0 0 120 120"><circle class="ring-spoor" cx="60" cy="60" r="${r}"></circle>
-      <circle class="ring-vul" cx="60" cy="60" r="${r}" stroke-dasharray="${omtrek}" stroke-dashoffset="${omtrek * (1 - pct / 100)}"></circle></svg>
+      <circle class="ring-vul" cx="60" cy="60" r="${r}" stroke-dasharray="${omtrek}" stroke-dashoffset="${omtrek}" data-doel="${omtrek * (1 - pct / 100)}"></circle></svg>
     <div class="ring-tekst"><b>${pct}%</b><span>van de stof<br>onder de knie</span></div>
   </div>`;
+}
+
+function animeerRing() {
+  const vul = app.querySelector('.ring-vul');
+  if (vul) requestAnimationFrame(() => requestAnimationFrame(() => { vul.style.strokeDashoffset = vul.dataset.doel; }));
 }
 
 function toonStrook(zichtbaar) {
@@ -270,8 +366,24 @@ function normaliseer(ruw) {
   return { data: { vragen, begrippen, spss, bronnenPerOnderwerp: ruw.bronnenPerOnderwerp || {} }, fouten };
 }
 
+function leesExtra() {
+  const e = opslag.lees(SLEUTEL.extra, null) || {};
+  return { vragen: e.vragen || [], begrippen: e.begrippen || [], spss: e.spss || [] };
+}
+
+/** vragenbank + zelf toegevoegde vragen (die nog niet in vragen.json staan) */
+function samengevoegd(ruw) {
+  const extra = leesExtra();
+  const voeg = (basis, erbij) => {
+    const ids = new Set((basis || []).map(x => x.id));
+    return [...(basis || []), ...erbij.filter(x => !ids.has(x.id))];
+  };
+  return { ...ruw, vragen: voeg(ruw.vragen, extra.vragen), begrippen: voeg(ruw.begrippen, extra.begrippen), spss: voeg(ruw.spss, extra.spss) };
+}
+
 function zetData(ruw, bron) {
-  const { data, fouten } = normaliseer(ruw);
+  RUW_BASIS = ruw;
+  const { data, fouten } = normaliseer(samengevoegd(ruw));
   DATA = data;
   DATABRON = bron;
   WAARSCHUWINGEN = fouten;
@@ -345,6 +457,7 @@ function route() {
     case 'kaarten': kaartenScherm(); break;
     case 'spss': spssScherm(); break;
     case 'voortgang': voortgangScherm(); break;
+    case 'nieuw': nieuwScherm(); break;
     default: startScherm();
   }
   window.scrollTo(0, 0);
@@ -397,7 +510,11 @@ function startScherm() {
         <div class="dagdeel">${new Date().toLocaleDateString('nl-NL', { weekday: 'long', day: 'numeric', month: 'long' })}</div>
         <h1>${groet()}, ${esc(NAAM)}!</h1>
         <p>${esc(zin)}</p>
+        <div class="trots">${icoon('hart')} ${TROTS}</div>
       </div>
+      <span class="ster ster-1" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z"/></svg></span>
+      <span class="ster ster-2" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z"/></svg></span>
+      <span class="ster ster-3" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z"/></svg></span>
       ${ringHTML(stofProcent())}
       ${!TOETS ? `<div class="rij hero-actie"><a class="knop groot" href="#toets">${icoon('oefenen')} Begin met oefenen</a></div>` : ''}
     </section>
@@ -425,12 +542,14 @@ function startScherm() {
       <a class="tegel" href="#kaarten">${icoonChip('kaarten', 3)}<h3>Flitskaarten</h3><p>${teHerhalen ? `${teHerhalen} begrippen staan klaar om te herhalen.` : 'Alles herhaald voor vandaag!'}</p><span class="pijl">Naar de kaarten →</span></a>
       <a class="tegel" href="#spss">${icoonChip('spss', 2)}<h3>SPSS-opdrachten</h3><p>De juiste analyse kiezen en output leren lezen.</p><span class="pijl">Opdrachten →</span></a>
       <a class="tegel" href="#voortgang">${icoonChip('voortgang', 4)}<h3>Voortgang</h3><p>Je cijfers over tijd en waar je nog op kunt letten.</p><span class="pijl">Bekijken →</span></a>
+      <a class="tegel tegel-nieuw" href="#nieuw">${icoonChip('plus', 2)}<h3>Nieuwe vragen</h3><p>Laat Claude elke week nieuwe vragen maken over jouw zwakke plekken.</p><span class="pijl">Vragen maken →</span></a>
     </div>
 
     <details class="kaart" style="margin-top:16px">
       <summary style="cursor:pointer;font-weight:600">Over de vragenbank</summary>
       <p class="zacht klein" style="margin-top:10px">Geladen uit: ${esc(DATABRON)}<br>
-      ${DATA.vragen.length} meerkeuzevragen · ${DATA.begrippen.length} begrippen · ${DATA.spss.length} SPSS-opdrachten · ${onderwerpen().length} onderwerpen</p>
+      ${DATA.vragen.length} meerkeuzevragen · ${DATA.begrippen.length} begrippen · ${DATA.spss.length} SPSS-opdrachten · ${onderwerpen().length} onderwerpen
+      ${aantalExtra() ? `<br>Waarvan ${aantalExtra()} zelf toegevoegd via <a href="#nieuw">Nieuwe vragen</a>.` : ''}</p>
       ${WAARSCHUWINGEN.length ? `<div class="waarschuwing" style="margin-bottom:12px"><strong>Let op, er klopt iets niet in het vragenbestand:</strong>
         <ul>${WAARSCHUWINGEN.slice(0, 15).map(w => `<li>${esc(w)}</li>`).join('')}</ul>
         ${WAARSCHUWINGEN.length > 15 ? `<p class="klein">…en nog ${WAARSCHUWINGEN.length - 15} meldingen.</p>` : ''}</div>` : ''}
@@ -439,6 +558,7 @@ function startScherm() {
     </details>`;
 
   document.getElementById('bestandKiezer').addEventListener('change', e => leesBestand(e.target));
+  animeerRing();
   const oz = document.getElementById('oefenZwak');
   if (oz) oz.addEventListener('click', () => startSessie('oefen', 20, zwak[0].onderwerp));
   const of = document.getElementById('oefenFouten');
@@ -586,7 +706,7 @@ function toetsVraag() {
               <span class="letter">${L}</span><span>${tekstHTML(v.opties[L])}</span>
             </button>`).join('')}
         </div>
-        ${vergrendeld ? `<div class="feedback">${uitlegHTML(v, gekozen, true)}</div>` : ''}
+        ${vergrendeld ? `<div class="feedback">${uitlegHTML(v, gekozen, true, `${v.id}|${t.start}`)}${reeksHTML(t)}</div>` : ''}
         ` : '<p>Deze vraag staat niet meer in de vragenbank. Ga door naar de volgende.</p>'}
     </div>
 
@@ -627,6 +747,7 @@ function toetsVraag() {
     if (oefen) {
       const fb = app.querySelector('.feedback');
       if (fb) fb.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (L === v.juist) confetti(reeksGoed(t) >= 3 ? 90 : 35);
     }
   };
 
@@ -648,7 +769,7 @@ function toetsVraag() {
   document.getElementById('pauze').addEventListener('click', () => {
     stopTimer();
     bewaarToets();
-    melding(`Opgeslagen! Je gaat later verder bij vraag ${t.huidig + 1}.`);
+    melding(`Opgeslagen! Later ga je verder bij vraag ${t.huidig + 1}. ${TROTS}`);
     location.hash = '#start';
   });
   document.getElementById('stoppen').addEventListener('click', () => {
@@ -669,6 +790,22 @@ function toetsVraag() {
   };
 
   if (!oefen) startTimer();
+}
+
+/** hoeveel vragen op rij goed, tot en met de huidige */
+function reeksGoed(t) {
+  let n = 0;
+  for (let i = t.huidig; i >= 0; i--) {
+    const q = vraagOpId(t.vragen[i]);
+    if (q && t.antwoorden[i] === q.juist) n++; else break;
+  }
+  return n;
+}
+function reeksHTML(t) {
+  const n = reeksGoed(t);
+  if (n < 3) return '';
+  const zin = n >= 5 ? `${n} op rij goed! Je bent niet te stoppen. ${TROTS}` : `${n} op rij goed! Lekker bezig, ${NAAM}.`;
+  return `<p class="reeks">${icoon('vlam')} ${esc(zin)}</p>`;
 }
 
 /* De timer loopt alleen als de toets open op het scherm staat.
@@ -760,24 +897,27 @@ function bronnenHTML(eigen, zoek) {
 }
 
 /** volledige uitleg: eerst in gewone taal, dan pas de technische kant */
-function uitlegHTML(v, gekozen, metKop) {
+function uitlegHTML(v, gekozen, metKop, zaad = v.id) {
   const goed = gekozen && gekozen === v.juist;
   const { eigen, zoek } = bronnenVoor(v);
-  const lof = ['Goed zo', 'Helemaal goed', 'Top', 'Precies'][[...v.id].reduce((a, c) => a + c.charCodeAt(0), 0) % 4];
+  const lof = metNaam(kiesUit(GOED_ZINNEN, zaad));
+  const oeps = metNaam(kiesUit(FOUT_ZINNEN, zaad));
+  const metMopje = hashGetal(zaad + 'kans') % 2 === 0; // ongeveer de helft van de keren een mopje
   if (goed) {
     return `
-      ${metKop ? `<p class="feedback-kop goed-kop"><span class="bol">${icoon('check')}</span>${lof}, ${esc(NAAM)}!</p>` : ''}
+      ${metKop ? `<p class="feedback-kop goed-kop"><span class="bol">${icoon('check')}</span>${esc(lof)}</p>` : ''}
       <div class="regel juist"><strong>WAAROM ${v.juist} KLOPT</strong>${tekstHTML(v.uitleg)}</div>
       ${v.herkennen ? `<div class="regel tip"><strong>ONTHOUD DIT TRUCJE</strong>${tekstHTML(v.herkennen)}</div>` : ''}`;
   }
   return `
-    ${metKop ? `<p class="feedback-kop fout-kop"><span class="bol">${icoon('lamp')}</span>${gekozen ? `Bijna, ${esc(NAAM)}! Het is ${v.juist}.` : `Het juiste antwoord is ${v.juist}.`} Zo zit het:</p>` : ''}
+    ${metKop ? `<div class="feedback-kop fout-kop"><span class="bol">${icoon('lamp')}</span><span>${gekozen ? esc(oeps) : 'Deze heb je overgeslagen.'}<small>Het juiste antwoord is ${v.juist}. Zo zit het:</small></span></div>` : ''}
     ${v.simpel ? `<div class="regel simpel"><strong>IN GEWONE TAAL</strong>${tekstHTML(v.simpel)}</div>` : ''}
     ${v.stappen.length ? `<div class="regel stappen"><strong>STAP VOOR STAP UITGEREKEND</strong>
       <ol>${v.stappen.map(s => `<li>${tekstHTML(s)}</li>`).join('')}</ol></div>` : ''}
     ${gekozen ? `<div class="regel jouw"><strong>WAAROM ${gekozen} NIET KLOPT</strong>${tekstHTML(v.denkfouten[gekozen] || 'Vergelijk je antwoord met de uitleg hieronder.')}</div>` : ''}
     <div class="regel juist"><strong>JUIST: ${v.juist}. ${esc(v.opties[v.juist])}</strong>${tekstHTML(v.uitleg)}</div>
     ${v.herkennen ? `<div class="regel tip"><strong>ZO HERKEN JE HET VOLGENDE KEER</strong>${tekstHTML(v.herkennen)}</div>` : ''}
+    ${metMopje ? `<div class="regel mopje"><strong>EVEN EEN MOPJE, OM DE FOUT WEG TE LACHEN</strong>${esc(grapjeVoor(v.onderwerp, zaad))}</div>` : ''}
     ${bronnenHTML(eigen, zoek)}
     <button class="knop licht klein-knop" data-claude="${esc(v.id)}" data-gekozen="${esc(gekozen || '')}">Nog niet duidelijk? Kopieer deze vraag voor Claude</button>`;
 }
@@ -834,9 +974,10 @@ function resultaatScherm(id) {
   const fouten = r.items.filter(it => it.gekozen !== it.juist);
   const per = scorePerOnderwerp(r.items);
   let boodschap;
-  if (r.goed === r.aantal) boodschap = `Alles goed, ${NAAM}! Wat knap.`;
-  else if (voldoende) boodschap = `Voldoende, ${NAAM}! Goed bezig. Kijk hieronder nog even naar de vragen die fout gingen.`;
-  else boodschap = `Nog geen voldoende, ${NAAM}, maar dat is precies waarom je oefent. Lees de uitleg bij je fouten rustig door: daar leer je het meest van.`;
+  let trotsZin;
+  if (r.goed === r.aantal) { boodschap = `Alles goed, ${NAAM}! Wat knap. Zelfs Cronbach is jaloers.`; trotsZin = `${TROTS} Echt héél trots.`; }
+  else if (voldoende) { boodschap = `Voldoende, ${NAAM}! Goed bezig. Kijk hieronder nog even naar de vragen die fout gingen.`; trotsZin = TROTS; }
+  else { boodschap = `Nog geen voldoende, ${NAAM}, maar dat is precies waarom je oefent. Elke fout hier is er één minder op de echte toets.`; trotsZin = `${TROTS} Ook nu, omdat je doorzet.`; }
 
   app.innerHTML = `
     <h1>${oefen ? 'Oefenronde klaar' : 'Resultaat proeftoets'}</h1>
@@ -847,6 +988,7 @@ function resultaatScherm(id) {
           <p style="margin:0 0 4px"><strong>${r.goed} van ${r.aantal} goed</strong> (${procent(r.goed, r.aantal)}%)</p>
           <p class="zacht klein" style="margin:0">${datumTekst(r.datum)}${r.duurSec !== null && r.duurSec !== undefined ? ` · tijd: ${duurTekst(r.duurSec)}` : ''}${r.tijdOp ? ' · tijd was op' : ''}${r.onderwerp ? ` · ${esc(r.onderwerp)}` : ''}</p>
           <p style="margin:8px 0 0">${esc(boodschap)}</p>
+          <div class="trots" style="margin-top:12px">${icoon('hart')} ${esc(trotsZin)}</div>
         </div>
       </div>
       <div class="rij" style="margin-top:16px">
@@ -872,6 +1014,7 @@ function resultaatScherm(id) {
       }).join('')}</details>` : ''}`;
 
   document.getElementById('kopieer').addEventListener('click', () => kopieer(resultaatTekst(r)));
+  if (voldoende && r.id === (toetsen[toetsen.length - 1] || {}).id && Date.now() - new Date(r.datum).getTime() < 15000) confetti(140);
   const fo = document.getElementById('foutenOpnieuw');
   if (fo) fo.addEventListener('click', () => {
     const ids = fouten.map(f => f.id).filter(vraagOpId);
@@ -901,7 +1044,7 @@ function foutKaart(it, i) {
         </div>
       </summary>
       ${!it.gekozen ? '<div class="regel jouw"><strong>NIET BEANTWOORD</strong>Deze vraag heb je open gelaten.</div>' : ''}
-      ${uitlegHTML(v, it.gekozen, false)}
+      ${uitlegHTML(v, it.gekozen, false, `${v.id}|res${i}`)}
     </details>`;
 }
 
@@ -992,6 +1135,7 @@ function tekenKaart() {
       <h1>Flitskaarten</h1>
       <div class="kaart">
         <h2>${s.klaar ? `Je bent helemaal bij, ${esc(NAAM)}!` : `Ronde klaar, goed gedaan ${esc(NAAM)}!`}</h2>
+        <div class="trots" style="margin-bottom:12px">${icoon('hart')} ${TROTS}</div>
         <p>${s.klaar ? 'Er zijn nu geen kaarten om te herhalen.' : `Je had ${s.goed} keer goed en ${s.fout} keer fout. Foute kaarten kwamen tussendoor opnieuw terug.`}</p>
         ${volgende > Date.now() ? `<p class="zacht">Volgende kaart om te herhalen: ${datumTekst(new Date(volgende).toISOString(), false)}.</p>` : ''}
         <div class="rij">
@@ -1311,6 +1455,214 @@ function koppelGrafiek(toetsen) {
     el.addEventListener('click', () => toon(el));
     el.addEventListener('mouseleave', verberg);
     el.addEventListener('blur', verberg);
+  });
+}
+
+/* =========================================================
+   Nieuwe vragen maken (doorlopend, met Claude)
+   ========================================================= */
+const aantalExtra = () => { const e = leesExtra(); return e.vragen.length + e.begrippen.length + e.spss.length; };
+
+function volgendId(prefix, lijst) {
+  const nrs = lijst.map(x => String(x.id || '')).filter(id => id.startsWith(prefix)).map(id => parseInt(id.slice(prefix.length), 10)).filter(n => !isNaN(n));
+  const n = (nrs.length ? Math.max(...nrs) : 0) + 1;
+  return prefix + String(n).padStart(3, '0');
+}
+
+function claudeMaakPrompt(n, keuze, metBegrippen) {
+  const per = zwakkeOnderwerpen(alleToetsen());
+  let onderwerpTekst;
+  if (keuze === '__zwak') {
+    const zwak = per.filter(p => p.score < INSTELLINGEN.zwakGrens).slice(0, 3);
+    onderwerpTekst = zwak.length
+      ? `mijn zwakste onderwerpen: ${zwak.map(z => `${z.onderwerp} (${procent(z.goed, z.totaal)}% goed)`).join(', ')}. Verdeel de vragen over deze onderwerpen.`
+      : `een mix van alle onderwerpen (${onderwerpen().join(', ')}).`;
+  } else if (keuze) onderwerpTekst = keuze;
+  else onderwerpTekst = `een mix van alle onderwerpen (${onderwerpen().join(', ')}). Nieuwe onderwerpen uit het vak psychometrie mogen ook.`;
+
+  const voorbeeld = RUW_BASIS && RUW_BASIS.vragen && (RUW_BASIS.vragen.find(v => v.stappen) || RUW_BASIS.vragen[0]);
+  const vbBegrip = RUW_BASIS && RUW_BASIS.begrippen && RUW_BASIS.begrippen[0];
+  const bestaand = DATA.vragen.map(v => `- ${v.id}: ${v.vraag.slice(0, 90)}${v.vraag.length > 90 ? '…' : ''}`).join('\n');
+  const eerstVrij = volgendId('v', DATA.vragen);
+  const eerstBegrip = volgendId('b', DATA.begrippen);
+
+  return `Hoi Claude! Ik ben ${NAAM} en ik studeer voor het vak psychometrie (bachelor psychologie). Maak ${n} NIEUWE meerkeuzevragen voor mijn oefensite, op het niveau van de echte bloktoets.
+
+Onderwerp: ${onderwerpTekst}
+
+Belangrijk:
+- Ik vind wiskunde lastig. Geef bij elke vraag in "simpel" een uitleg in gewone taal met een voorbeeld uit het dagelijks leven. Bij rekenvragen geef je in "stappen" de berekening stap voor stap (elke stap een aparte regel, met een controle aan het eind). Bij vragen zonder rekenwerk laat je "stappen" weg.
+- Elk fout antwoord krijgt in "denkfouten" een eigen uitleg: welke redenering leidt tot dat foute antwoord.
+- "herkennen": een kort trucje om dit soort vraag op de toets te herkennen.
+- Precies vier opties (A t/m D) en precies één juist antwoord. Wissel af welke letter juist is.
+- Controleer elke berekening en elk antwoord zorgvuldig: de vragen moeten inhoudelijk kloppen.
+- Maak geen vragen die lijken op deze bestaande vragen:
+${bestaand}
+- Gebruik oplopende ids vanaf "${eerstVrij}".
+- "bronnen": alleen links waarvan je zeker weet dat ze bestaan (bijv. Scribbr NL of Wikipedia), anders een lege lijst [].
+${metBegrippen ? `- Maak ook 5 nieuwe begrippen voor flitskaarten (ids vanaf "${eerstBegrip}"), met een "voorbeeld" in gewone taal.\n` : ''}
+Geef ALLEEN geldige JSON terug, zonder tekst ervoor of erna, in precies dit formaat:
+{
+  "vragen": [
+${JSON.stringify(voorbeeld, null, 2).replace(/^/gm, '    ')}
+  ]${metBegrippen && vbBegrip ? `,
+  "begrippen": [
+${JSON.stringify(vbBegrip, null, 2).replace(/^/gm, '    ')}
+  ]` : ''}
+}`;
+}
+
+/** plakte tekst van Claude omzetten naar vragen */
+function verwerkPlak(tekst) {
+  let t = tekst.trim().replace(/^```(?:json)?/i, '').replace(/```\s*$/, '').trim();
+  const start = t.search(/[[{]/);
+  if (start < 0) throw new Error('Ik zie geen JSON in de geplakte tekst.');
+  const eind = Math.max(t.lastIndexOf('}'), t.lastIndexOf(']'));
+  t = t.slice(start, eind + 1);
+  let ruw = JSON.parse(t);
+  if (Array.isArray(ruw)) ruw = { vragen: ruw };
+  if (ruw.vraag && ruw.opties) ruw = { vragen: [ruw] };
+
+  const extra = leesExtra();
+  const bezet = new Set([...DATA.vragen.map(v => v.id), ...extra.vragen.map(v => v.id)]);
+  const bezetB = new Set([...DATA.begrippen.map(b => b.id), ...extra.begrippen.map(b => b.id)]);
+  const bekendeTeksten = new Set(DATA.vragen.map(v => v.vraag.trim().toLowerCase()));
+  const verslag = { vragen: 0, begrippen: 0, overgeslagen: [] };
+
+  (ruw.vragen || []).forEach((v, i) => {
+    const naam = `Vraag ${i + 1}`;
+    const opties = v.opties || {};
+    if (!v.vraag || LETTERS.some(L => !opties[L]) || !LETTERS.includes(v.juist)) {
+      verslag.overgeslagen.push(`${naam}: vraagtekst, vier opties of het juiste antwoord ontbreekt.`); return;
+    }
+    if (bekendeTeksten.has(String(v.vraag).trim().toLowerCase())) { verslag.overgeslagen.push(`${naam}: staat al in de vragenbank.`); return; }
+    const kopie = { ...v };
+    if (!kopie.id || bezet.has(kopie.id)) kopie.id = volgendId('v', [...DATA.vragen, ...extra.vragen]);
+    if (!kopie.onderwerp) kopie.onderwerp = 'Overig';
+    bezet.add(kopie.id);
+    extra.vragen.push(kopie);
+    verslag.vragen++;
+  });
+  (ruw.begrippen || []).forEach(b => {
+    if (!b.begrip || !b.definitie) return;
+    if (DATA.begrippen.some(x => x.begrip.toLowerCase() === String(b.begrip).toLowerCase())) return;
+    const kopie = { ...b };
+    if (!kopie.id || bezetB.has(kopie.id)) kopie.id = volgendId('b', [...DATA.begrippen, ...extra.begrippen]);
+    bezetB.add(kopie.id);
+    extra.begrippen.push(kopie);
+    verslag.begrippen++;
+  });
+  opslag.schrijf(SLEUTEL.extra, extra);
+  zetData(RUW_BASIS, DATABRON);
+  return verslag;
+}
+
+function downloadVragenbank() {
+  const alles = samengevoegd(RUW_BASIS);
+  const blob = new Blob([JSON.stringify(alles, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'vragen.json';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+}
+
+function nieuwScherm() {
+  const extra = leesExtra();
+  const opties = onderwerpen();
+  app.innerHTML = `
+    <h1>Nieuwe vragen maken</h1>
+    <p class="zacht">Hoe meer verschillende vragen je oefent, hoe beter. Doe dit bijvoorbeeld elke week: Claude maakt nieuwe vragen, vooral over de onderwerpen die je nog lastig vindt.</p>
+
+    <div class="kaart stap-kaart">
+      <div class="stap-nr">1</div>
+      <div class="stap-inhoud">
+        <h2>Kopieer de opdracht voor Claude</h2>
+        <div class="rij" style="gap:14px;align-items:flex-end">
+          <label class="veld" style="flex:1;min-width:200px;margin:0"><span>Waarover?</span>
+            <select id="nwOnderwerp">
+              <option value="__zwak">Mijn zwakste onderwerpen (aanrader)</option>
+              <option value="">Alle onderwerpen door elkaar</option>
+              ${opties.map(o => `<option value="${esc(o)}">Alleen ${esc(o)}</option>`).join('')}
+            </select>
+          </label>
+          <div class="veld" style="margin:0"><span>Hoeveel?</span>
+            <div class="keuze">
+              <label><input type="radio" name="nwAantal" value="5"><span>5</span></label>
+              <label><input type="radio" name="nwAantal" value="10" checked><span>10</span></label>
+              <label><input type="radio" name="nwAantal" value="20"><span>20</span></label>
+            </div>
+          </div>
+        </div>
+        <label class="vinkje"><input type="checkbox" id="nwBegrippen" checked> Ook 5 nieuwe begrippen voor de flitskaarten</label>
+        <div class="rij" style="margin-top:14px">
+          <button class="knop" id="nwKopieer">${icoon('kopie')} Kopieer opdracht voor Claude</button>
+        </div>
+        <p class="zacht klein" style="margin:10px 0 0">Plak de opdracht in Claude (bijvoorbeeld in je Claude-project voor psychometrie). Claude geeft een blok tekst terug dat begint met <code>{</code>. Kopieer dat helemaal.</p>
+      </div>
+    </div>
+
+    <div class="kaart stap-kaart">
+      <div class="stap-nr">2</div>
+      <div class="stap-inhoud">
+        <h2>Plak hier het antwoord van Claude</h2>
+        <textarea id="nwPlak" placeholder='{ "vragen": [ … ] }' spellcheck="false" style="font-family:var(--mono);font-size:.85rem"></textarea>
+        <div class="rij" style="margin-top:12px">
+          <button class="knop" id="nwToevoegen">${icoon('plus')} Vragen toevoegen</button>
+        </div>
+        <div id="nwVerslag"></div>
+      </div>
+    </div>
+
+    <div class="kaart stap-kaart">
+      <div class="stap-nr">3</div>
+      <div class="stap-inhoud">
+        <h2>Bewaar ze voorgoed (af en toe)</h2>
+        <p>Toegevoegde vragen staan nu alleen in deze browser${extra.vragen.length || extra.begrippen.length ? ` (<strong>${extra.vragen.length} vragen, ${extra.begrippen.length} begrippen</strong>)` : ''}.
+        Wil je ze ook op je telefoon én laptop, en nooit kwijtraken? Download dan de complete vragenbank en zet dat bestand op GitHub in plaats van de oude <code>vragen.json</code>.</p>
+        <div class="rij">
+          <button class="knop licht" id="nwDownload">${icoon('download')} Download complete vragen.json</button>
+          ${aantalExtra() ? '<button class="knop gevaar" id="nwWis">Zelf toegevoegde vragen wissen</button>' : ''}
+        </div>
+        <p class="zacht klein" style="margin:10px 0 0">Staan ze eenmaal in <code>vragen.json</code> op GitHub? Dan herkent de site ze vanzelf en telt ze niet dubbel.</p>
+      </div>
+    </div>`;
+
+  const instellingen = () => ({
+    n: Number(document.querySelector('input[name=nwAantal]:checked').value),
+    keuze: document.getElementById('nwOnderwerp').value,
+    begrippen: document.getElementById('nwBegrippen').checked
+  });
+  document.getElementById('nwKopieer').addEventListener('click', () => {
+    const { n, keuze, begrippen } = instellingen();
+    kopieer(claudeMaakPrompt(n, keuze, begrippen), 'Opdracht gekopieerd! Plak hem in Claude.');
+  });
+  document.getElementById('nwToevoegen').addEventListener('click', () => {
+    const vak = document.getElementById('nwPlak');
+    const uit = document.getElementById('nwVerslag');
+    if (!vak.value.trim()) { melding('Plak eerst het antwoord van Claude.'); return; }
+    try {
+      const v = verwerkPlak(vak.value);
+      uit.innerHTML = `
+        <div class="regel ${v.vragen || v.begrippen ? 'juist' : 'jouw'}" style="margin-top:14px">
+          <strong>${v.vragen || v.begrippen ? 'GELUKT!' : 'NIETS TOEGEVOEGD'}</strong>
+          ${v.vragen} ${v.vragen === 1 ? 'nieuwe vraag' : 'nieuwe vragen'} en ${v.begrippen} ${v.begrippen === 1 ? 'nieuw begrip' : 'nieuwe begrippen'} toegevoegd.
+          ${v.overgeslagen.length ? `<br>Overgeslagen: <ul>${v.overgeslagen.map(o => `<li>${esc(o)}</li>`).join('')}</ul>` : ''}
+          ${v.vragen ? '<br><a class="knop klein-knop" href="#toets" style="margin-top:10px">Meteen oefenen</a>' : ''}
+        </div>`;
+      if (v.vragen || v.begrippen) { vak.value = ''; confetti(80); toonStrook(true); }
+    } catch (e) {
+      uit.innerHTML = `<div class="regel jouw" style="margin-top:14px"><strong>DAT LUKTE NIET</strong>
+        De tekst is geen geldige JSON (${esc(e.message)}). Vraag Claude: "Geef alleen de JSON, zonder uitleg." en plak het opnieuw.</div>`;
+    }
+  });
+  document.getElementById('nwDownload').addEventListener('click', downloadVragenbank);
+  const wis = document.getElementById('nwWis');
+  if (wis) wis.addEventListener('click', () => {
+    if (confirm('Zelf toegevoegde vragen en begrippen uit deze browser wissen? (Doe dit pas als ze in vragen.json op GitHub staan.)')) {
+      opslag.wis(SLEUTEL.extra); zetData(RUW_BASIS, DATABRON); route();
+    }
   });
 }
 
