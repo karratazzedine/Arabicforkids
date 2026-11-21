@@ -57,7 +57,17 @@ Kopieer een bestaande vraag, plak hem eronder en pas de tekst aan:
     "B": "Welke denkfout zit er achter B?",
     "D": "Welke denkfout zit er achter D?"
   },
-  "herkennen": "Een tip: hoe herken je dit soort vraag de volgende keer?"
+  "herkennen": "Een tip: hoe herken je dit soort vraag de volgende keer?",
+  "simpel": "Uitleg in gewone taal, met een voorbeeld uit het dagelijks leven.",
+  "stappen": [
+    "Stap 1: wat weet je?",
+    "Stap 2: de eerste berekening",
+    "Controle: klopt de uitkomst een beetje?"
+  ],
+  "zoekterm": "spearman-brown formule uitleg",
+  "bronnen": [
+    { "titel": "Betrouwbaarheid uitgelegd (Scribbr, NL)", "url": "https://www.scribbr.nl/onderzoeksmethoden/betrouwbaarheid/" }
+  ]
 }
 ```
 
@@ -69,12 +79,18 @@ Let op:
 - **`juist`** is één hoofdletter: `A`, `B`, `C` of `D`.
 - Bij **`denkfouten`** zet je de drie foute letters (dus niet de juiste).
 - `herkennen` mag je weglaten, maar het helpt bij het leren.
+- **Extra uitleg (optioneel, maar heel fijn voor Dounia):**
+  - `simpel`: uitleg zonder vaktaal, met een voorbeeld uit het dagelijks leven. Dit staat bij een fout als eerste.
+  - `stappen`: alleen bij rekenvragen. Elke rekenstap is een aparte regel.
+  - `zoekterm`: hiermee maakt de site een zoeklink naar Google en YouTube.
+  - `bronnen`: links naar goede uitlegpagina's. Laat je ze weg, dan gebruikt de site de links uit
+    `bronnenPerOnderwerp` (onderaan in `vragen.json`) voor dat onderwerp.
 - Wil je een nieuwe regel binnen een tekst? Typ dan `\n`.
 
 ### Flitskaart
 
 ```json
-{ "id": "b13", "begrip": "Kanskapitalisatie", "definitie": "De toename van de kans op een Type I-fout als je veel toetsen tegelijk doet." }
+{ "id": "b13", "begrip": "Kanskapitalisatie", "definitie": "De toename van de kans op een Type I-fout als je veel toetsen tegelijk doet.", "voorbeeld": "Hoe vaker je een dobbelsteen gooit, hoe groter de kans dat je een keer zes gooit." }
 ```
 
 ### SPSS-opdracht
@@ -103,7 +119,20 @@ Let op:
 
 ## Hoe de site werkt
 
-- **Toets:** 20 of 40 vragen, willekeurig uit de vragenbank (eventueel één onderwerp), met
+- **Persoonlijk:** de site begroet Dounia per dagdeel ("Goedemorgen, Dounia!") en geeft een tip voor vandaag.
+  Een andere naam? Pas `naam` aan bovenaan in `app.js` en de tekst "met Dounia" in `index.html`.
+- **Voortgang bovenaan:** op elke pagina zie je hoeveel vragen ze onder de knie heeft, hoeveel begrippen ze
+  geleerd heeft, haar laatste proeftoetscijfer (met ↑ of ↓) en hoeveel dagen op rij ze heeft geoefend.
+- **Stoppen en later verder:** alles wordt na elke klik bewaard. Met **Pauzeren** (of gewoon de site sluiten) gaat
+  ze later verder bij dezelfde vraag. Bij een proeftoets staat de timer dan stil. Een flitskaartenronde gaat ook
+  verder waar ze was.
+- **Oefenen met uitleg:** direct na elke vraag ziet ze of het goed is. Bij een fout krijgt ze eerst uitleg in
+  gewone taal, daarna de rekenstappen, waarom haar antwoord niet klopt, het juiste antwoord, een herkentip,
+  links naar goede uitleg online (Scribbr, Wikipedia, SPSS Tutorials) en zoeklinks naar YouTube en Google.
+  Met één knop kopieert ze de vraag voor Claude, met het verzoek om het uit te leggen zonder moeilijke wiskunde.
+  Let op: de site zoekt niet zelf met AI op internet. Daarvoor zou een betaalde API-sleutel nodig zijn, en die zou
+  op een openbare site zichtbaar zijn. Daarom zijn er vaste, gecontroleerde links plus zoeklinks.
+- **Proeftoets:** 20 of 40 vragen, willekeurig uit de vragenbank (eventueel één onderwerp), met
   2¼ minuut per vraag (20 vragen = 45 min, 40 = 90 min). Het cijfer is `1 + 9 × (aantal goed / aantal vragen)`.
   Staan er minder vragen in de bank dan je kiest, dan wordt de toets korter. Voeg dus vragen toe!
   Als je per ongeluk de pagina sluit, loopt de toets gewoon door en kun je verder waar je was.

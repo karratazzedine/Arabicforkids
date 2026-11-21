@@ -92,7 +92,7 @@ code, pre { font-family: var(--mono); font-size: .88em; }
 @media (max-width: 560px) {
   .topbalk-binnen { padding: 8px 12px; }
   .menu { width: 100%; justify-content: space-between; }
-  .menu a { padding: 6px 9px; font-size: .9rem; }
+  .menu a { padding: 6px 7px; font-size: .86rem; }
 }
 
 /* ===== Layout ===== */
@@ -287,3 +287,82 @@ table.lijst td.getal { font-variant-numeric: tabular-nums; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 
 @media (hover: none) { .alleen-laptop { display: none; } }
+
+/* ===== Persoonlijk: begroeting en voortgangsstrook ===== */
+.logo-naam { color: var(--accent); }
+@media (max-width: 380px) { .logo-naam { display: none; } }
+
+.strook { background: var(--vlak); border-bottom: 1px solid var(--rand); }
+.strook[hidden] { display: none; }
+.strook-binnen {
+  max-width: 900px; margin: 0 auto; padding: 10px 16px;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+}
+.strook-item { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.strook-label { font-size: .75rem; color: var(--tekst-zacht); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.strook-waarde { font-weight: 650; font-size: 1.05rem; font-variant-numeric: tabular-nums; }
+.mini-balk { height: 5px; background: var(--vlak-2); border-radius: 99px; overflow: hidden; }
+.mini-balk > div { height: 100%; background: var(--accent); border-radius: 99px; }
+@media (max-width: 560px) {
+  .strook-binnen { grid-template-columns: repeat(2, 1fr); gap: 8px 14px; padding: 8px 12px; }
+}
+
+.groet { margin-bottom: 18px; }
+.groet h1 { font-size: 1.75rem; margin-bottom: .25em; }
+.groet p { color: var(--tekst-zacht); font-size: 1.05rem; margin: 0; }
+.kaart.verder { border-color: var(--accent); }
+.tip-kaart { background: var(--let-op-zacht); border-color: transparent; }
+
+/* ===== Modus kiezen ===== */
+.modus-keuze { display: grid; gap: 10px; }
+.modus-keuze label {
+  display: flex; gap: 12px; align-items: flex-start; cursor: pointer;
+  border: 1.5px solid var(--rand); border-radius: 12px; padding: 12px 14px; background: var(--vlak);
+}
+.modus-keuze input { margin-top: 4px; accent-color: var(--accent); width: 18px; height: 18px; flex: none; }
+.modus-keuze label:has(input:checked) { border-color: var(--accent); background: var(--accent-zacht); }
+
+/* ===== Directe feedback bij oefenen ===== */
+.optie:disabled { cursor: default; }
+.optie.is-juist { border-color: var(--goed); background: var(--goed-zacht); }
+.optie.is-juist .letter { background: var(--goed); color: var(--op-accent); }
+.optie.is-fout { border-color: var(--fout); background: var(--fout-zacht); }
+.optie.is-fout .letter { background: var(--fout); color: var(--op-accent); }
+.optie.uit { opacity: .55; }
+.optie:disabled:hover { border-color: inherit; }
+.optie.is-juist:hover { border-color: var(--goed); }
+.optie.is-fout:hover { border-color: var(--fout); }
+
+.feedback { margin-top: 18px; padding-top: 4px; scroll-margin-top: 120px; }
+.feedback-kop { font-weight: 650; font-size: 1.05rem; margin: 0 0 8px; }
+.goed-kop { color: var(--goed); }
+.fout-kop { color: var(--fout); }
+.regel { margin: 10px 0; padding: 10px 12px; border-radius: 10px; }
+.regel strong:first-child { display: block; font-size: .8rem; letter-spacing: .03em; margin-bottom: 3px; }
+.regel.simpel { background: var(--accent-zacht); }
+.regel.simpel strong:first-child, .regel.stappen strong:first-child { color: var(--accent); }
+.regel.stappen { background: var(--vlak-2); }
+.regel.stappen ol { margin: 4px 0 0; padding-left: 22px; }
+.regel.stappen li { margin: 4px 0; }
+.regel.online { border: 1px dashed var(--rand); }
+.regel.online strong:first-child { color: var(--tekst-zacht); }
+.bronnen { margin: 4px 0 0; padding-left: 20px; }
+.bronnen li { margin: 4px 0; }
+.klein-knop { min-height: 40px; font-size: .9rem; padding: 8px 14px; margin-top: 4px; }
+
+.nummers button.nr-goed { background: var(--goed-zacht); color: var(--goed); border-color: transparent; font-weight: 600; }
+.nummers button.nr-fout { background: var(--fout-zacht); color: var(--fout); border-color: transparent; font-weight: 600; }
+
+.linkknop { background: none; border: 0; padding: 0; font: inherit; color: var(--tekst-zacht); text-decoration: underline; cursor: pointer; }
+.linkknop:hover { color: var(--fout); }
+
+.flitskaart .voorbeeld { margin-top: 14px; font-size: .95rem; color: var(--tekst-zacht); max-width: 560px; background: var(--vlak-2); border-radius: 10px; padding: 8px 12px; }
+
+/* ===== Gestapelde balk 'onder de knie' ===== */
+.stapel { display: flex; gap: 2px; height: 14px; background: var(--vlak-2); border-radius: 99px; overflow: hidden; }
+.stapel > div { height: 100%; }
+.s-goed { background: var(--goed); }
+.s-fout { background: var(--fout); }
+.s-leeg { background: var(--vlak-2); border: 1px solid var(--rand); }
+.legenda { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 8px; color: var(--tekst-zacht); }
+.legenda i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
