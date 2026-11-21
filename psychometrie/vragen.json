@@ -1,0 +1,240 @@
+{
+  "vragen": [
+    {
+      "id": "v001",
+      "onderwerp": "Klassieke testtheorie",
+      "vraag": "Hoe wordt betrouwbaarheid gedefinieerd binnen de klassieke testtheorie (X = T + E)?",
+      "opties": {
+        "A": "Als de correlatie tussen de testscore en een extern criterium.",
+        "B": "Als het deel van de geobserveerde scorevariantie dat ware-scorevariantie is: σ²T / σ²X.",
+        "C": "Als het gemiddelde van de ware scores in de populatie.",
+        "D": "Als de standaardmeetfout gedeeld door de standaarddeviatie van de test."
+      },
+      "juist": "B",
+      "uitleg": "In de KTT is betrouwbaarheid de proportie ware-scorevariantie in de geobserveerde variantie: ρXX' = σ²T / σ²X. Hoe minder meetfoutvariantie, hoe dichter bij 1.",
+      "denkfouten": {
+        "A": "Dit is de definitie van (criterium)validiteit, niet van betrouwbaarheid. Betrouwbaarheid gaat over meetprecisie, niet over of je het juiste meet.",
+        "C": "Een gemiddelde zegt niets over precisie. Betrouwbaarheid is een verhouding tussen varianties, geen gemiddelde score.",
+        "D": "De standaardmeetfout hangt samen met betrouwbaarheid (SEM = SD·√(1−r)), maar de verhouding SEM/SD is niet de betrouwbaarheid zelf."
+      },
+      "herkennen": "Zie je 'betrouwbaarheid' + 'KTT', denk dan aan 'variantie gedeeld door variantie': ware variantie / totale variantie. Gaat het over een criterium of construct, dan is het validiteit."
+    },
+    {
+      "id": "v002",
+      "onderwerp": "Betrouwbaarheid",
+      "vraag": "Een test met 10 items heeft een betrouwbaarheid van .70. De test wordt verlengd tot 20 items met parallelle items. Wat is volgens de Spearman-Brown-formule de nieuwe betrouwbaarheid (afgerond)?",
+      "opties": {
+        "A": ".70",
+        "B": ".82",
+        "C": ".49",
+        "D": "1.40"
+      },
+      "juist": "B",
+      "uitleg": "Spearman-Brown: r_nieuw = k·r / (1 + (k−1)·r) met k = 2. Dus 2·.70 / (1 + .70) = 1.40 / 1.70 ≈ .82. Een langere test met parallelle items wordt betrouwbaarder, maar niet lineair.",
+      "denkfouten": {
+        "A": "Testlengte maakt wél uit: meer parallelle items middelen meetfout uit, dus de betrouwbaarheid stijgt.",
+        "C": "Je hebt .70 gekwadrateerd. Kwadrateren hoort bij verklaarde variantie (r²), niet bij Spearman-Brown.",
+        "D": "Je hebt alleen de teller (k·r) berekend en de noemer vergeten. Een betrouwbaarheid kan nooit groter zijn dan 1."
+      },
+      "herkennen": "Woorden als 'verlengen', 'verkorten', 'aantal items verdubbelen' = Spearman-Brown. Controleer altijd: uitkomst tussen 0 en 1, en bij verlengen hoger dan het origineel."
+    },
+    {
+      "id": "v003",
+      "onderwerp": "Betrouwbaarheid",
+      "vraag": "Een intelligentietest heeft SD = 10 en betrouwbaarheid r = .91. Hoe groot is de standaardmeetfout (SEM)?",
+      "opties": {
+        "A": "0.9",
+        "B": "3.0",
+        "C": "9.1",
+        "D": "9.5"
+      },
+      "juist": "B",
+      "uitleg": "SEM = SD · √(1 − r) = 10 · √(0.09) = 10 · 0.3 = 3.0. Een 95%-betrouwbaarheidsinterval rond een geobserveerde score is dan ongeveer ±1.96 · 3 ≈ ±5.9.",
+      "denkfouten": {
+        "A": "Je bent de wortel vergeten: 10 · (1 − .91) = 0.9. De formule is SD · √(1 − r).",
+        "C": "Je hebt SD · r gerekend. De meetfout hangt af van het onbetrouwbare deel (1 − r), niet van r zelf.",
+        "D": "Je hebt SD · √r gerekend. Dat is de SD van de ware scores, niet de meetfout."
+      },
+      "herkennen": "Vraag naar 'standaardmeetfout' of 'betrouwbaarheidsinterval rond een individuele score' → SD · √(1 − r). Check: hoge betrouwbaarheid moet een kleine SEM opleveren."
+    },
+    {
+      "id": "v004",
+      "onderwerp": "Validiteit",
+      "vraag": "Een onderzoeker vindt dat haar nieuwe depressievragenlijst .78 correleert met een bestaande, goed gevalideerde depressieschaal. Welk type validiteitsbewijs is dit?",
+      "opties": {
+        "A": "Inhoudsvaliditeit",
+        "B": "Convergente validiteit",
+        "C": "Discriminante validiteit",
+        "D": "Predictieve validiteit"
+      },
+      "juist": "B",
+      "uitleg": "Convergente validiteit: een test correleert hoog met een andere maat van hetzelfde construct. Het is een vorm van constructvaliditeit.",
+      "denkfouten": {
+        "A": "Inhoudsvaliditeit wordt beoordeeld door experts die kijken of de items het hele domein dekken, niet via een correlatie.",
+        "C": "Discriminante validiteit gaat over een lage correlatie met maten van een ánder construct (bijv. depressie vs. intelligentie).",
+        "D": "Predictieve validiteit vereist een criterium dat later in de tijd wordt gemeten (bijv. latere behandeluitkomst)."
+      },
+      "herkennen": "Zelfde construct + hoge correlatie = convergent. Ander construct + lage correlatie = discriminant. Criterium in de toekomst = predictief. Experts/itemdomein = inhoud."
+    },
+    {
+      "id": "v005",
+      "onderwerp": "Itemanalyse",
+      "vraag": "Een kennisitem heeft een p-waarde van .92. Wat betekent dit?",
+      "opties": {
+        "A": "Het item is erg moeilijk.",
+        "B": "92% van de deelnemers beantwoordt het item goed; het item is makkelijk.",
+        "C": "Het item is niet statistisch significant.",
+        "D": "Het item onderscheidt goed tussen hoge en lage scoorders."
+      },
+      "juist": "B",
+      "uitleg": "In de itemanalyse is de p-waarde de proportie deelnemers die het item goed heeft. Een hoge p-waarde betekent dus een makkelijk item.",
+      "denkfouten": {
+        "A": "Omgekeerd: hoe hoger p, hoe meer mensen het goed hebben, dus hoe makkelijker. 'p' is hier eigenlijk een 'gemakkelijkheidsindex'.",
+        "C": "Verwarring met de p-waarde uit significantietoetsen. In itemanalyse heeft p niets met significantie te maken.",
+        "D": "Discriminatie wordt gemeten met de item-restcorrelatie (Rir) of de discriminatie-index, niet met de p-waarde. Een heel makkelijk item discrimineert juist vaak slecht."
+      },
+      "herkennen": "Staat er 'item' + 'p-waarde', lees dan 'proportie goed'. Gaat het over onderscheid tussen sterke en zwakke studenten, zoek dan naar Rir/Rit."
+    },
+    {
+      "id": "v006",
+      "onderwerp": "Itemanalyse",
+      "vraag": "In de SPSS-output van een betrouwbaarheidsanalyse heeft item 7 een negatieve 'Corrected Item-Total Correlation' (−.25). Wat is de meest waarschijnlijke verklaring?",
+      "opties": {
+        "A": "Item 7 is het beste item van de schaal.",
+        "B": "Item 7 is waarschijnlijk tegengesteld geformuleerd en niet omgescoord.",
+        "C": "Item 7 is te makkelijk.",
+        "D": "De schaal als geheel is onbetrouwbaar."
+      },
+      "juist": "B",
+      "uitleg": "Een negatieve item-restcorrelatie betekent dat hoge scores op het item samengaan met lage scores op de rest. De klassieke oorzaak is een negatief geformuleerd item dat niet is omgepoold (reverse scored).",
+      "denkfouten": {
+        "A": "Een goed item correleert juist positief (liefst > .30) met de rest van de schaal.",
+        "C": "Moeilijkheid (p-waarde) en richting van de correlatie zijn verschillende dingen. Een makkelijk item heeft eerder een correlatie rond 0, niet sterk negatief.",
+        "D": "Eén afwijkend item zegt niets over de hele schaal; kijk naar alpha en 'Cronbach's Alpha if Item Deleted'."
+      },
+      "herkennen": "Negatieve item-restcorrelatie → eerst denken aan 'ompolen vergeten'. In SPSS stijgt dan ook 'Alpha if Item Deleted' boven de totale alpha."
+    },
+    {
+      "id": "v007",
+      "onderwerp": "Normering",
+      "vraag": "Op een test met gemiddelde 50 en SD 10 (normaal verdeeld) scoort iemand 65. Welke uitspraak klopt?",
+      "opties": {
+        "A": "z = 1.5; ongeveer 93% van de normgroep scoort lager.",
+        "B": "z = 15; de score is extreem hoog.",
+        "C": "z = 1.5; ongeveer 15% van de normgroep scoort lager.",
+        "D": "z = 0.65; ongeveer 74% van de normgroep scoort lager."
+      },
+      "juist": "A",
+      "uitleg": "z = (X − M) / SD = (65 − 50) / 10 = 1.5. Bij z = 1.5 ligt ongeveer 93% van de normale verdeling eronder, dus percentielscore ≈ 93.",
+      "denkfouten": {
+        "B": "Je bent vergeten te delen door de SD: 65 − 50 = 15 is het verschil in ruwe punten, geen z-score.",
+        "C": "De z-score klopt, maar je hebt het percentiel verkeerd afgelezen: een positieve z ligt boven het gemiddelde, dus meer dan 50% scoort lager.",
+        "D": "Je hebt 65 / 100 gedaan in plaats van (65 − 50) / 10. Een z-score is altijd afstand tot het gemiddelde in SD-eenheden."
+      },
+      "herkennen": "Altijd eerst z = (X − M) / SD. Daarna logisch checken: z > 0 betekent percentiel > 50. Ken de ankerpunten: z = 1 ≈ 84%, z = 1.5 ≈ 93%, z = 2 ≈ 98%."
+    },
+    {
+      "id": "v008",
+      "onderwerp": "Factoranalyse",
+      "vraag": "Wat geeft de eigenwaarde (eigenvalue) van een factor in een factoranalyse aan?",
+      "opties": {
+        "A": "De lading van één item op die factor.",
+        "B": "Het deel van de variantie van één item dat door alle factoren samen verklaard wordt.",
+        "C": "Hoeveel van de totale variantie van alle items de factor verklaart, uitgedrukt in 'aantal items'.",
+        "D": "Het aantal items dat op de factor laadt."
+      },
+      "juist": "C",
+      "uitleg": "De eigenwaarde is de som van de gekwadrateerde ladingen op een factor: de verklaarde variantie in eenheden van items. Eigenwaarde 1 = evenveel variantie als één item. Daarom het Kaiser-criterium: behoud factoren met eigenwaarde > 1.",
+      "denkfouten": {
+        "A": "Een lading hoort bij één item-factorcombinatie. De eigenwaarde vat alle ladingen van een factor samen (som van de kwadraten).",
+        "B": "Dit is de communaliteit (h²): per item, over alle factoren. Eigenwaarde = per factor, over alle items.",
+        "D": "Het lijkt op een 'aantal', maar het is een hoeveelheid variantie; het is meestal geen geheel getal."
+      },
+      "herkennen": "Eigenwaarde = per factor (kolom), communaliteit = per item (rij). Beide zijn sommen van gekwadrateerde ladingen, maar in een andere richting."
+    },
+    {
+      "id": "v009",
+      "onderwerp": "Betrouwbaarheid",
+      "vraag": "Twee psychologen scoren onafhankelijk van elkaar dezelfde 50 observatieverslagen in categorieën. Welke vorm van betrouwbaarheid onderzoek je hiermee, en met welke maat?",
+      "opties": {
+        "A": "Test-hertestbetrouwbaarheid, met de Pearson-correlatie.",
+        "B": "Interne consistentie, met Cronbach's alpha.",
+        "C": "Interbeoordelaarsbetrouwbaarheid, met Cohen's kappa.",
+        "D": "Parallelle-vormenbetrouwbaarheid, met Spearman-Brown."
+      },
+      "juist": "C",
+      "uitleg": "Twee beoordelaars die hetzelfde materiaal scoren = interbeoordelaarsbetrouwbaarheid. Bij categorieën gebruik je Cohen's kappa, die corrigeert voor overeenstemming op basis van toeval.",
+      "denkfouten": {
+        "A": "Test-hertest betekent dezelfde personen twee keer meten op verschillende momenten. Hier wordt niet opnieuw gemeten, maar door een andere beoordelaar gescoord.",
+        "B": "Alpha gaat over de samenhang tussen items binnen één test, niet over overeenstemming tussen beoordelaars.",
+        "D": "Parallelle vormen zijn twee verschillende versies van een test. Spearman-Brown gaat over testlengte."
+      },
+      "herkennen": "Bron van meetfout bepaalt de vorm: tijd → test-hertest; items → interne consistentie; beoordelaars → interbeoordelaar (kappa bij categorieën, ICC bij continue scores)."
+    },
+    {
+      "id": "v010",
+      "onderwerp": "Validiteit",
+      "vraag": "Een test heeft een betrouwbaarheid van .64. Wat is de maximaal haalbare correlatie van deze test met een volkomen betrouwbaar criterium?",
+      "opties": {
+        "A": ".64",
+        "B": ".80",
+        "C": ".41",
+        "D": "1.00"
+      },
+      "juist": "B",
+      "uitleg": "De validiteit wordt begrensd door de wortel van de betrouwbaarheid: r_xy ≤ √r_xx = √.64 = .80. Een test kan niet sterker correleren met iets anders dan met zijn eigen ware score.",
+      "denkfouten": {
+        "A": "De grens is niet de betrouwbaarheid zelf maar de wortel ervan. Validiteit kan dus hoger zijn dan de betrouwbaarheid.",
+        "C": "Je hebt .64 gekwadrateerd in plaats van de wortel genomen.",
+        "D": "Een onbetrouwbare test bevat meetfout, en meetfout correleert met niets. Daardoor kan de correlatie nooit 1 worden."
+      },
+      "herkennen": "'Maximale validiteit', 'bovengrens' of 'plafond' → wortel van de betrouwbaarheid. Samen met correctie voor attenuatie: r_gecorrigeerd = r_xy / √(r_xx · r_yy)."
+    }
+  ],
+
+  "begrippen": [
+    { "id": "b01", "begrip": "Ware score (T)", "definitie": "De verwachte score van een persoon over oneindig veel onafhankelijke herhalingen van de test. In de KTT: X = T + E." },
+    { "id": "b02", "begrip": "Meetfout (E)", "definitie": "Het toevallige verschil tussen geobserveerde en ware score. Gemiddeld 0 en ongecorreleerd met de ware score." },
+    { "id": "b03", "begrip": "Betrouwbaarheid", "definitie": "De proportie ware-scorevariantie in de geobserveerde variantie: σ²T / σ²X. Zegt hoe precies een test meet." },
+    { "id": "b04", "begrip": "Standaardmeetfout (SEM)", "definitie": "De SD van de meetfouten: SD · √(1 − r). Gebruikt voor een betrouwbaarheidsinterval rond een individuele score." },
+    { "id": "b05", "begrip": "Cronbach's alpha", "definitie": "Maat voor interne consistentie; ondergrens van de betrouwbaarheid. Stijgt met het aantal items en met de gemiddelde inter-itemcorrelatie." },
+    { "id": "b06", "begrip": "Spearman-Brown-formule", "definitie": "Voorspelt de betrouwbaarheid na verlengen of verkorten van een test met parallelle items: k·r / (1 + (k−1)·r)." },
+    { "id": "b07", "begrip": "Constructvaliditeit", "definitie": "De mate waarin een test het theoretische construct meet dat hij beoogt te meten. Onderbouwd met o.a. convergente en discriminante validiteit en factoranalyse." },
+    { "id": "b08", "begrip": "Discriminante validiteit", "definitie": "Lage correlatie van de test met maten van andere, theoretisch niet-verwante constructen." },
+    { "id": "b09", "begrip": "p-waarde (itemanalyse)", "definitie": "Proportie deelnemers die een item goed beantwoordt. Hoge p = makkelijk item." },
+    { "id": "b10", "begrip": "Item-restcorrelatie (Rir)", "definitie": "Correlatie tussen een item en de totaalscore op de overige items. Maat voor discriminerend vermogen; liefst > .30." },
+    { "id": "b11", "begrip": "Communaliteit (h²)", "definitie": "Het deel van de variantie van één item dat door de gezamenlijke factoren wordt verklaard: som van de gekwadrateerde ladingen van dat item." },
+    { "id": "b12", "begrip": "Correctie voor attenuatie", "definitie": "Schat de correlatie tussen ware scores: r_xy / √(r_xx · r_yy). Corrigeert de verlaging van een correlatie door meetfout." }
+  ],
+
+  "spss": [
+    {
+      "id": "s01",
+      "onderwerp": "Analyse kiezen",
+      "vraag": "Een onderzoeker wil weten of studenten uit drie studierichtingen (psychologie, rechten, techniek) verschillen in hun gemiddelde score op een faalangstvragenlijst (intervalniveau). Welke analyse kies je in SPSS en waarom? Noem ook de nul- en alternatieve hypothese en welke voorwaarden je controleert.",
+      "output": "",
+      "richtlijn": "One-way ANOVA (Analyze > Compare Means > One-Way ANOVA): één nominale onafhankelijke variabele met 3 groepen en één afhankelijke variabele op intervalniveau. H0: µ1 = µ2 = µ3; H1: minstens één gemiddelde verschilt. Voorwaarden: onafhankelijke waarnemingen, normaliteit per groep (of voldoende n), gelijke varianties (Levene's test). Bij significant resultaat: post-hoc toetsen (bijv. Tukey) om te zien welke groepen verschillen. Geen meerdere t-toetsen, vanwege kanskapitalisatie."
+    },
+    {
+      "id": "s02",
+      "onderwerp": "Output interpreteren",
+      "vraag": "Hieronder staat (een deel van) de output van een betrouwbaarheidsanalyse op een schaal van 6 items. Is de schaal voldoende betrouwbaar? Welk item zou je eventueel verwijderen of nader bekijken, en wat is de waarschijnlijke oorzaak?",
+      "output": "Reliability Statistics\nCronbach's Alpha   N of Items\n      .71              6\n\nItem-Total Statistics\n        Corrected Item-     Cronbach's Alpha\n        Total Correlation   if Item Deleted\nitem1        .52                 .65\nitem2        .58                 .63\nitem3        .47                 .66\nitem4       -.18                 .81\nitem5        .49                 .66\nitem6        .44                 .67",
+      "richtlijn": "Alpha = .71 is net acceptabel voor onderzoek op groepsniveau (vaak > .70), te laag voor individuele beslissingen (> .80/.90). Item 4 valt op: negatieve corrected item-total correlation (−.18) en alpha stijgt naar .81 als het wordt verwijderd. Meest waarschijnlijke oorzaak: item 4 is negatief geformuleerd en niet omgescoord. Eerst controleren/ompolen (Transform > Recode), daarna de analyse opnieuw draaien; pas verwijderen als het inhoudelijk ook niet past."
+    },
+    {
+      "id": "s03",
+      "onderwerp": "Output interpreteren",
+      "vraag": "Hieronder staat output van een exploratieve factoranalyse op 9 items. Is de data geschikt voor factoranalyse? Hoeveel factoren zou je behouden volgens het Kaiser-criterium, en hoeveel variantie verklaren die samen?",
+      "output": "KMO and Bartlett's Test\nKaiser-Meyer-Olkin Measure of Sampling Adequacy     .82\nBartlett's Test of Sphericity   Approx. Chi-Square  612.4\n                                df                  36\n                                Sig.                .000\n\nTotal Variance Explained (Initial Eigenvalues)\nComponent   Total   % of Variance   Cumulative %\n1           3.62       40.2            40.2\n2           1.71       19.0            59.2\n3           1.08       12.0            71.2\n4            .74        8.2            79.4\n5            .58        6.4            85.8\n...",
+      "richtlijn": "Geschikt: KMO = .82 (> .60/.70 is goed) en Bartlett's test is significant (p < .001), dus de correlatiematrix is geen identiteitsmatrix. Kaiser-criterium (eigenwaarde > 1): 3 factoren, samen 71.2% verklaarde variantie. Kanttekening: factor 3 zit maar net boven 1 (1.08); controleer ook de scree plot en de inhoudelijke interpreteerbaarheid van de ladingen (na rotatie)."
+    },
+    {
+      "id": "s04",
+      "onderwerp": "Analyse kiezen",
+      "vraag": "Je wilt de test-hertestbetrouwbaarheid van een stemmingsvragenlijst bepalen. Dezelfde 80 deelnemers vullen de lijst twee keer in, met vier weken ertussen. Welke analyse gebruik je in SPSS, hoe interpreteer je de uitkomst, en welke factor kan een lage uitkomst verklaren die niets met meetfout te maken heeft?",
+      "output": "",
+      "richtlijn": "Pearson-correlatie tussen meting 1 en meting 2 (Analyze > Correlate > Bivariate), of een ICC (Analyze > Scale > Reliability Analysis, optie Intraclass correlation) als ook absolute overeenstemming telt. Hoe hoger, hoe stabieler; vaak wordt > .70 als voldoende gezien. Let op: stemming is een state en geen trait. Een lage correlatie kan dus komen doordat het construct zelf echt verandert in vier weken, en niet door onbetrouwbaarheid. Ook leereffecten/herinnering kunnen een rol spelen."
+    }
+  ]
+}

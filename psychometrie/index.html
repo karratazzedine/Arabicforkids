@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Psychometrie oefenen</title>
+  <meta name="description" content="Oefenwebsite voor het vak psychometrie: toetsen, flitskaarten, SPSS-opdrachten en voortgang.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbalk">
+    <div class="topbalk-binnen">
+      <a href="#start" class="logo" aria-label="Naar startpagina">
+        <span class="logo-teken" aria-hidden="true">ψ</span>
+        <span>Psychometrie oefenen</span>
+      </a>
+      <nav class="menu" aria-label="Hoofdmenu">
+        <a href="#start" data-view="start">Start</a>
+        <a href="#toets" data-view="toets">Toets</a>
+        <a href="#kaarten" data-view="kaarten">Flitskaarten</a>
+        <a href="#spss" data-view="spss">SPSS</a>
+        <a href="#voortgang" data-view="voortgang">Voortgang</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="app" class="inhoud" tabindex="-1">
+    <p class="laden">Vragen laden…</p>
+  </main>
+
+  <div id="melding" class="melding" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
