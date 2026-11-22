@@ -26,6 +26,12 @@ const SLEUTEL = {
 
 const LETTERS = ['A', 'B', 'C', 'D'];
 const NAAM = INSTELLINGEN.naam;
+const VAK_STANDAARD = {
+  vak: 'Psychometrie: Een Introductie (bachelor Pedagogische Wetenschappen, Erasmus Universiteit Rotterdam, jaar 3)',
+  literatuur: 'Furr, R. M., & Bacharach, V. R. (2014). Psychometrics: An Introduction (2e druk). SAGE. Hoofdstuk 1 t/m 11.'
+};
+const vakInfo = () => (DATA && DATA.over && DATA.over.vak) ? DATA.over : VAK_STANDAARD;
+const vakZin = () => `Vak: ${vakInfo().vak}. Literatuur: ${vakInfo().literatuur} Gebruik de begrippen en indeling van dit boek, met de Engelse term tussen haakjes waar dat helpt.`;
 const WISKUNDE_ZIN = `Ik vind wiskunde en formules lastig. Leg het daarom uit in gewone taal, stap voor stap, met een voorbeeld uit het dagelijks leven. Leg elke rekenstap apart uit en gebruik geen formules zonder te zeggen wat ze betekenen.`;
 
 let DATA = null;          // { vragen, begrippen, spss, bronnenPerOnderwerp }
@@ -83,30 +89,39 @@ const FOUT_ZINNEN = [
   'Ernaast, maar wel met stijl.'
 ];
 const GRAPJES = {
-  'Betrouwbaarheid': [
-    'Mijn weegschaal is super betrouwbaar: hij geeft elke ochtend precies 3 kilo te weinig aan. Valide? Daar praten we niet over. 🤫',
-    'Cronbach\'s alpha ging naar relatietherapie. "We hangen gewoon niet meer samen," zeiden de items.',
-    'Twee beoordelaars kregen ruzie over een essay. Gelukkig kwam Cohen langs met zijn kappa om de vrede te bewaren.'
+  // trefwoord in de hoofdstuknaam → mopjes
+  'meten': [
+    'Een psychometricus en een timmerman gaan uit eten. De timmerman meet alles twee keer. De psychometricus meet alles twee keer en berekent daarna de test-hertestbetrouwbaarheid.'
   ],
-  'Validiteit': [
-    'Betrouwbaarheid en validiteit gaan uit eten. Betrouwbaarheid is elke keer precies op tijd. Validiteit ook… maar steeds bij het verkeerde restaurant.',
-    'Een horoscoop is heel betrouwbaar: elke week precies even vaag. Valide is hij helaas niet.'
+  'schalen': [
+    'Waarom ging de thermometer in therapie? Iedereen zei steeds dat zijn nulpunt niet echt was.',
+    'Mijn vriendin scoorde 8 en ik 4 op een vragenlijst over geduld. Zij zegt dat ze twee keer zo geduldig is. Ik zei: "Sorry schat, daar heb je rationiveau voor nodig." Ze werd een stuk minder geduldig.'
   ],
-  'Klassieke testtheorie': [
-    'Wat zei de meetfout tegen de ware score? "Zonder mij ben je maar saai."',
-    'Mijn ware score voor koken is een 9. Mijn geobserveerde score is aangebrande pasta. Dat noemen we meetfout.'
-  ],
-  'Itemanalyse': [
-    'Een item met een negatieve item-restcorrelatie zei: "Ik ben niet dwars, ik ben gewoon niet omgepoold!"',
-    'Een item met p = .99 kwam op een feestje. Iedereen kende hem al.'
-  ],
-  'Normering': [
+  'correlaties': [
     'Waarom was de z-score zo zelfverzekerd? Hij wist precies hoeveel standaarddeviaties hij boven het gemiddelde zat.',
-    'Een statisticus zit met zijn hoofd in de oven en zijn voeten in de vriezer. "Gemiddeld voel ik me prima," zegt hij. (Daarom kijk je óók naar de spreiding!)'
+    'Een statisticus zit met zijn hoofd in de oven en zijn voeten in de vriezer. "Gemiddeld voel ik me prima," zegt hij. (Daarom kijk je óók naar de variantie!)'
   ],
-  'Factoranalyse': [
+  'factoranalyse': [
     'Hoe noem je een factor met een eigenwaarde van 0,3? Een bijzaak.',
     'Waarom houden factoren zo van oblique rotatie? Dan mogen ze eindelijk een beetje tegen elkaar aan leunen.'
+  ],
+  'betrouwbaarheid': [
+    'Mijn weegschaal is super betrouwbaar: hij geeft elke ochtend precies 3 kilo te weinig aan. Valide? Daar praten we niet over. 🤫',
+    'Cronbach\'s alpha ging naar relatietherapie. "We hangen gewoon niet meer samen," zeiden de items.',
+    'Wat zei de meetfout tegen de ware score? "Zonder mij ben je maar saai."',
+    'Een item met een negatieve item-totaalcorrelatie zei: "Ik ben niet dwars, ik ben gewoon niet omgepoold!"'
+  ],
+  'validiteit': [
+    'Betrouwbaarheid en validiteit gaan uit eten. Betrouwbaarheid is elke keer precies op tijd. Validiteit ook… maar steeds bij het verkeerde restaurant.',
+    'Een horoscoop is heel betrouwbaar: elke week precies even vaag. Valide is hij helaas niet.',
+    'Indruksvaliditeit is als een taart van karton: hij ziet er heerlijk uit, maar probeer er maar eens een hap van te nemen.'
+  ],
+  'antwoordtendenties': [
+    'Ik vroeg de buurman of hij last heeft van instemmingsneiging. "Ja hoor!" En of hij weleens "nee" zegt? "Ja hoor!"',
+    'Op een vragenlijst over sociale wenselijkheid scoorde iedereen perfect. Vreemd, hè?'
+  ],
+  'testbias': [
+    'Een vis, een aap en een olifant krijgen dezelfde toets: "Klim in deze boom." Heel eerlijk, toch? Dat is nou constructbias.'
   ],
   'algemeen': [
     'Wat zegt een statisticus als hij twijfelt? "Ik weet het voor 95% zeker… denk ik."',
@@ -123,7 +138,9 @@ function hashGetal(tekst) {
 const kiesUit = (lijst, zaad) => lijst[hashGetal(zaad) % lijst.length];
 const metNaam = zin => zin.replace('{naam}', NAAM);
 function grapjeVoor(onderwerp, zaad) {
-  return kiesUit([...(GRAPJES[onderwerp] || []), ...GRAPJES.algemeen], zaad + 'mop');
+  const o = String(onderwerp).toLowerCase();
+  const passend = Object.keys(GRAPJES).filter(k => k !== 'algemeen' && o.includes(k)).flatMap(k => GRAPJES[k]);
+  return kiesUit(passend.length ? passend : GRAPJES.algemeen, zaad + 'mop');
 }
 
 function confetti(aantal = 70) {
@@ -224,7 +241,8 @@ async function kopieer(tekst, bericht = 'Gekopieerd! Plak het in je Claude-proje
 }
 
 const vraagOpId = id => DATA.vragen.find(v => v.id === id);
-const onderwerpen = () => [...new Set(DATA.vragen.map(v => v.onderwerp))].sort((a, b) => a.localeCompare(b, 'nl'));
+const sorteerOnderwerp = (a, b) => a.localeCompare(b, 'nl', { numeric: true });
+const onderwerpen = () => [...new Set(DATA.vragen.map(v => v.onderwerp))].sort(sorteerOnderwerp);
 const dagSleutel = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 
 function groet() {
@@ -363,7 +381,7 @@ function normaliseer(ruw) {
     richtlijn: s.richtlijn || '', bronnen: Array.isArray(s.bronnen) ? s.bronnen : []
   }));
   if (!vragen.length) fouten.push('Er staan geen vragen in het bestand (lijst "vragen").');
-  return { data: { vragen, begrippen, spss, bronnenPerOnderwerp: ruw.bronnenPerOnderwerp || {} }, fouten };
+  return { data: { vragen, begrippen, spss, bronnenPerOnderwerp: ruw.bronnenPerOnderwerp || {}, over: ruw.over || null }, fouten };
 }
 
 function leesExtra() {
@@ -547,7 +565,8 @@ function startScherm() {
 
     <details class="kaart" style="margin-top:16px">
       <summary style="cursor:pointer;font-weight:600">Over de vragenbank</summary>
-      <p class="zacht klein" style="margin-top:10px">Geladen uit: ${esc(DATABRON)}<br>
+      <p class="klein" style="margin-top:10px"><strong>${esc(vakInfo().vak)}</strong><br>${esc(vakInfo().literatuur)}</p>
+      <p class="zacht klein">Geladen uit: ${esc(DATABRON)}<br>
       ${DATA.vragen.length} meerkeuzevragen · ${DATA.begrippen.length} begrippen · ${DATA.spss.length} SPSS-opdrachten · ${onderwerpen().length} onderwerpen
       ${aantalExtra() ? `<br>Waarvan ${aantalExtra()} zelf toegevoegd via <a href="#nieuw">Nieuwe vragen</a>.` : ''}</p>
       ${WAARSCHUWINGEN.length ? `<div class="waarschuwing" style="margin-bottom:12px"><strong>Let op, er klopt iets niet in het vragenbestand:</strong>
@@ -634,11 +653,11 @@ function toetsScherm() {
           <label><input type="radio" name="aantal" value="40"><span>40</span></label>
         </div>
       </div>
-      <label class="veld"><span>Welke vragen?</span>
+      <label class="veld"><span>Welke vragen? <span class="zacht klein" style="font-weight:400">(per hoofdstuk van Furr &amp; Bacharach)</span></span>
         <select id="onderwerp">
           <option value="">Alle onderwerpen</option>
           ${aantalFout ? `<option value="__fouten">Mijn foute vragen opnieuw (${aantalFout})</option>` : ''}
-          ${opties.map(o => `<option value="${esc(o)}">Alleen ${esc(o)}</option>`).join('')}
+          ${opties.map(o => `<option value="${esc(o)}">${esc(o)}</option>`).join('')}
         </select>
       </label>
       <p class="zacht klein" id="toetsInfo"></p>
@@ -925,6 +944,7 @@ function uitlegHTML(v, gekozen, metKop, zaad = v.id) {
 function claudeVraagTekst(v, gekozen) {
   return [
     `Hoi Claude, ik ben ${NAAM} en ik oefen voor het vak psychometrie. Ik snap deze vraag nog niet goed.`,
+    vakZin(),
     WISKUNDE_ZIN,
     '',
     `Onderwerp: ${v.onderwerp}`,
@@ -950,7 +970,7 @@ function scorePerOnderwerp(items) {
   });
   return Object.entries(per)
     .map(([onderwerp, s]) => ({ onderwerp, ...s, score: s.goed / s.totaal }))
-    .sort((a, b) => a.score - b.score || a.onderwerp.localeCompare(b.onderwerp, 'nl'));
+    .sort((a, b) => a.score - b.score || sorteerOnderwerp(a.onderwerp, b.onderwerp));
 }
 
 function balkenHTML(rijen) {
@@ -1075,7 +1095,8 @@ function resultaatTekst(r) {
   });
   regels.push(
     'VRAAG AAN CLAUDE',
-    `Ik ben ${NAAM}. Maak een foutenanalyse van deze ronde. Welke denkfouten komen vaker terug? Welke onderwerpen moet ik eerst herhalen?`,
+    `Ik ben ${NAAM}. Maak een foutenanalyse van deze ronde. Welke denkfouten komen vaker terug? Welke hoofdstukken moet ik eerst herhalen?`,
+    vakZin(),
     WISKUNDE_ZIN,
     'Geef me daarna 3 nieuwe oefenvragen over mijn zwakste onderwerp (zonder meteen het antwoord te geven).'
   );
@@ -1295,6 +1316,7 @@ function spssTekst(opdrachten) {
   const alles = opslag.lees(SLEUTEL.spss, {});
   const regels = [
     `Hoi Claude, ik ben ${NAAM} en ik oefen voor het vak psychometrie. Kijk mijn antwoord(en) op de SPSS-opdracht(en) hieronder na.`,
+    vakZin(),
     'Geef per opdracht: wat er goed is, wat ontbreekt of niet klopt, een cijfer van 1 tot 10, en een verbeterd modelantwoord.',
     WISKUNDE_ZIN,
     'De nakijkrichtlijn staat erbij als hulp; beoordeel ook of mijn redenering klopt als ik het anders formuleer.',
@@ -1486,16 +1508,23 @@ function claudeMaakPrompt(n, keuze, metBegrippen) {
   const eerstVrij = volgendId('v', DATA.vragen);
   const eerstBegrip = volgendId('b', DATA.begrippen);
 
-  return `Hoi Claude! Ik ben ${NAAM} en ik studeer voor het vak psychometrie (bachelor psychologie). Maak ${n} NIEUWE meerkeuzevragen voor mijn oefensite, op het niveau van de echte bloktoets.
+  return `Hoi Claude! Ik ben ${NAAM} en ik studeer voor het tentamen psychometrie. Maak ${n} NIEUWE meerkeuzevragen voor mijn oefensite, op het niveau van het echte tentamen.
 
-Onderwerp: ${onderwerpTekst}
+Vak: ${vakInfo().vak}
+Literatuur: ${vakInfo().literatuur}
+Hoofdstukken (gebruik precies deze namen als "onderwerp"):
+${(DATA.over && DATA.over.hoofdstukken ? DATA.over.hoofdstukken : onderwerpen()).map(h => `- ${h}`).join('\n')}
+
+Onderwerp van deze nieuwe vragen: ${onderwerpTekst}
 
 Belangrijk:
 - Ik vind wiskunde lastig. Geef bij elke vraag in "simpel" een uitleg in gewone taal met een voorbeeld uit het dagelijks leven. Bij rekenvragen geef je in "stappen" de berekening stap voor stap (elke stap een aparte regel, met een controle aan het eind). Bij vragen zonder rekenwerk laat je "stappen" weg.
 - Elk fout antwoord krijgt in "denkfouten" een eigen uitleg: welke redenering leidt tot dat foute antwoord.
 - "herkennen": een kort trucje om dit soort vraag op de toets te herkennen.
 - Precies vier opties (A t/m D) en precies één juist antwoord. Wissel af welke letter juist is.
-- Controleer elke berekening en elk antwoord zorgvuldig: de vragen moeten inhoudelijk kloppen.
+- Controleer elke berekening en elk antwoord zorgvuldig: de vragen moeten inhoudelijk kloppen en passen bij hoe Furr & Bacharach het uitleggen.
+- Gebruik waar het kan voorbeelden uit de pedagogiek: kinderen, ouders, leerkrachten, school, opvoeding, jeugdzorg.
+- Afwisselend kennis-, begrips- en toepassingsvragen (casus), en af en toe een rekenvraag.
 - Maak geen vragen die lijken op deze bestaande vragen:
 ${bestaand}
 - Gebruik oplopende ids vanaf "${eerstVrij}".

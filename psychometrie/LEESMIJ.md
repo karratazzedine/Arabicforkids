@@ -3,6 +3,29 @@
 Een oefenwebsite voor het vak psychometrie, gemaakt met alleen HTML, CSS en JavaScript.
 Er is geen installatie, geen account en geen server nodig.
 
+## Op welke stof is het gebaseerd?
+
+De inhoud volgt het vak **Psychometrie: Een Introductie** van de bachelor Pedagogische Wetenschappen
+(Erasmus Universiteit Rotterdam, jaar 3). De literatuur is **Furr, R. M., & Bacharach, V. R. (2014).
+*Psychometrics: An Introduction* (2e druk), hoofdstuk 1 t/m 11**. Het onderwerp van elke vraag is het hoofdstuk:
+
+| Hoofdstuk | Onderwerp in de site |
+|---|---|
+| 1 | H1 Psychometrie en meten |
+| 2 | H2 Schalen en meetniveau |
+| 3 | H3 Individuele verschillen en correlaties |
+| 4 | H4 Dimensionaliteit en factoranalyse |
+| 5 | H5 Betrouwbaarheid: de basis |
+| 6 | H6 Betrouwbaarheid schatten |
+| 7 | H7 Het belang van betrouwbaarheid |
+| 8 | H8 Validiteit: de basis |
+| 9 | H9 Convergente en discriminante validiteit |
+| 10 | H10 Antwoordtendenties |
+| 11 | H11 Testbias |
+
+Gebruik bij nieuwe vragen precies deze namen als `onderwerp`, dan komen ze goed in de score per hoofdstuk.
+Controleer de inhoud altijd even met de studiehandleiding en de colleges: de site is een oefenhulp, geen officieel materiaal.
+
 ## Wat zit erin?
 
 | Bestand       | Wat het is                                                                  |

@@ -1,228 +1,124 @@
 {
   "vragen": [
     {
-      "id": "v001",
-      "onderwerp": "Klassieke testtheorie",
-      "vraag": "Hoe wordt betrouwbaarheid gedefinieerd binnen de klassieke testtheorie (X = T + E)?",
+      "id": "v026",
+      "onderwerp": "H1 Psychometrie en meten",
+      "vraag": "Een leerkracht kijkt of een leerling de tafels van 1 t/m 10 beheerst: minimaal 90% goed is 'beheerst', ongeacht hoe de klasgenoten scoren. Wat voor soort score-interpretatie is dit?",
       "opties": {
-        "A": "Als de correlatie tussen de testscore en een extern criterium.",
-        "B": "Als het deel van de geobserveerde scorevariantie dat ware-scorevariantie is: σ²T / σ²X.",
-        "C": "Als het gemiddelde van de ware scores in de populatie.",
-        "D": "Als de standaardmeetfout gedeeld door de standaarddeviatie van de test."
+        "A": "Criteriumgericht (criterion-referenced)",
+        "B": "Normgericht (norm-referenced)",
+        "C": "Een snelheidstest (speed test)",
+        "D": "Een projectieve test"
       },
-      "juist": "B",
-      "uitleg": "In de KTT is betrouwbaarheid de proportie ware-scorevariantie in de geobserveerde variantie: ρXX' = σ²T / σ²X. Hoe minder meetfoutvariantie, hoe dichter bij 1.",
+      "juist": "A",
+      "uitleg": "Bij een criteriumgerichte interpretatie vergelijk je de score met een vooraf vastgestelde standaard (hier 90% goed). Bij een normgerichte interpretatie vergelijk je de score met die van anderen (de normgroep).",
       "denkfouten": {
-        "A": "Dit is de definitie van (criterium)validiteit, niet van betrouwbaarheid. Betrouwbaarheid gaat over meetprecisie, niet over of je het juiste meet.",
-        "C": "Een gemiddelde zegt niets over precisie. Betrouwbaarheid is een verhouding tussen varianties, geen gemiddelde score.",
-        "D": "De standaardmeetfout hangt samen met betrouwbaarheid (SEM = SD·√(1−r)), maar de verhouding SEM/SD is niet de betrouwbaarheid zelf."
+        "B": "Normgericht betekent: vergelijken met anderen ('beter dan 70% van de klas'). Hier doet de score van klasgenoten er juist niet toe.",
+        "C": "Een snelheidstest gaat over tijdsdruk (makkelijke items, te weinig tijd). Dat zegt niets over hoe je de score interpreteert.",
+        "D": "Een projectieve test gebruikt vage prikkels (zoals inktvlekken). Dat is iets heel anders dan een rekentoets."
       },
-      "herkennen": "Zie je 'betrouwbaarheid' + 'KTT', denk dan aan 'variantie gedeeld door variantie': ware variantie / totale variantie. Gaat het over een criterium of construct, dan is het validiteit.",
-      "simpel": "Stel je voor: je stapt op een weegschaal die elke keer een paar honderd gram verschuift. Wat hij aanwijst (X) is je echte gewicht (T) plus een beetje toeval (E). Betrouwbaarheid is: hoeveel van wat je ziet is 'echt' en hoeveel is toeval? Is bijna alles echt, dan is de betrouwbaarheid bijna 1. Is het veel toeval, dan zakt hij richting 0.",
-      "zoekterm": "klassieke testtheorie betrouwbaarheid ware score uitleg",
+      "herkennen": "Wordt de score vergeleken met een vaste grens of beheersingsniveau → criteriumgericht. Met andere mensen (percentiel, normgroep) → normgericht.",
+      "simpel": "Bij je rijexamen moet je laten zien dat je goed genoeg rijdt: dat is criteriumgericht. Het maakt niet uit hoe de andere kandidaten die dag reden. Bij een hardloopwedstrijd telt alleen of je sneller was dan de rest: dat is normgericht.",
+      "zoekterm": "criteriumgericht normgericht toetsen verschil",
       "bronnen": [
         {
-          "titel": "Classical test theory (Wikipedia, Engels)",
-          "url": "https://en.wikipedia.org/wiki/Classical_test_theory"
+          "titel": "Criterion-referenced test (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Criterion-referenced_test"
         },
         {
-          "titel": "Betrouwbaarheid uitgelegd (Scribbr, NL)",
-          "url": "https://www.scribbr.nl/onderzoeksmethoden/betrouwbaarheid/"
-        },
-        {
-          "titel": "Betrouwbaarheid (Wikipedia, NL)",
-          "url": "https://nl.wikipedia.org/wiki/Betrouwbaarheid_(statistiek)"
+          "titel": "Norm-referenced test (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Norm-referenced_test"
         }
       ]
     },
     {
-      "id": "v002",
-      "onderwerp": "Betrouwbaarheid",
-      "vraag": "Een test met 10 items heeft een betrouwbaarheid van .70. De test wordt verlengd tot 20 items met parallelle items. Wat is volgens de Spearman-Brown-formule de nieuwe betrouwbaarheid (afgerond)?",
+      "id": "v012",
+      "onderwerp": "H2 Schalen en meetniveau",
+      "vraag": "Waarom is het riskant om percentielscores van elkaar af te trekken of te middelen?",
       "opties": {
-        "A": ".70",
-        "B": ".82",
-        "C": ".49",
-        "D": "1.40"
+        "A": "Omdat gelijke verschillen in percentielen niet gelijke verschillen in ruwe score betekenen; percentielen zijn ordinaal.",
+        "B": "Omdat percentielscores alleen voor normaal verdeelde tests bestaan.",
+        "C": "Omdat percentielscores altijd negatief kunnen worden.",
+        "D": "Omdat percentielscores dezelfde schaal hebben als z-scores."
       },
-      "juist": "B",
-      "uitleg": "Spearman-Brown: r_nieuw = k·r / (1 + (k−1)·r) met k = 2. Dus 2·.70 / (1 + .70) = 1.40 / 1.70 ≈ .82. Een langere test met parallelle items wordt betrouwbaarder, maar niet lineair.",
+      "juist": "A",
+      "uitleg": "Percentielen geven een rangorde. In het midden van een (normale) verdeling liggen veel mensen dicht bij elkaar: een klein verschil in ruwe score is daar een groot verschil in percentiel. In de staarten is het andersom. Afstanden zijn dus niet gelijk, en rekenen ermee geeft vertekening.",
       "denkfouten": {
-        "A": "Testlengte maakt wél uit: meer parallelle items middelen meetfout uit, dus de betrouwbaarheid stijgt.",
-        "C": "Je hebt .70 gekwadrateerd. Kwadrateren hoort bij verklaarde variantie (r²), niet bij Spearman-Brown.",
-        "D": "Je hebt alleen de teller (k·r) berekend en de noemer vergeten. Een betrouwbaarheid kan nooit groter zijn dan 1."
+        "B": "Percentielen kun je bij elke verdeling bepalen: ze tellen gewoon hoeveel procent lager scoort.",
+        "C": "Percentielen lopen van 0 tot 100 en zijn nooit negatief. Dat is het probleem dus niet.",
+        "D": "Juist niet: z-scores hebben gelijke afstanden (interval), percentielen niet."
       },
-      "herkennen": "Woorden als 'verlengen', 'verkorten', 'aantal items verdubbelen' = Spearman-Brown. Controleer altijd: uitkomst tussen 0 en 1, en bij verlengen hoger dan het origineel.",
-      "simpel": "Hoe meer vragen een test heeft, hoe minder één toevallige pech-vraag uitmaakt. Daarom wordt een langere test betrouwbaarder. Maar niet eindeloos: hij komt steeds dichter bij 1, zonder er ooit overheen te gaan. Het antwoord moet dus hoger zijn dan .70 en lager dan 1.",
-      "stappen": [
-        "Wat weet je? Betrouwbaarheid r = .70, en de test wordt 2 keer zo lang, dus k = 2.",
-        "Boven de streep: k × r = 2 × .70 = 1.40",
-        "Onder de streep: 1 + r = 1 + .70 = 1.70 (bij verdubbelen is het altijd gewoon 1 + r)",
-        "Deel boven door onder: 1.40 ÷ 1.70 = 0.82",
-        "Controle: is .82 hoger dan .70 en lager dan 1? Ja. Klopt dus!"
-      ],
-      "zoekterm": "Spearman-Brown formule uitleg voorbeeld",
+      "herkennen": "Percentiel = rangorde (ordinaal). Gelijke stappen? Dan heb je z-, T- of standaardscores nodig.",
+      "simpel": "Denk aan een volle wachtrij. In het midden staan mensen dicht op elkaar: één stapje naar voren en je passeert er tien. Aan het eind staat bijna niemand meer: je moet ver lopen om één persoon in te halen. Percentielen werken net zo, dus de 'afstanden' zijn niet overal even groot.",
+      "zoekterm": "percentielscore ordinaal waarom niet middelen",
       "bronnen": [
         {
-          "titel": "Spearman-Brown-formule (Wikipedia, Engels)",
-          "url": "https://en.wikipedia.org/wiki/Spearman%E2%80%93Brown_prediction_formula"
+          "titel": "Standaardnormale verdeling (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/statistiek/standaardnormale-verdeling/"
         },
         {
-          "titel": "Cronbach's alpha uitgelegd (Scribbr, NL)",
-          "url": "https://www.scribbr.nl/statistiek/cronbachs-alpha/"
-        },
-        {
-          "titel": "Betrouwbaarheid uitgelegd (Scribbr, NL)",
-          "url": "https://www.scribbr.nl/onderzoeksmethoden/betrouwbaarheid/"
+          "titel": "Z-score (Wikipedia, NL)",
+          "url": "https://nl.wikipedia.org/wiki/Z-score"
         }
       ]
     },
     {
-      "id": "v003",
-      "onderwerp": "Betrouwbaarheid",
-      "vraag": "Een intelligentietest heeft SD = 10 en betrouwbaarheid r = .91. Hoe groot is de standaardmeetfout (SEM)?",
+      "id": "v027",
+      "onderwerp": "H2 Schalen en meetniveau",
+      "vraag": "Een onderzoeker telt hoeveel driftbuien een peuter per week heeft (0, 1, 2, 3, …). Op welk meetniveau is deze variabele gemeten?",
       "opties": {
-        "A": "0.9",
-        "B": "3.0",
-        "C": "9.1",
-        "D": "9.5"
+        "A": "Nominaal",
+        "B": "Ordinaal",
+        "C": "Interval",
+        "D": "Ratio"
       },
-      "juist": "B",
-      "uitleg": "SEM = SD · √(1 − r) = 10 · √(0.09) = 10 · 0.3 = 3.0. Een 95%-betrouwbaarheidsinterval rond een geobserveerde score is dan ongeveer ±1.96 · 3 ≈ ±5.9.",
+      "juist": "D",
+      "uitleg": "Een aantal heeft identiteit, volgorde, gelijke eenheden (quantity) én een absoluut nulpunt: 0 driftbuien betekent echt 'geen driftbuien'. Dan mag je ook zeggen dat 4 driftbuien twee keer zoveel is als 2. Dat is rationiveau.",
       "denkfouten": {
-        "A": "Je bent de wortel vergeten: 10 · (1 − .91) = 0.9. De formule is SD · √(1 − r).",
-        "C": "Je hebt SD · r gerekend. De meetfout hangt af van het onbetrouwbare deel (1 − r), niet van r zelf.",
-        "D": "Je hebt SD · √r gerekend. Dat is de SD van de ware scores, niet de meetfout."
+        "A": "Nominaal betekent alleen categorieën zonder volgorde (zoals woonplaats). Hier is 3 duidelijk meer dan 2.",
+        "B": "Ordinaal heeft wel volgorde, maar geen gelijke afstanden. Bij tellen is het verschil tussen 1 en 2 precies even groot als tussen 5 en 6.",
+        "C": "Interval heeft gelijke afstanden maar géén echt nulpunt. Hier betekent 0 wél echt 'niets', dus het is ratio."
       },
-      "herkennen": "Vraag naar 'standaardmeetfout' of 'betrouwbaarheidsinterval rond een individuele score' → SD · √(1 − r). Check: hoge betrouwbaarheid moet een kleine SEM opleveren.",
-      "simpel": "De standaardmeetfout zegt: hoeveel punten zit iemands score er gemiddeld naast door toeval? Een heel betrouwbare test heeft dus een kleine meetfout. Hier is de test erg betrouwbaar (.91), dus het antwoord moet een klein getal zijn ten opzichte van de SD van 10.",
-      "stappen": [
-        "Wat weet je? SD = 10 en betrouwbaarheid r = .91.",
-        "Stap 1: het 'toevalsdeel' is 1 − r = 1 − .91 = .09",
-        "Stap 2: neem de wortel daarvan: √.09 = .3 (want .3 × .3 = .09)",
-        "Stap 3: keer de SD: 10 × .3 = 3",
-        "Controle: 3 is klein vergeleken met 10. Logisch, want de test is betrouwbaar."
-      ],
-      "zoekterm": "standaardmeetfout berekenen uitleg",
+      "herkennen": "Stel vier vragen (Furr): identiteit? volgorde? gelijke eenheden? absoluut nulpunt? Vier keer ja = ratio. Bij tellen en tijd meestal ratio.",
+      "simpel": "Kijk of 'nul' echt 'helemaal niets' betekent. Nul driftbuien = geen enkele driftbui. Dat is anders dan 0 graden Celsius: dan is er nog steeds temperatuur.",
+      "zoekterm": "meetniveaus nominaal ordinaal interval ratio uitleg voorbeelden",
       "bronnen": [
         {
-          "titel": "Standard error of measurement (Wikipedia, Engels)",
-          "url": "https://en.wikipedia.org/wiki/Standard_error_of_measurement"
-        },
-        {
-          "titel": "Standaarddeviatie uitgelegd (Scribbr, NL)",
-          "url": "https://www.scribbr.nl/statistiek/standaarddeviatie/"
-        },
-        {
-          "titel": "Betrouwbaarheid uitgelegd (Scribbr, NL)",
-          "url": "https://www.scribbr.nl/onderzoeksmethoden/betrouwbaarheid/"
+          "titel": "Level of measurement (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Level_of_measurement"
         }
       ]
     },
     {
-      "id": "v004",
-      "onderwerp": "Validiteit",
-      "vraag": "Een onderzoeker vindt dat haar nieuwe depressievragenlijst .78 correleert met een bestaande, goed gevalideerde depressieschaal. Welk type validiteitsbewijs is dit?",
+      "id": "v028",
+      "onderwerp": "H2 Schalen en meetniveau",
+      "vraag": "Kind A scoort 40 en kind B scoort 20 op een vragenlijst over sociale vaardigheid (een somscore van Likert-items). Mag je zeggen dat kind A twee keer zo sociaal vaardig is als kind B?",
       "opties": {
-        "A": "Inhoudsvaliditeit",
-        "B": "Convergente validiteit",
-        "C": "Discriminante validiteit",
-        "D": "Predictieve validiteit"
+        "A": "Ja, want 40 is twee keer 20.",
+        "B": "Ja, als de vragenlijst betrouwbaar is.",
+        "C": "Nee, want de schaal heeft geen absoluut nulpunt; verhoudingsuitspraken vragen om rationiveau.",
+        "D": "Nee, want somscores zijn altijd nominaal."
       },
-      "juist": "B",
-      "uitleg": "Convergente validiteit: een test correleert hoog met een andere maat van hetzelfde construct. Het is een vorm van constructvaliditeit.",
+      "juist": "C",
+      "uitleg": "Een score van 0 op zo'n vragenlijst betekent niet 'helemaal geen sociale vaardigheid'. Zonder absoluut nulpunt kun je geen uitspraken doen als 'twee keer zoveel'. Hooguit kun je verschillen vergelijken (als je intervalniveau aanneemt).",
       "denkfouten": {
-        "A": "Inhoudsvaliditeit wordt beoordeeld door experts die kijken of de items het hele domein dekken, niet via een correlatie.",
-        "C": "Discriminante validiteit gaat over een lage correlatie met maten van een ánder construct (bijv. depressie vs. intelligentie).",
-        "D": "Predictieve validiteit vereist een criterium dat later in de tijd wordt gemeten (bijv. latere behandeluitkomst)."
+        "A": "De getallen zijn wel twee keer zo groot, maar dat zegt alleen iets over het construct als de schaal een echt nulpunt heeft.",
+        "B": "Betrouwbaarheid gaat over precisie. Een betrouwbare schaal krijgt daardoor nog geen absoluut nulpunt.",
+        "D": "Somscores hebben wel volgorde (en vaak wordt intervalniveau aangenomen). Ze zijn zeker niet nominaal."
       },
-      "herkennen": "Zelfde construct + hoge correlatie = convergent. Ander construct + lage correlatie = discriminant. Criterium in de toekomst = predictief. Experts/itemdomein = inhoud.",
-      "simpel": "Twee thermometers die allebei koorts meten, moeten ongeveer hetzelfde aangeven. Doen ze dat, dan 'komen ze samen' = convergent. Je nieuwe depressielijst gaat hier hand in hand met een bekende depressielijst, dus ze meten waarschijnlijk hetzelfde.",
-      "zoekterm": "convergente en discriminante validiteit uitleg",
+      "herkennen": "'Twee keer zo…', 'half zo…' → dat mag alleen bij rationiveau. Psychologische en pedagogische schalen hebben bijna nooit een echt nulpunt.",
+      "simpel": "Op een thermometer is 20 graden niet 'twee keer zo warm' als 10 graden, omdat 0 graden niet 'geen warmte' is. Net zo betekent 0 op een vragenlijst niet 'helemaal geen sociale vaardigheid'.",
+      "zoekterm": "absoluut nulpunt ratio interval meetniveau psychologische schaal",
       "bronnen": [
         {
-          "titel": "Constructvaliditeit (Scribbr, NL)",
-          "url": "https://www.scribbr.nl/onderzoeksmethoden/constructvaliditeit/"
-        },
-        {
-          "titel": "Soorten validiteit (Scribbr, NL)",
-          "url": "https://www.scribbr.nl/onderzoeksmethoden/soorten-validiteit/"
-        },
-        {
-          "titel": "Criteriumvaliditeit (Scribbr, NL)",
-          "url": "https://www.scribbr.nl/onderzoeksmethoden/criteriumvaliditeit/"
-        }
-      ]
-    },
-    {
-      "id": "v005",
-      "onderwerp": "Itemanalyse",
-      "vraag": "Een kennisitem heeft een p-waarde van .92. Wat betekent dit?",
-      "opties": {
-        "A": "Het item is erg moeilijk.",
-        "B": "92% van de deelnemers beantwoordt het item goed; het item is makkelijk.",
-        "C": "Het item is niet statistisch significant.",
-        "D": "Het item onderscheidt goed tussen hoge en lage scoorders."
-      },
-      "juist": "B",
-      "uitleg": "In de itemanalyse is de p-waarde de proportie deelnemers die het item goed heeft. Een hoge p-waarde betekent dus een makkelijk item.",
-      "denkfouten": {
-        "A": "Omgekeerd: hoe hoger p, hoe meer mensen het goed hebben, dus hoe makkelijker. 'p' is hier eigenlijk een 'gemakkelijkheidsindex'.",
-        "C": "Verwarring met de p-waarde uit significantietoetsen. In itemanalyse heeft p niets met significantie te maken.",
-        "D": "Discriminatie wordt gemeten met de item-restcorrelatie (Rir) of de discriminatie-index, niet met de p-waarde. Een heel makkelijk item discrimineert juist vaak slecht."
-      },
-      "herkennen": "Staat er 'item' + 'p-waarde', lees dan 'proportie goed'. Gaat het over onderscheid tussen sterke en zwakke studenten, zoek dan naar Rir/Rit.",
-      "simpel": "Vergeet hier alles wat je weet over 'p kleiner dan .05'. Bij items betekent p gewoon: welk deel van de klas had hem goed? p = .92 betekent: 92 van de 100 studenten hadden hem goed. Dat is dus een makkelijke vraag.",
-      "zoekterm": "itemanalyse p-waarde moeilijkheid item uitleg",
-      "bronnen": [
-        {
-          "titel": "Item analysis (Wikipedia, Engels)",
-          "url": "https://en.wikipedia.org/wiki/Item_analysis"
-        },
-        {
-          "titel": "Item-total correlation (Wikipedia, Engels)",
-          "url": "https://en.wikipedia.org/wiki/Item-total_correlation"
-        }
-      ]
-    },
-    {
-      "id": "v006",
-      "onderwerp": "Itemanalyse",
-      "vraag": "In de SPSS-output van een betrouwbaarheidsanalyse heeft item 7 een negatieve 'Corrected Item-Total Correlation' (−.25). Wat is de meest waarschijnlijke verklaring?",
-      "opties": {
-        "A": "Item 7 is het beste item van de schaal.",
-        "B": "Item 7 is waarschijnlijk tegengesteld geformuleerd en niet omgescoord.",
-        "C": "Item 7 is te makkelijk.",
-        "D": "De schaal als geheel is onbetrouwbaar."
-      },
-      "juist": "B",
-      "uitleg": "Een negatieve item-restcorrelatie betekent dat hoge scores op het item samengaan met lage scores op de rest. De klassieke oorzaak is een negatief geformuleerd item dat niet is omgepoold (reverse scored).",
-      "denkfouten": {
-        "A": "Een goed item correleert juist positief (liefst > .30) met de rest van de schaal.",
-        "C": "Moeilijkheid (p-waarde) en richting van de correlatie zijn verschillende dingen. Een makkelijk item heeft eerder een correlatie rond 0, niet sterk negatief.",
-        "D": "Eén afwijkend item zegt niets over de hele schaal; kijk naar alpha en 'Cronbach's Alpha if Item Deleted'."
-      },
-      "herkennen": "Negatieve item-restcorrelatie → eerst denken aan 'ompolen vergeten'. In SPSS stijgt dan ook 'Alpha if Item Deleted' boven de totale alpha.",
-      "simpel": "Stel: bijna alle vragen zijn 'Ik voel me vaak somber'. Eén vraag is 'Ik voel me meestal vrolijk'. Wie somber is, scoort daar juist laag. Als je die vraag niet omdraait (ompoolt), loopt hij precies de andere kant op dan de rest. Dat zie je als een negatieve correlatie.",
-      "zoekterm": "negatieve item-totaal correlatie ompolen SPSS",
-      "bronnen": [
-        {
-          "titel": "Item-total correlation (Wikipedia, Engels)",
-          "url": "https://en.wikipedia.org/wiki/Item-total_correlation"
-        },
-        {
-          "titel": "Cronbach's alpha in SPSS (SPSS Tutorials, Engels)",
-          "url": "https://www.spss-tutorials.com/cronbachs-alpha-in-spss/"
-        },
-        {
-          "titel": "Cronbach's alpha uitgelegd (Scribbr, NL)",
-          "url": "https://www.scribbr.nl/statistiek/cronbachs-alpha/"
+          "titel": "Level of measurement (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Level_of_measurement"
         }
       ]
     },
     {
       "id": "v007",
-      "onderwerp": "Normering",
+      "onderwerp": "H3 Individuele verschillen en correlaties",
       "vraag": "Op een test met gemiddelde 50 en SD 10 (normaal verdeeld) scoort iemand 65. Welke uitspraak klopt?",
       "opties": {
         "A": "z = 1.5; ongeveer 93% van de normgroep scoort lager.",
@@ -267,115 +163,8 @@
       ]
     },
     {
-      "id": "v008",
-      "onderwerp": "Factoranalyse",
-      "vraag": "Wat geeft de eigenwaarde (eigenvalue) van een factor in een factoranalyse aan?",
-      "opties": {
-        "A": "De lading van één item op die factor.",
-        "B": "Het deel van de variantie van één item dat door alle factoren samen verklaard wordt.",
-        "C": "Hoeveel van de totale variantie van alle items de factor verklaart, uitgedrukt in 'aantal items'.",
-        "D": "Het aantal items dat op de factor laadt."
-      },
-      "juist": "C",
-      "uitleg": "De eigenwaarde is de som van de gekwadrateerde ladingen op een factor: de verklaarde variantie in eenheden van items. Eigenwaarde 1 = evenveel variantie als één item. Daarom het Kaiser-criterium: behoud factoren met eigenwaarde > 1.",
-      "denkfouten": {
-        "A": "Een lading hoort bij één item-factorcombinatie. De eigenwaarde vat alle ladingen van een factor samen (som van de kwadraten).",
-        "B": "Dit is de communaliteit (h²): per item, over alle factoren. Eigenwaarde = per factor, over alle items.",
-        "D": "Het lijkt op een 'aantal', maar het is een hoeveelheid variantie; het is meestal geen geheel getal."
-      },
-      "herkennen": "Eigenwaarde = per factor (kolom), communaliteit = per item (rij). Beide zijn sommen van gekwadrateerde ladingen, maar in een andere richting.",
-      "simpel": "Denk aan een factor als een 'emmer' die zoveel mogelijk van wat de items gemeen hebben opvangt. De eigenwaarde zegt hoeveel er in die emmer zit, gemeten in 'items'. Eigenwaarde 3 = de factor vangt evenveel op als 3 losse items. Onder 1 vangt hij minder op dan één item, en dan is hij meestal niet de moeite waard.",
-      "zoekterm": "eigenwaarde factoranalyse uitleg Kaiser criterium",
-      "bronnen": [
-        {
-          "titel": "Factoranalyse (Wikipedia, NL)",
-          "url": "https://nl.wikipedia.org/wiki/Factoranalyse"
-        },
-        {
-          "titel": "Factoranalyse in SPSS (SPSS Tutorials, Engels)",
-          "url": "https://www.spss-tutorials.com/spss-factor-analysis-tutorial/"
-        }
-      ]
-    },
-    {
-      "id": "v009",
-      "onderwerp": "Betrouwbaarheid",
-      "vraag": "Twee psychologen scoren onafhankelijk van elkaar dezelfde 50 observatieverslagen in categorieën. Welke vorm van betrouwbaarheid onderzoek je hiermee, en met welke maat?",
-      "opties": {
-        "A": "Test-hertestbetrouwbaarheid, met de Pearson-correlatie.",
-        "B": "Interne consistentie, met Cronbach's alpha.",
-        "C": "Interbeoordelaarsbetrouwbaarheid, met Cohen's kappa.",
-        "D": "Parallelle-vormenbetrouwbaarheid, met Spearman-Brown."
-      },
-      "juist": "C",
-      "uitleg": "Twee beoordelaars die hetzelfde materiaal scoren = interbeoordelaarsbetrouwbaarheid. Bij categorieën gebruik je Cohen's kappa, die corrigeert voor overeenstemming op basis van toeval.",
-      "denkfouten": {
-        "A": "Test-hertest betekent dezelfde personen twee keer meten op verschillende momenten. Hier wordt niet opnieuw gemeten, maar door een andere beoordelaar gescoord.",
-        "B": "Alpha gaat over de samenhang tussen items binnen één test, niet over overeenstemming tussen beoordelaars.",
-        "D": "Parallelle vormen zijn twee verschillende versies van een test. Spearman-Brown gaat over testlengte."
-      },
-      "herkennen": "Bron van meetfout bepaalt de vorm: tijd → test-hertest; items → interne consistentie; beoordelaars → interbeoordelaar (kappa bij categorieën, ICC bij continue scores).",
-      "simpel": "Vraag jezelf: wat verandert er tussen de twee metingen? Hier is het niet de tijd en niet de test, maar de persoon die scoort (de beoordelaar). Dus: interbeoordelaar. En omdat ze in hokjes (categorieën) indelen, gebruik je kappa.",
-      "zoekterm": "interbeoordelaarsbetrouwbaarheid Cohen's kappa uitleg",
-      "bronnen": [
-        {
-          "titel": "Cohen's kappa (Wikipedia, Engels)",
-          "url": "https://en.wikipedia.org/wiki/Cohen%27s_kappa"
-        },
-        {
-          "titel": "Interbeoordelaarsbetrouwbaarheid (Wikipedia, Engels)",
-          "url": "https://en.wikipedia.org/wiki/Inter-rater_reliability"
-        },
-        {
-          "titel": "Betrouwbaarheid uitgelegd (Scribbr, NL)",
-          "url": "https://www.scribbr.nl/onderzoeksmethoden/betrouwbaarheid/"
-        }
-      ]
-    },
-    {
-      "id": "v010",
-      "onderwerp": "Validiteit",
-      "vraag": "Een test heeft een betrouwbaarheid van .64. Wat is de maximaal haalbare correlatie van deze test met een volkomen betrouwbaar criterium?",
-      "opties": {
-        "A": ".64",
-        "B": ".80",
-        "C": ".41",
-        "D": "1.00"
-      },
-      "juist": "B",
-      "uitleg": "De validiteit wordt begrensd door de wortel van de betrouwbaarheid: r_xy ≤ √r_xx = √.64 = .80. Een test kan niet sterker correleren met iets anders dan met zijn eigen ware score.",
-      "denkfouten": {
-        "A": "De grens is niet de betrouwbaarheid zelf maar de wortel ervan. Validiteit kan dus hoger zijn dan de betrouwbaarheid.",
-        "C": "Je hebt .64 gekwadrateerd in plaats van de wortel genomen.",
-        "D": "Een onbetrouwbare test bevat meetfout, en meetfout correleert met niets. Daardoor kan de correlatie nooit 1 worden."
-      },
-      "herkennen": "'Maximale validiteit', 'bovengrens' of 'plafond' → wortel van de betrouwbaarheid. Samen met correctie voor attenuatie: r_gecorrigeerd = r_xy / √(r_xx · r_yy).",
-      "simpel": "Een test kan nooit beter samenhangen met iets anders dan met zichzelf. Hoeveel hij met 'zichzelf' samenhangt, haal je uit de betrouwbaarheid door de wortel te nemen. Het is een plafond: hoger kan niet.",
-      "stappen": [
-        "Wat weet je? Betrouwbaarheid = .64.",
-        "Neem de wortel: welk getal keer zichzelf is .64? .8 × .8 = .64",
-        "Dus het plafond (maximale validiteit) is .80",
-        "Controle: de wortel van een getal tussen 0 en 1 is altijd groter dan dat getal zelf (.80 > .64). Klopt."
-      ],
-      "zoekterm": "maximale validiteit wortel betrouwbaarheid attenuatie",
-      "bronnen": [
-        {
-          "titel": "Correctie voor attenuatie (Wikipedia, Engels)",
-          "url": "https://en.wikipedia.org/wiki/Correction_for_attenuation"
-        },
-        {
-          "titel": "Validiteit en betrouwbaarheid (Scribbr, NL)",
-          "url": "https://www.scribbr.nl/onderzoeksmethoden/validiteit-en-betrouwbaarheid/"
-        },
-        {
-          "titel": "Criteriumvaliditeit (Scribbr, NL)",
-          "url": "https://www.scribbr.nl/onderzoeksmethoden/criteriumvaliditeit/"
-        }
-      ]
-    },
-    {
       "id": "v011",
-      "onderwerp": "Normering",
+      "onderwerp": "H3 Individuele verschillen en correlaties",
       "vraag": "Iemand heeft een z-score van −1. Wat is zijn T-score? (T-scores hebben gemiddelde 50 en SD 10.)",
       "opties": {
         "A": "60",
@@ -415,52 +204,435 @@
       ]
     },
     {
-      "id": "v012",
-      "onderwerp": "Normering",
-      "vraag": "Waarom is het riskant om percentielscores van elkaar af te trekken of te middelen?",
+      "id": "v029",
+      "onderwerp": "H3 Individuele verschillen en correlaties",
+      "vraag": "Een totaalscore is de som van item 1 en item 2. Item 1 heeft variantie 4, item 2 heeft variantie 9, en de covariantie tussen de items is 3. Wat is de variantie van de totaalscore?",
       "opties": {
-        "A": "Omdat percentielscores altijd negatief kunnen worden.",
-        "B": "Omdat percentielscores alleen voor normaal verdeelde tests bestaan.",
-        "C": "Omdat gelijke verschillen in percentielen niet gelijke verschillen in ruwe score betekenen; percentielen zijn ordinaal.",
-        "D": "Omdat percentielscores dezelfde schaal hebben als z-scores."
+        "A": "13",
+        "B": "19",
+        "C": "16",
+        "D": "36"
       },
-      "juist": "C",
-      "uitleg": "Percentielen geven een rangorde. In het midden van een (normale) verdeling liggen veel mensen dicht bij elkaar: een klein verschil in ruwe score is daar een groot verschil in percentiel. In de staarten is het andersom. Afstanden zijn dus niet gelijk, en rekenen ermee geeft vertekening.",
+      "juist": "B",
+      "uitleg": "Variantie van een samengestelde score = som van de itemvarianties + 2 × de som van de covarianties. Dus 4 + 9 + 2 × 3 = 19. Hoe sterker items samenhangen, hoe groter de variantie van de totaalscore.",
       "denkfouten": {
-        "A": "Percentielen lopen van 0 tot 100 en zijn nooit negatief. Dat is het probleem dus niet.",
-        "B": "Percentielen kun je bij elke verdeling bepalen: ze tellen gewoon hoeveel procent lager scoort.",
-        "D": "Juist niet: z-scores hebben gelijke afstanden (interval), percentielen niet."
+        "A": "Je hebt alleen de varianties opgeteld en de covariantie vergeten. Dat mag alleen als de items helemaal niet samenhangen.",
+        "C": "Je hebt de covariantie maar één keer opgeteld. In de formule komt hij twee keer: 2 × 3.",
+        "D": "Je hebt de varianties met elkaar vermenigvuldigd. Bij een som tel je op."
       },
-      "herkennen": "Percentiel = rangorde (ordinaal). Gelijke stappen? Dan heb je z-, T- of standaardscores nodig.",
-      "simpel": "Denk aan een volle wachtrij. In het midden staan mensen dicht op elkaar: één stapje naar voren en je passeert er tien. Aan het eind staat bijna niemand meer: je moet ver lopen om één persoon in te halen. Percentielen werken net zo, dus de 'afstanden' zijn niet overal even groot.",
-      "zoekterm": "percentielscore ordinaal waarom niet middelen",
+      "herkennen": "Variantie van een somscore? Denk aan: alle varianties + 2 × alle covarianties. Bij twee items: var1 + var2 + 2·cov.",
+      "simpel": "Als twee items samenhangen, versterken ze elkaar: wie hoog scoort op het ene item scoort vaak ook hoog op het andere. Daardoor lopen de totaalscores verder uit elkaar, en dat extra stukje is de covariantie (twee keer, voor elk paar).",
+      "stappen": [
+        "Wat weet je? Variantie item 1 = 4, variantie item 2 = 9, covariantie = 3.",
+        "Tel de varianties op: 4 + 9 = 13",
+        "Covariantie twee keer: 2 × 3 = 6",
+        "Tel alles op: 13 + 6 = 19",
+        "Controle: de items hangen positief samen, dus het antwoord moet groter zijn dan 13. Klopt."
+      ],
+      "zoekterm": "variantie samengestelde score covariantie formule",
       "bronnen": [
         {
-          "titel": "Standaardnormale verdeling (Scribbr, NL)",
-          "url": "https://www.scribbr.nl/statistiek/standaardnormale-verdeling/"
+          "titel": "Variantie (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/statistiek/variantie/"
         },
         {
-          "titel": "Z-score (Wikipedia, NL)",
-          "url": "https://nl.wikipedia.org/wiki/Z-score"
+          "titel": "Covariantie (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/statistiek/covariantie/"
+        }
+      ]
+    },
+    {
+      "id": "v030",
+      "onderwerp": "H3 Individuele verschillen en correlaties",
+      "vraag": "De covariantie tussen 'voorleestijd thuis' en 'woordenschat' is 12. De standaarddeviaties zijn 4 en 5. Hoe groot is de correlatie?",
+      "opties": {
+        "A": ".60",
+        "B": "12",
+        "C": ".75",
+        "D": "2.4"
+      },
+      "juist": "A",
+      "uitleg": "r = covariantie / (SD_x × SD_y) = 12 / (4 × 5) = 12 / 20 = .60. De correlatie is de covariantie 'gestandaardiseerd', zodat hij altijd tussen −1 en +1 ligt.",
+      "denkfouten": {
+        "B": "Dit is de covariantie zelf. Een correlatie kan nooit groter zijn dan 1, dus je moet nog delen door de standaarddeviaties.",
+        "C": "Je hebt alleen gedeeld door 16 (de variantie van de eerste variabele, 4²). Je moet delen door SD_x × SD_y = 4 × 5.",
+        "D": "Je hebt alleen door één SD gedeeld (12 ÷ 5). Je moet door beide SD's samen delen."
+      },
+      "herkennen": "Covariantie omzetten naar correlatie → delen door het product van de twee SD's. Check: uitkomst moet tussen −1 en 1 liggen.",
+      "simpel": "De covariantie zegt of twee dingen samen omhoog gaan, maar het getal hangt af van de eenheden (minuten, woorden). Door te delen door de SD's haal je die eenheden weg. Dan krijg je een getal tussen −1 en 1 dat je overal kunt vergelijken.",
+      "stappen": [
+        "Wat weet je? Covariantie = 12, SD x = 4, SD y = 5.",
+        "Vermenigvuldig de SD's: 4 × 5 = 20",
+        "Deel de covariantie: 12 ÷ 20 = .60",
+        "Controle: .60 ligt tussen −1 en 1. Klopt."
+      ],
+      "zoekterm": "correlatie berekenen uit covariantie en standaarddeviatie",
+      "bronnen": [
+        {
+          "titel": "Pearson-correlatie (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/statistiek/pearson-correlatie/"
+        },
+        {
+          "titel": "Covariantie (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/statistiek/covariantie/"
+        }
+      ]
+    },
+    {
+      "id": "v008",
+      "onderwerp": "H4 Dimensionaliteit en factoranalyse",
+      "vraag": "Wat geeft de eigenwaarde (eigenvalue) van een factor in een factoranalyse aan?",
+      "opties": {
+        "A": "De lading van één item op die factor.",
+        "B": "Het deel van de variantie van één item dat door alle factoren samen verklaard wordt.",
+        "C": "Het aantal items dat op de factor laadt.",
+        "D": "Hoeveel van de totale variantie van alle items de factor verklaart, uitgedrukt in 'aantal items'."
+      },
+      "juist": "D",
+      "uitleg": "De eigenwaarde is de som van de gekwadrateerde ladingen op een factor: de verklaarde variantie in eenheden van items. Eigenwaarde 1 = evenveel variantie als één item. Daarom het Kaiser-criterium: behoud factoren met eigenwaarde > 1.",
+      "denkfouten": {
+        "A": "Een lading hoort bij één item-factorcombinatie. De eigenwaarde vat alle ladingen van een factor samen (som van de kwadraten).",
+        "B": "Dit is de communaliteit (h²): per item, over alle factoren. Eigenwaarde = per factor, over alle items.",
+        "C": "Het lijkt op een 'aantal', maar het is een hoeveelheid variantie; het is meestal geen geheel getal."
+      },
+      "herkennen": "Eigenwaarde = per factor (kolom), communaliteit = per item (rij). Beide zijn sommen van gekwadrateerde ladingen, maar in een andere richting. Furr: eigenwaarden gebruik je (met de scree plot) om te bepalen hoeveel dimensies een test heeft.",
+      "simpel": "Denk aan een factor als een 'emmer' die zoveel mogelijk van wat de items gemeen hebben opvangt. De eigenwaarde zegt hoeveel er in die emmer zit, gemeten in 'items'. Eigenwaarde 3 = de factor vangt evenveel op als 3 losse items. Onder 1 vangt hij minder op dan één item, en dan is hij meestal niet de moeite waard.",
+      "zoekterm": "eigenwaarde factoranalyse uitleg Kaiser criterium",
+      "bronnen": [
+        {
+          "titel": "Factoranalyse (Wikipedia, NL)",
+          "url": "https://nl.wikipedia.org/wiki/Factoranalyse"
+        },
+        {
+          "titel": "Factoranalyse in SPSS (SPSS Tutorials, Engels)",
+          "url": "https://www.spss-tutorials.com/spss-factor-analysis-tutorial/"
+        }
+      ]
+    },
+    {
+      "id": "v023",
+      "onderwerp": "H4 Dimensionaliteit en factoranalyse",
+      "vraag": "Je verwacht dat de factoren 'angst' en 'depressie' met elkaar samenhangen. Welke rotatie kies je dan het beste?",
+      "opties": {
+        "A": "Een orthogonale rotatie, zoals varimax.",
+        "B": "Het maakt niet uit; alle rotaties gaan uit van ongecorreleerde factoren.",
+        "C": "Geen rotatie, want roteren verandert de uitkomst.",
+        "D": "Een oblique (scheve) rotatie, zoals oblimin of promax."
+      },
+      "juist": "D",
+      "uitleg": "Oblique rotaties (oblimin, promax) staan toe dat factoren met elkaar correleren. Orthogonale rotaties (varimax) dwingen de factoren ongecorreleerd te zijn. Bij constructen die waarschijnlijk samenhangen, zoals angst en depressie, is oblique realistischer.",
+      "denkfouten": {
+        "A": "Varimax dwingt de factoren onafhankelijk (ongecorreleerd) te zijn. Dat past niet bij jouw verwachting.",
+        "B": "Alleen orthogonale rotaties gaan uit van ongecorreleerde factoren; oblique rotaties niet.",
+        "C": "Rotatie verandert niet hoeveel variantie er in totaal verklaard wordt; het maakt de ladingen vooral beter interpreteerbaar."
+      },
+      "herkennen": "Factoren hangen (waarschijnlijk) samen → oblique (oblimin/promax). Factoren onafhankelijk → orthogonaal (varimax). Ezelsbruggetje: ortho = recht = 90 graden = geen samenhang.",
+      "simpel": "Orthogonaal betekent: de factoren staan haaks op elkaar, alsof ze niets met elkaar te maken hebben. Oblique betekent: ze mogen een beetje naar elkaar toe leunen. Angst en depressie zijn een beetje familie, dus laat ze leunen.",
+      "zoekterm": "oblique versus orthogonale rotatie factoranalyse varimax oblimin",
+      "bronnen": [
+        {
+          "titel": "Factoranalyse in SPSS (SPSS Tutorials, Engels)",
+          "url": "https://www.spss-tutorials.com/spss-factor-analysis-tutorial/"
+        },
+        {
+          "titel": "Factoranalyse (Wikipedia, NL)",
+          "url": "https://nl.wikipedia.org/wiki/Factoranalyse"
+        },
+        {
+          "titel": "Exploratory factor analysis (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Exploratory_factor_analysis"
+        }
+      ]
+    },
+    {
+      "id": "v024",
+      "onderwerp": "H4 Dimensionaliteit en factoranalyse",
+      "vraag": "Een item heeft een lading van .70 op een factor (en laadt op geen andere factor). Welk deel van de variantie van dit item wordt door de factor verklaard?",
+      "opties": {
+        "A": "70%",
+        "B": "30%",
+        "C": "49%",
+        "D": "84%"
+      },
+      "juist": "C",
+      "uitleg": "Het deel verklaarde variantie is de gekwadrateerde lading: .70² = .49, dus 49%. Als het item op maar één factor laadt, is dat ook meteen de communaliteit.",
+      "denkfouten": {
+        "A": "Je hebt de lading zelf als percentage genomen. Een lading is een correlatie; voor verklaarde variantie moet je hem kwadrateren.",
+        "B": "Je hebt 1 − .70 gedaan. Dat zegt niets over verklaarde variantie.",
+        "D": "Je hebt de wortel van .70 genomen (≈ .84). Je moet juist kwadrateren, niet de wortel nemen."
+      },
+      "herkennen": "Lading of correlatie → kwadrateren voor 'verklaarde variantie'. Net als bij r²: r = .70 → r² = .49.",
+      "simpel": "Een lading is een soort correlatie. En bij correlaties geldt altijd: wil je weten hoeveel er 'verklaard' wordt, dan doe je het getal keer zichzelf.",
+      "stappen": [
+        "Wat weet je? Lading = .70",
+        "Kwadrateer: .70 × .70 = .49",
+        "Maak er een percentage van: .49 = 49%",
+        "Controle: het kwadraat van een getal tussen 0 en 1 is altijd kleiner dan het getal zelf. 49% < 70%, klopt."
+      ],
+      "zoekterm": "factorlading kwadraat verklaarde variantie communaliteit",
+      "bronnen": [
+        {
+          "titel": "Factoranalyse (Wikipedia, NL)",
+          "url": "https://nl.wikipedia.org/wiki/Factoranalyse"
+        },
+        {
+          "titel": "Factoranalyse in SPSS (SPSS Tutorials, Engels)",
+          "url": "https://www.spss-tutorials.com/spss-factor-analysis-tutorial/"
+        }
+      ]
+    },
+    {
+      "id": "v031",
+      "onderwerp": "H4 Dimensionaliteit en factoranalyse",
+      "vraag": "Uit een factoranalyse blijkt dat een vragenlijst over schoolbeleving twee factoren heeft ('plezier' en 'prestatiedruk') die vrijwel NIET met elkaar correleren. Wat is volgens Furr het meest verstandig?",
+      "opties": {
+        "A": "Eén totaalscore over alle items berekenen.",
+        "B": "Cronbach's alpha over alle items samen berekenen als betrouwbaarheid van de totaalscore.",
+        "C": "De helft van de items verwijderen, zodat de test eendimensionaal wordt.",
+        "D": "Twee aparte subschaalscores berekenen; een totaalscore is weinig zinvol."
+      },
+      "juist": "D",
+      "uitleg": "Een multidimensionale test met ongecorreleerde dimensies meet eigenlijk twee losse dingen. Die tel je niet bij elkaar op: je rapporteert per dimensie een score (en per dimensie een betrouwbaarheid). Bij gecorreleerde dimensies kan een totaalscore soms wél zinvol zijn.",
+      "denkfouten": {
+        "A": "Een totaalscore gooit twee dingen op één hoop die niets met elkaar te maken hebben. Twee kinderen met dezelfde totaalscore kunnen dan heel verschillend zijn.",
+        "B": "Alpha over items die verschillende, ongecorreleerde dingen meten is niet zinvol. Bereken alpha per subschaal.",
+        "C": "Er is niets mis met een test die twee dingen meet, zolang je ze apart scoort. Items weggooien is niet nodig."
+      },
+      "herkennen": "Furr onderscheidt drie soorten tests: eendimensionaal (één score), multidimensionaal met gecorreleerde dimensies (subscores + eventueel totaal) en multidimensionaal met ongecorreleerde dimensies (alleen subscores).",
+      "simpel": "Stel dat je de lengte en de leesvaardigheid van een kind optelt tot één getal. Dat getal betekent niets. Net zo heeft het geen zin om 'plezier' en 'prestatiedruk' op te tellen als ze niets met elkaar te maken hebben.",
+      "zoekterm": "test dimensionaliteit subschalen totaalscore factoranalyse",
+      "bronnen": [
+        {
+          "titel": "Factoranalyse (Wikipedia, NL)",
+          "url": "https://nl.wikipedia.org/wiki/Factoranalyse"
+        },
+        {
+          "titel": "Exploratory factor analysis (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Exploratory_factor_analysis"
+        }
+      ]
+    },
+    {
+      "id": "v001",
+      "onderwerp": "H5 Betrouwbaarheid: de basis",
+      "vraag": "Hoe wordt betrouwbaarheid gedefinieerd binnen de klassieke testtheorie (X = T + E)?",
+      "opties": {
+        "A": "Als de correlatie tussen de testscore en een extern criterium.",
+        "B": "Als het deel van de geobserveerde scorevariantie dat ware-scorevariantie is: σ²T / σ²X.",
+        "C": "Als het gemiddelde van de ware scores in de populatie.",
+        "D": "Als de standaardmeetfout gedeeld door de standaarddeviatie van de test."
+      },
+      "juist": "B",
+      "uitleg": "In de KTT is betrouwbaarheid de proportie ware-scorevariantie in de geobserveerde variantie: ρXX' = σ²T / σ²X. Hoe minder meetfoutvariantie, hoe dichter bij 1.",
+      "denkfouten": {
+        "A": "Dit is de definitie van (criterium)validiteit, niet van betrouwbaarheid. Betrouwbaarheid gaat over meetprecisie, niet over of je het juiste meet.",
+        "C": "Een gemiddelde zegt niets over precisie. Betrouwbaarheid is een verhouding tussen varianties, geen gemiddelde score.",
+        "D": "De standaardmeetfout hangt samen met betrouwbaarheid (SEM = SD·√(1−r)), maar de verhouding SEM/SD is niet de betrouwbaarheid zelf."
+      },
+      "herkennen": "Zie je 'betrouwbaarheid' + 'KTT', denk dan aan 'variantie gedeeld door variantie': ware variantie / totale variantie. Gaat het over een criterium of construct, dan is het validiteit.",
+      "simpel": "Stel je voor: je stapt op een weegschaal die elke keer een paar honderd gram verschuift. Wat hij aanwijst (X) is je echte gewicht (T) plus een beetje toeval (E). Betrouwbaarheid is: hoeveel van wat je ziet is 'echt' en hoeveel is toeval? Is bijna alles echt, dan is de betrouwbaarheid bijna 1. Is het veel toeval, dan zakt hij richting 0.",
+      "zoekterm": "klassieke testtheorie betrouwbaarheid ware score uitleg",
+      "bronnen": [
+        {
+          "titel": "Classical test theory (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Classical_test_theory"
+        },
+        {
+          "titel": "Betrouwbaarheid uitgelegd (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/onderzoeksmethoden/betrouwbaarheid/"
+        },
+        {
+          "titel": "Betrouwbaarheid (Wikipedia, NL)",
+          "url": "https://nl.wikipedia.org/wiki/Betrouwbaarheid_(statistiek)"
+        }
+      ]
+    },
+    {
+      "id": "v015",
+      "onderwerp": "H5 Betrouwbaarheid: de basis",
+      "vraag": "Een intelligentietest heeft in de algemene bevolking een betrouwbaarheid van .90. In een groep hoogbegaafde leerlingen is de betrouwbaarheid veel lager. Wat is de beste verklaring?",
+      "opties": {
+        "A": "Hoogbegaafden maken meer slordigheidsfouten.",
+        "B": "In een homogene groep is er minder ware-scorevariantie, terwijl de meetfout ongeveer gelijk blijft.",
+        "C": "De test is in die groep niet valide, dus ook niet betrouwbaar.",
+        "D": "Betrouwbaarheid hangt alleen af van het aantal items, dus dit kan niet."
+      },
+      "juist": "B",
+      "uitleg": "Betrouwbaarheid = ware variantie / totale variantie. In een groep waarin iedereen ongeveer even hoog scoort, is er weinig ware variantie. De meetfout blijft even groot, dus wordt de verhouding kleiner. Dit heet ook wel 'restriction of range'.",
+      "denkfouten": {
+        "A": "Dat is een gok zonder onderbouwing. De verklaring zit in de spreiding van de groep, niet in slordigheid.",
+        "C": "Andersom: validiteit wordt begrensd door betrouwbaarheid, niet omgekeerd. En de oorzaak hier is de beperkte spreiding.",
+        "D": "Betrouwbaarheid hangt ook af van de groep: hoe meer verschillen tussen mensen, hoe hoger de betrouwbaarheid kan zijn."
+      },
+      "herkennen": "Kleine, homogene of geselecteerde groep (alleen toppers, alleen patiënten)? Denk aan minder spreiding → lagere betrouwbaarheid en lagere correlaties.",
+      "simpel": "Probeer maar eens met een gewone weegschaal het verschil te zien tussen vijf kinderen die allemaal tussen 30,1 en 30,4 kilo wegen. Die kleine verschillen verdwijnen in de meetfout. In een hele klas, van 22 tot 45 kilo, zie je de verschillen wél goed.",
+      "zoekterm": "betrouwbaarheid homogene groep restriction of range uitleg",
+      "bronnen": [
+        {
+          "titel": "Betrouwbaarheid (Wikipedia, NL)",
+          "url": "https://nl.wikipedia.org/wiki/Betrouwbaarheid_(statistiek)"
+        },
+        {
+          "titel": "Betrouwbaarheid uitgelegd (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/onderzoeksmethoden/betrouwbaarheid/"
+        }
+      ]
+    },
+    {
+      "id": "v016",
+      "onderwerp": "H5 Betrouwbaarheid: de basis",
+      "vraag": "Welke van de volgende uitspraken is GEEN aanname van de klassieke testtheorie?",
+      "opties": {
+        "A": "Iedereen heeft dezelfde ware score.",
+        "B": "De meetfout hangt niet samen met de ware score.",
+        "C": "De meetfouten van twee verschillende tests hangen niet met elkaar samen.",
+        "D": "De meetfout is gemiddeld 0."
+      },
+      "juist": "A",
+      "uitleg": "De KTT gaat er juist van uit dat mensen verschillen in hun ware score; die verschillen wil je meten. De drie andere uitspraken zijn wél kernaannames over de meetfout (E): gemiddeld 0, ongecorreleerd met T en ongecorreleerd met fouten op andere tests.",
+      "denkfouten": {
+        "B": "Dit is wél een aanname: mensen met een hoge ware score krijgen niet systematisch grotere of kleinere fouten.",
+        "C": "Dit is wél een aanname: de toevalsfouten op twee tests zijn onafhankelijk van elkaar.",
+        "D": "Dit is wél een aanname: over heel veel metingen middelen de toevallige fouten uit tot 0."
+      },
+      "herkennen": "Let op 'GEEN' in de vraag! Lees elke optie en vraag: is dit iets over de meetfout E (aanname) of iets vreemds?",
+      "simpel": "De KTT zegt eigenlijk: pech en geluk zijn eerlijk verdeeld. Soms zit je erboven, soms eronder (gemiddeld 0), en dat heeft niets te maken met hoe goed je echt bent. Maar dat iedereen even goed is? Dan zou er niets te meten zijn.",
+      "zoekterm": "aannames klassieke testtheorie meetfout uitleg",
+      "bronnen": [
+        {
+          "titel": "Classical test theory (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Classical_test_theory"
+        },
+        {
+          "titel": "Betrouwbaarheid uitgelegd (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/onderzoeksmethoden/betrouwbaarheid/"
+        }
+      ]
+    },
+    {
+      "id": "v032",
+      "onderwerp": "H5 Betrouwbaarheid: de basis",
+      "vraag": "Wat moet er volgens het model van parallelle tests gelden voor twee testversies?",
+      "opties": {
+        "A": "Alleen dat de gemiddelden van de twee versies gelijk zijn.",
+        "B": "Dat ze precies dezelfde items bevatten.",
+        "C": "Dat ze voor iedere persoon dezelfde ware score meten én gelijke foutvarianties hebben.",
+        "D": "Dat ze perfect (r = 1) met elkaar correleren."
+      },
+      "juist": "C",
+      "uitleg": "Parallelle tests meten hetzelfde construct (dezelfde ware scores) met dezelfde precisie (gelijke foutvarianties). Dan is de correlatie tussen de twee versies gelijk aan de betrouwbaarheid.",
+      "denkfouten": {
+        "A": "Gelijke gemiddelden volgen uit het model, maar zijn niet genoeg: ook de ware scores en de foutvarianties moeten overeenkomen.",
+        "B": "Dan zou het dezelfde test zijn. Parallelle tests hebben juist verschillende items die hetzelfde meten.",
+        "D": "Door meetfout correleren parallelle tests níet perfect. Hun correlatie is gelijk aan de betrouwbaarheid."
+      },
+      "herkennen": "Rijtje van streng naar soepel: parallel (zelfde ware score, zelfde foutvariantie) → tau-equivalent (zelfde ware score, foutvariantie mag verschillen) → essentieel tau-equivalent (ware scores verschillen een constante) → congeneriek (ware scores lineair verwant).",
+      "simpel": "Parallelle tests zijn als een eeneiige tweeling van een toets: andere vragen, maar ze meten precies hetzelfde en even nauwkeurig.",
+      "zoekterm": "parallelle tests tau-equivalent congeneriek klassieke testtheorie",
+      "bronnen": [
+        {
+          "titel": "Classical test theory (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Classical_test_theory"
+        },
+        {
+          "titel": "Congeneric reliability / omega (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Congeneric_reliability"
+        }
+      ]
+    },
+    {
+      "id": "v002",
+      "onderwerp": "H6 Betrouwbaarheid schatten",
+      "vraag": "Een test met 10 items heeft een betrouwbaarheid van .70. De test wordt verlengd tot 20 items met parallelle items. Wat is volgens de Spearman-Brown-formule de nieuwe betrouwbaarheid (afgerond)?",
+      "opties": {
+        "A": ".82",
+        "B": ".70",
+        "C": ".49",
+        "D": "1.40"
+      },
+      "juist": "A",
+      "uitleg": "Spearman-Brown: r_nieuw = k·r / (1 + (k−1)·r) met k = 2. Dus 2·.70 / (1 + .70) = 1.40 / 1.70 ≈ .82. Een langere test met parallelle items wordt betrouwbaarder, maar niet lineair.",
+      "denkfouten": {
+        "B": "Testlengte maakt wél uit: meer parallelle items middelen meetfout uit, dus de betrouwbaarheid stijgt.",
+        "C": "Je hebt .70 gekwadrateerd. Kwadrateren hoort bij verklaarde variantie (r²), niet bij Spearman-Brown.",
+        "D": "Je hebt alleen de teller (k·r) berekend en de noemer vergeten. Een betrouwbaarheid kan nooit groter zijn dan 1."
+      },
+      "herkennen": "Woorden als 'verlengen', 'verkorten', 'aantal items verdubbelen' = Spearman-Brown. Controleer altijd: uitkomst tussen 0 en 1, en bij verlengen hoger dan het origineel.",
+      "simpel": "Hoe meer vragen een test heeft, hoe minder één toevallige pech-vraag uitmaakt. Daarom wordt een langere test betrouwbaarder. Maar niet eindeloos: hij komt steeds dichter bij 1, zonder er ooit overheen te gaan. Het antwoord moet dus hoger zijn dan .70 en lager dan 1.",
+      "stappen": [
+        "Wat weet je? Betrouwbaarheid r = .70, en de test wordt 2 keer zo lang, dus k = 2.",
+        "Boven de streep: k × r = 2 × .70 = 1.40",
+        "Onder de streep: 1 + r = 1 + .70 = 1.70 (bij verdubbelen is het altijd gewoon 1 + r)",
+        "Deel boven door onder: 1.40 ÷ 1.70 = 0.82",
+        "Controle: is .82 hoger dan .70 en lager dan 1? Ja. Klopt dus!"
+      ],
+      "zoekterm": "Spearman-Brown formule uitleg voorbeeld",
+      "bronnen": [
+        {
+          "titel": "Spearman-Brown-formule (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Spearman%E2%80%93Brown_prediction_formula"
+        },
+        {
+          "titel": "Cronbach's alpha uitgelegd (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/statistiek/cronbachs-alpha/"
+        },
+        {
+          "titel": "Betrouwbaarheid uitgelegd (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/onderzoeksmethoden/betrouwbaarheid/"
+        }
+      ]
+    },
+    {
+      "id": "v006",
+      "onderwerp": "H6 Betrouwbaarheid schatten",
+      "vraag": "In de SPSS-output van een betrouwbaarheidsanalyse heeft item 7 een negatieve 'Corrected Item-Total Correlation' (−.25). Wat is de meest waarschijnlijke verklaring?",
+      "opties": {
+        "A": "Item 7 is het beste item van de schaal.",
+        "B": "Item 7 is waarschijnlijk tegengesteld geformuleerd en niet omgescoord.",
+        "C": "Item 7 is te makkelijk.",
+        "D": "De schaal als geheel is onbetrouwbaar."
+      },
+      "juist": "B",
+      "uitleg": "Een negatieve item-restcorrelatie betekent dat hoge scores op het item samengaan met lage scores op de rest. De klassieke oorzaak is een negatief geformuleerd item dat niet is omgepoold (reverse scored).",
+      "denkfouten": {
+        "A": "Een goed item correleert juist positief (liefst > .30) met de rest van de schaal.",
+        "C": "Moeilijkheid (p-waarde) en richting van de correlatie zijn verschillende dingen. Een makkelijk item heeft eerder een correlatie rond 0, niet sterk negatief.",
+        "D": "Eén afwijkend item zegt niets over de hele schaal; kijk naar alpha en 'Cronbach's Alpha if Item Deleted'."
+      },
+      "herkennen": "Negatieve item-restcorrelatie → eerst denken aan 'ompolen vergeten'. In SPSS stijgt dan ook 'Alpha if Item Deleted' boven de totale alpha.",
+      "simpel": "Stel: bijna alle vragen zijn 'Ik voel me vaak somber'. Eén vraag is 'Ik voel me meestal vrolijk'. Wie somber is, scoort daar juist laag. Als je die vraag niet omdraait (ompoolt), loopt hij precies de andere kant op dan de rest. Dat zie je als een negatieve correlatie.",
+      "zoekterm": "negatieve item-totaal correlatie ompolen SPSS",
+      "bronnen": [
+        {
+          "titel": "Item-total correlation (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Item-total_correlation"
+        },
+        {
+          "titel": "Cronbach's alpha in SPSS (SPSS Tutorials, Engels)",
+          "url": "https://www.spss-tutorials.com/cronbachs-alpha-in-spss/"
+        },
+        {
+          "titel": "Cronbach's alpha uitgelegd (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/statistiek/cronbachs-alpha/"
         }
       ]
     },
     {
       "id": "v013",
-      "onderwerp": "Betrouwbaarheid",
+      "onderwerp": "H6 Betrouwbaarheid schatten",
       "vraag": "Je voegt aan een angstschaal vijf items toe die eigenlijk iets heel anders meten (bijvoorbeeld rekenvaardigheid). Wat gebeurt er meestal met Cronbach's alpha?",
       "opties": {
         "A": "Alpha stijgt, want er zijn meer items.",
         "B": "Alpha blijft precies gelijk.",
-        "C": "Alpha daalt meestal, omdat de gemiddelde samenhang tussen de items daalt.",
-        "D": "Alpha wordt automatisch 1."
+        "C": "Alpha wordt automatisch 1.",
+        "D": "Alpha daalt meestal, omdat de gemiddelde samenhang tussen de items daalt."
       },
-      "juist": "C",
+      "juist": "D",
       "uitleg": "Alpha hangt af van twee dingen: het aantal items én de gemiddelde correlatie tussen de items. Items die niets met de rest te maken hebben, trekken die gemiddelde correlatie flink omlaag. Dat effect is meestal groter dan het voordeel van 'meer items'.",
       "denkfouten": {
         "A": "Meer items helpt alleen als die items hetzelfde meten (zoals bij Spearman-Brown met parallelle items). Losse, ongerelateerde items helpen niet.",
         "B": "De samenhang tussen de items verandert wel, dus alpha verandert ook.",
-        "D": "Alpha wordt nooit 'automatisch' 1; daarvoor zouden alle items perfect moeten samenhangen."
+        "C": "Alpha wordt nooit 'automatisch' 1; daarvoor zouden alle items perfect moeten samenhangen."
       },
       "herkennen": "Alpha = aantal items × samenhang. Vraag jezelf: meten de nieuwe items hetzelfde? Zo niet, dan daalt de samenhang en meestal ook alpha.",
       "simpel": "Een koor klinkt mooier met meer zangers, maar alleen als ze hetzelfde lied zingen. Vijf mensen die er een ander lied doorheen zingen, maken het geheel juist rommeliger.",
@@ -478,19 +650,19 @@
     },
     {
       "id": "v014",
-      "onderwerp": "Betrouwbaarheid",
+      "onderwerp": "H6 Betrouwbaarheid schatten",
       "vraag": "Een vragenlijst met 40 items heeft een Cronbach's alpha van .96. Welke conclusie is het meest terecht?",
       "opties": {
         "A": "De vragenlijst is dus ook valide.",
-        "B": "De items hangen sterk samen, maar dit bewijst niet dat de lijst maar één construct meet. Mogelijk zijn er ook overbodige items.",
-        "C": "De lijst meet zeker precies één construct.",
+        "B": "De lijst meet zeker precies één construct.",
+        "C": "De items hangen sterk samen, maar dit bewijst niet dat de lijst maar één construct meet. Mogelijk zijn er ook overbodige items.",
         "D": "De test-hertestbetrouwbaarheid is dus ook .96."
       },
-      "juist": "B",
+      "juist": "C",
       "uitleg": "Een hoge alpha betekent hoge interne consistentie. Maar alpha stijgt ook gewoon door veel items, en kan hoog zijn bij meerdere samenhangende constructen. Een heel hoge alpha kan bovendien wijzen op items die bijna hetzelfde vragen. Voor eendimensionaliteit kijk je naar factoranalyse, voor validiteit naar ander bewijs.",
       "denkfouten": {
         "A": "Betrouwbaarheid is voorwaarde voor validiteit, maar geen bewijs ervan. Een test kan heel consistent het verkeerde meten.",
-        "C": "Alpha is geen toets op eendimensionaliteit. Daarvoor gebruik je factoranalyse.",
+        "B": "Alpha is geen toets op eendimensionaliteit. Daarvoor gebruik je factoranalyse.",
         "D": "Interne consistentie (samenhang tussen items) en stabiliteit over tijd (test-hertest) zijn verschillende vormen van betrouwbaarheid."
       },
       "herkennen": "'Hoge alpha, dus…'? Pas op met conclusies over validiteit, eendimensionaliteit of stabiliteit: alpha zegt alleen iets over samenhang tussen items.",
@@ -508,29 +680,98 @@
       ]
     },
     {
-      "id": "v015",
-      "onderwerp": "Betrouwbaarheid",
-      "vraag": "Een intelligentietest heeft in de algemene bevolking een betrouwbaarheid van .90. In een groep hoogbegaafde leerlingen is de betrouwbaarheid veel lager. Wat is de beste verklaring?",
+      "id": "v025",
+      "onderwerp": "H6 Betrouwbaarheid schatten",
+      "vraag": "Een test van 40 items heeft betrouwbaarheid .90. De test wordt ingekort tot 20 items (de helft). Wat is volgens Spearman-Brown de nieuwe betrouwbaarheid (afgerond)?",
       "opties": {
-        "A": "Hoogbegaafden maken meer slordigheidsfouten.",
-        "B": "In een homogene groep is er minder ware-scorevariantie, terwijl de meetfout ongeveer gelijk blijft.",
-        "C": "De test is in die groep niet valide, dus ook niet betrouwbaar.",
-        "D": "Betrouwbaarheid hangt alleen af van het aantal items, dus dit kan niet."
+        "A": ".45",
+        "B": ".82",
+        "C": ".90",
+        "D": ".95"
       },
       "juist": "B",
-      "uitleg": "Betrouwbaarheid = ware variantie / totale variantie. In een groep waarin iedereen ongeveer even hoog scoort, is er weinig ware variantie. De meetfout blijft even groot, dus wordt de verhouding kleiner. Dit heet ook wel 'restriction of range'.",
+      "uitleg": "k = 20/40 = 0.5. r_nieuw = k·r / (1 + (k − 1)·r) = 0.5·.90 / (1 − 0.5·.90) = .45 / .55 ≈ .82. Inkorten verlaagt de betrouwbaarheid, maar minder dan je misschien denkt.",
       "denkfouten": {
-        "A": "Dat is een gok zonder onderbouwing. De verklaring zit in de spreiding van de groep, niet in slordigheid.",
-        "C": "Andersom: validiteit wordt begrensd door betrouwbaarheid, niet omgekeerd. En de oorzaak hier is de beperkte spreiding.",
-        "D": "Betrouwbaarheid hangt ook af van de groep: hoe meer verschillen tussen mensen, hoe hoger de betrouwbaarheid kan zijn."
+        "A": "Je hebt .90 simpelweg gehalveerd. Betrouwbaarheid daalt niet evenredig met het aantal items; de noemer van Spearman-Brown corrigeert daarvoor.",
+        "C": "Testlengte doet er wél toe: met minder items wordt de meetfout minder goed uitgemiddeld, dus de betrouwbaarheid daalt.",
+        "D": "Bij inkorten daalt de betrouwbaarheid. .95 zou je krijgen bij verlengen, niet bij inkorten."
       },
-      "herkennen": "Kleine, homogene of geselecteerde groep (alleen toppers, alleen patiënten)? Denk aan minder spreiding → lagere betrouwbaarheid en lagere correlaties.",
-      "simpel": "Probeer maar eens met een gewone weegschaal het verschil te zien tussen vijf mensen die allemaal 70,1 tot 70,4 kilo wegen. Die kleine verschillen verdwijnen in de meetfout. Bij mensen van 50 tot 120 kilo zie je de verschillen wél goed.",
-      "zoekterm": "betrouwbaarheid homogene groep restriction of range uitleg",
+      "herkennen": "Inkorten → k kleiner dan 1 (halveren = 0.5). Uitkomst moet lager zijn dan het origineel, maar hoger dan de helft ervan.",
+      "simpel": "Minder vragen betekent dat één pechvraag zwaarder telt, dus de test wordt iets minder betrouwbaar. Maar een goede test van 40 vragen valt niet ineens om als je er 20 overhoudt.",
+      "stappen": [
+        "Wat weet je? r = .90 en de test wordt half zo lang, dus k = 0.5.",
+        "Boven de streep: k × r = 0.5 × .90 = .45",
+        "Onder de streep: 1 + (k − 1) × r = 1 + (−0.5 × .90) = 1 − .45 = .55",
+        "Deel: .45 ÷ .55 ≈ .82",
+        "Controle: lager dan .90 (inkorten) maar veel hoger dan .45. Klopt!"
+      ],
+      "zoekterm": "Spearman-Brown test inkorten berekenen",
       "bronnen": [
         {
-          "titel": "Betrouwbaarheid (Wikipedia, NL)",
-          "url": "https://nl.wikipedia.org/wiki/Betrouwbaarheid_(statistiek)"
+          "titel": "Spearman-Brown-formule (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Spearman%E2%80%93Brown_prediction_formula"
+        },
+        {
+          "titel": "Cronbach's alpha uitgelegd (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/statistiek/cronbachs-alpha/"
+        }
+      ]
+    },
+    {
+      "id": "v033",
+      "onderwerp": "H6 Betrouwbaarheid schatten",
+      "vraag": "Wanneer is Cronbach's alpha een zuivere (niet onderschatte) schatting van de betrouwbaarheid?",
+      "opties": {
+        "A": "Altijd, ongeacht de items.",
+        "B": "Als de items (essentieel) tau-equivalent zijn: ze meten de ware score allemaal even sterk.",
+        "C": "Alleen als de test meer dan 40 items heeft.",
+        "D": "Alleen als de items op ordinaal niveau zijn gemeten."
+      },
+      "juist": "B",
+      "uitleg": "Alpha gaat ervan uit dat alle items de ware score even sterk meten (essentieel tau-equivalent). Verschillen de items daarin (congeneriek model), dan onderschat alpha de betrouwbaarheid. Een alternatief is dan coëfficiënt omega.",
+      "denkfouten": {
+        "A": "Alpha rust op aannames. Als die niet kloppen, wordt de betrouwbaarheid onderschat.",
+        "C": "Het aantal items beïnvloedt de hoogte van alpha, maar niet of alpha een zuivere schatting is.",
+        "D": "Het meetniveau is niet de voorwaarde. Het gaat om hoe sterk elk item de ware score meet."
+      },
+      "herkennen": "Alpha + 'aanname' of 'onderschatting' → denk aan (essentieel) tau-equivalent. Niet voldaan? Dan is alpha een ondergrens en is omega beter.",
+      "simpel": "Alpha gaat ervan uit dat elke vraag even hard 'meetelt'. Als sommige vragen veel beter meten dan andere, klopt die aanname niet, en geeft alpha een iets te somber beeld.",
+      "zoekterm": "aannames cronbach's alpha tau-equivalent omega",
+      "bronnen": [
+        {
+          "titel": "Cronbach's alpha uitgelegd (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/statistiek/cronbachs-alpha/"
+        },
+        {
+          "titel": "Congeneric reliability / omega (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Congeneric_reliability"
+        }
+      ]
+    },
+    {
+      "id": "v034",
+      "onderwerp": "H6 Betrouwbaarheid schatten",
+      "vraag": "Bij de split-half methode correleer je de scores op twee helften van een test. Waarom pas je daarna nog de Spearman-Brown formule toe?",
+      "opties": {
+        "A": "Omdat de correlatie tussen de helften de betrouwbaarheid van een halve test is; Spearman-Brown schat die van de hele test.",
+        "B": "Om de correlatie om te zetten naar een z-score.",
+        "C": "Om te controleren of de twee helften even moeilijk zijn.",
+        "D": "Omdat de correlatie anders boven de 1 kan uitkomen."
+      },
+      "juist": "A",
+      "uitleg": "Elke helft is maar half zo lang als de echte test, en kortere tests zijn minder betrouwbaar. De correlatie tussen de helften onderschat dus de betrouwbaarheid van de hele test. Met Spearman-Brown (k = 2) corrigeer je voor die verdubbeling: bijvoorbeeld r = .60 wordt 2·.60 / 1.60 = .75.",
+      "denkfouten": {
+        "B": "Spearman-Brown heeft niets met z-scores te maken. Het gaat om testlengte.",
+        "C": "Of de helften even moeilijk zijn, check je door hun gemiddelden en varianties te vergelijken, niet met Spearman-Brown.",
+        "D": "Een correlatie kan nooit boven de 1 komen. De correctie maakt de waarde juist hóger, om de onderschatting op te heffen."
+      },
+      "herkennen": "Split-half → altijd 'opwaarderen' met Spearman-Brown (k = 2). De gecorrigeerde waarde is hoger dan de correlatie tussen de helften.",
+      "simpel": "Als je maar de helft van een tentamen maakt, zegt de uitslag minder over wat je echt kunt. De correlatie tussen twee halve tests is dus te laag. Spearman-Brown rekent uit hoe betrouwbaar de héle test is.",
+      "zoekterm": "split-half betrouwbaarheid Spearman-Brown correctie",
+      "bronnen": [
+        {
+          "titel": "Spearman-Brown-formule (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Spearman%E2%80%93Brown_prediction_formula"
         },
         {
           "titel": "Betrouwbaarheid uitgelegd (Scribbr, NL)",
@@ -539,52 +780,135 @@
       ]
     },
     {
-      "id": "v016",
-      "onderwerp": "Klassieke testtheorie",
-      "vraag": "Welke van de volgende uitspraken is GEEN aanname van de klassieke testtheorie?",
+      "id": "v035",
+      "onderwerp": "H6 Betrouwbaarheid schatten",
+      "vraag": "Kinderen vullen twee keer een vragenlijst over leesmotivatie in, met zes maanden ertussen. De correlatie is .55. Wat is het grootste probleem als je dit als betrouwbaarheid interpreteert?",
       "opties": {
-        "A": "De meetfout is gemiddeld 0.",
-        "B": "De meetfout hangt niet samen met de ware score.",
-        "C": "De meetfouten van twee verschillende tests hangen niet met elkaar samen.",
-        "D": "Iedereen heeft dezelfde ware score."
+        "A": "Test-hertest meet alleen interne consistentie.",
+        "B": "Een correlatie van .55 kan nooit een betrouwbaarheid zijn.",
+        "C": "Bij test-hertest moet je altijd Spearman-Brown toepassen.",
+        "D": "Leesmotivatie kan in zes maanden echt veranderd zijn, terwijl test-hertest uitgaat van stabiele ware scores."
       },
       "juist": "D",
-      "uitleg": "De KTT gaat er juist van uit dat mensen verschillen in hun ware score; die verschillen wil je meten. De drie andere uitspraken zijn wél kernaannames over de meetfout (E): gemiddeld 0, ongecorreleerd met T en ongecorreleerd met fouten op andere tests.",
+      "uitleg": "Test-hertest gaat ervan uit dat de ware scores tussen de metingen gelijk blijven. Bij kinderen in ontwikkeling, en zeker over zes maanden, kan het construct echt veranderen. Dan is een lage correlatie geen bewijs van slechte betrouwbaarheid. Ook herinnering en oefeneffecten (carry-over) kunnen een rol spelen.",
       "denkfouten": {
-        "A": "Dit is wél een aanname: over heel veel metingen middelen de toevallige fouten uit tot 0.",
-        "B": "Dit is wél een aanname: mensen met een hoge ware score krijgen niet systematisch grotere of kleinere fouten.",
-        "C": "Dit is wél een aanname: de toevalsfouten op twee tests zijn onafhankelijk van elkaar."
+        "A": "Test-hertest gaat over stabiliteit over tijd. Interne consistentie (zoals alpha) gaat over de samenhang tussen items op één moment.",
+        "B": "Een betrouwbaarheid van .55 kan prima bestaan, al is hij laag. Het probleem zit in de interpretatie, niet in het getal.",
+        "C": "Spearman-Brown hoort bij split-half en het verlengen of inkorten van tests, niet bij test-hertest."
       },
-      "herkennen": "Let op 'GEEN' in de vraag! Lees elke optie en vraag: is dit iets over de meetfout E (aanname) of iets vreemds?",
-      "simpel": "De KTT zegt eigenlijk: pech en geluk zijn eerlijk verdeeld. Soms zit je erboven, soms eronder (gemiddeld 0), en dat heeft niets te maken met hoe goed je echt bent. Maar dat iedereen even goed is? Dan zou er niets te meten zijn.",
-      "zoekterm": "aannames klassieke testtheorie meetfout uitleg",
+      "herkennen": "Test-hertest bij iets wat kan veranderen (stemming, motivatie, ontwikkeling) of met een lange tussenperiode → twijfel aan de aanname van stabiele ware scores.",
+      "simpel": "Als je een kind in januari en in juli meet, is dat kind gegroeid. Dat de metingen verschillen, betekent dan niet dat de meetlat slecht is: het kind is echt veranderd.",
+      "zoekterm": "test-hertest betrouwbaarheid aannames carry-over",
       "bronnen": [
         {
-          "titel": "Classical test theory (Wikipedia, Engels)",
-          "url": "https://en.wikipedia.org/wiki/Classical_test_theory"
+          "titel": "Betrouwbaarheid uitgelegd (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/onderzoeksmethoden/betrouwbaarheid/"
+        },
+        {
+          "titel": "Betrouwbaarheid (Wikipedia, NL)",
+          "url": "https://nl.wikipedia.org/wiki/Betrouwbaarheid_(statistiek)"
+        }
+      ]
+    },
+    {
+      "id": "v003",
+      "onderwerp": "H7 Het belang van betrouwbaarheid",
+      "vraag": "Een intelligentietest heeft SD = 10 en betrouwbaarheid r = .91. Hoe groot is de standaardmeetfout (SEM)?",
+      "opties": {
+        "A": "0.9",
+        "B": "9.5",
+        "C": "9.1",
+        "D": "3.0"
+      },
+      "juist": "D",
+      "uitleg": "SEM = SD · √(1 − r) = 10 · √(0.09) = 10 · 0.3 = 3.0. Een 95%-betrouwbaarheidsinterval rond een geobserveerde score is dan ongeveer ±1.96 · 3 ≈ ±5.9.",
+      "denkfouten": {
+        "A": "Je bent de wortel vergeten: 10 · (1 − .91) = 0.9. De formule is SD · √(1 − r).",
+        "B": "Je hebt SD · √r gerekend. Dat is de SD van de ware scores, niet de meetfout.",
+        "C": "Je hebt SD · r gerekend. De meetfout hangt af van het onbetrouwbare deel (1 − r), niet van r zelf."
+      },
+      "herkennen": "Vraag naar 'standaardmeetfout' of 'betrouwbaarheidsinterval rond een individuele score' → SD · √(1 − r). Check: hoge betrouwbaarheid moet een kleine SEM opleveren.",
+      "simpel": "De standaardmeetfout zegt: hoeveel punten zit iemands score er gemiddeld naast door toeval? Een heel betrouwbare test heeft dus een kleine meetfout. Hier is de test erg betrouwbaar (.91), dus het antwoord moet een klein getal zijn ten opzichte van de SD van 10.",
+      "stappen": [
+        "Wat weet je? SD = 10 en betrouwbaarheid r = .91.",
+        "Stap 1: het 'toevalsdeel' is 1 − r = 1 − .91 = .09",
+        "Stap 2: neem de wortel daarvan: √.09 = .3 (want .3 × .3 = .09)",
+        "Stap 3: keer de SD: 10 × .3 = 3",
+        "Controle: 3 is klein vergeleken met 10. Logisch, want de test is betrouwbaar."
+      ],
+      "zoekterm": "standaardmeetfout berekenen uitleg",
+      "bronnen": [
+        {
+          "titel": "Standard error of measurement (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Standard_error_of_measurement"
+        },
+        {
+          "titel": "Standaarddeviatie uitgelegd (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/statistiek/standaarddeviatie/"
         },
         {
           "titel": "Betrouwbaarheid uitgelegd (Scribbr, NL)",
           "url": "https://www.scribbr.nl/onderzoeksmethoden/betrouwbaarheid/"
+        }
+      ]
+    },
+    {
+      "id": "v010",
+      "onderwerp": "H7 Het belang van betrouwbaarheid",
+      "vraag": "Een test heeft een betrouwbaarheid van .64. Wat is de maximaal haalbare correlatie van deze test met een volkomen betrouwbaar criterium?",
+      "opties": {
+        "A": ".64",
+        "B": ".41",
+        "C": ".80",
+        "D": "1.00"
+      },
+      "juist": "C",
+      "uitleg": "De validiteit wordt begrensd door de wortel van de betrouwbaarheid: r_xy ≤ √r_xx = √.64 = .80. Een test kan niet sterker correleren met iets anders dan met zijn eigen ware score.",
+      "denkfouten": {
+        "A": "De grens is niet de betrouwbaarheid zelf maar de wortel ervan. Validiteit kan dus hoger zijn dan de betrouwbaarheid.",
+        "B": "Je hebt .64 gekwadrateerd in plaats van de wortel genomen.",
+        "D": "Een onbetrouwbare test bevat meetfout, en meetfout correleert met niets. Daardoor kan de correlatie nooit 1 worden."
+      },
+      "herkennen": "'Maximale validiteit', 'bovengrens' of 'plafond' → wortel van de betrouwbaarheid. Samen met correctie voor attenuatie: r_gecorrigeerd = r_xy / √(r_xx · r_yy).",
+      "simpel": "Een test kan nooit beter samenhangen met iets anders dan met zichzelf. Hoeveel hij met 'zichzelf' samenhangt, haal je uit de betrouwbaarheid door de wortel te nemen. Het is een plafond: hoger kan niet.",
+      "stappen": [
+        "Wat weet je? Betrouwbaarheid = .64.",
+        "Neem de wortel: welk getal keer zichzelf is .64? .8 × .8 = .64",
+        "Dus het plafond (maximale validiteit) is .80",
+        "Controle: de wortel van een getal tussen 0 en 1 is altijd groter dan dat getal zelf (.80 > .64). Klopt."
+      ],
+      "zoekterm": "maximale validiteit wortel betrouwbaarheid attenuatie",
+      "bronnen": [
+        {
+          "titel": "Correctie voor attenuatie (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Correction_for_attenuation"
+        },
+        {
+          "titel": "Validiteit en betrouwbaarheid (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/onderzoeksmethoden/validiteit-en-betrouwbaarheid/"
+        },
+        {
+          "titel": "Criteriumvaliditeit (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/onderzoeksmethoden/criteriumvaliditeit/"
         }
       ]
     },
     {
       "id": "v017",
-      "onderwerp": "Klassieke testtheorie",
+      "onderwerp": "H7 Het belang van betrouwbaarheid",
       "vraag": "Iemand scoort 100 op een test met een standaardmeetfout (SEM) van 5. Wat is ongeveer het 95%-betrouwbaarheidsinterval rond deze score?",
       "opties": {
         "A": "95 tot 105",
-        "B": "90 tot 110",
+        "B": "98 tot 102",
         "C": "80 tot 120",
-        "D": "98 tot 102"
+        "D": "90 tot 110"
       },
-      "juist": "B",
+      "juist": "D",
       "uitleg": "95%-interval = score ± 1.96 · SEM = 100 ± 1.96 · 5 = 100 ± 9.8, dus ongeveer 90 tot 110.",
       "denkfouten": {
         "A": "Dit is score ± 1 SEM. Dat geeft ongeveer een 68%-interval, niet 95%.",
-        "C": "Je hebt 4 SEM genomen. Voor 95% heb je ongeveer 2 SEM nodig (precies 1.96).",
-        "D": "Dit interval is veel te smal; je hebt waarschijnlijk 1.96 bij 100 opgeteld in plaats van 1.96 × 5."
+        "B": "Dit interval is veel te smal; je hebt waarschijnlijk 1.96 bij 100 opgeteld in plaats van 1.96 × 5.",
+        "C": "Je hebt 4 SEM genomen. Voor 95% heb je ongeveer 2 SEM nodig (precies 1.96)."
       },
       "herkennen": "Onthoud de vuistregels: ±1 SEM ≈ 68%, ±2 SEM ≈ 95%. Dus 95% = ongeveer twee keer de SEM erbij en eraf.",
       "simpel": "De SEM zegt hoeveel iemands score door toeval kan schommelen. Wil je 95% zeker zijn waar de echte score ligt, dan neem je een veilige marge van ongeveer twee keer die schommeling aan beide kanten.",
@@ -608,81 +932,19 @@
       ]
     },
     {
-      "id": "v018",
-      "onderwerp": "Validiteit",
-      "vraag": "Een tentamen psychometrie gaat over zes hoofdstukken, maar bijna alle vragen gaan over hoofdstuk 1. Met welk type validiteit is vooral iets mis?",
-      "opties": {
-        "A": "Inhoudsvaliditeit",
-        "B": "Predictieve validiteit",
-        "C": "Discriminante validiteit",
-        "D": "Interbeoordelaarsbetrouwbaarheid"
-      },
-      "juist": "A",
-      "uitleg": "Inhoudsvaliditeit gaat over de vraag of de items het hele domein goed en evenwichtig dekken. Als vijf van de zes hoofdstukken nauwelijks getoetst worden, is de inhoud niet representatief.",
-      "denkfouten": {
-        "B": "Predictieve validiteit gaat over het voorspellen van iets in de toekomst, zoals latere studieresultaten. Daar zegt deze situatie niets over.",
-        "C": "Discriminante validiteit gaat over lage samenhang met andere constructen, niet over welke stof getoetst wordt.",
-        "D": "Dat is een vorm van betrouwbaarheid (overeenstemming tussen beoordelaars), geen validiteit."
-      },
-      "herkennen": "Gaat het over 'dekt de toets alle stof / het hele domein?' → inhoudsvaliditeit. Vaak beoordeeld door experts met een toetsmatrijs.",
-      "simpel": "Stel je voor dat een kookwedstrijd alleen beoordeelt hoe goed je eieren kunt koken. Dan weet je niet of iemand echt goed kan koken. Je toetst maar een klein stukje van het geheel.",
-      "zoekterm": "inhoudsvaliditeit voorbeeld toets uitleg",
-      "bronnen": [
-        {
-          "titel": "Inhoudsvaliditeit (Scribbr, NL)",
-          "url": "https://www.scribbr.nl/onderzoeksmethoden/inhoudsvaliditeit/"
-        },
-        {
-          "titel": "Soorten validiteit (Scribbr, NL)",
-          "url": "https://www.scribbr.nl/onderzoeksmethoden/soorten-validiteit/"
-        }
-      ]
-    },
-    {
-      "id": "v019",
-      "onderwerp": "Validiteit",
-      "vraag": "Een bedrijf laat sollicitanten een test maken. Een jaar later blijkt de testscore .45 te correleren met de beoordeling van hun werkprestaties. Welk type validiteit is dit?",
-      "opties": {
-        "A": "Concurrente validiteit",
-        "B": "Inhoudsvaliditeit",
-        "C": "Predictieve validiteit",
-        "D": "Convergente validiteit"
-      },
-      "juist": "C",
-      "uitleg": "Het criterium (werkprestaties) wordt later in de tijd gemeten dan de test. De test voorspelt dus iets in de toekomst: predictieve validiteit, een vorm van criteriumvaliditeit.",
-      "denkfouten": {
-        "A": "Bij concurrente validiteit meet je de test en het criterium op ongeveer hetzelfde moment. Hier zit er een jaar tussen.",
-        "B": "Inhoudsvaliditeit wordt niet met een correlatie vastgesteld, maar door te kijken of de items het domein dekken.",
-        "D": "Convergente validiteit gaat over samenhang met een andere test van hetzelfde construct, niet met een praktisch criterium zoals werkprestaties."
-      },
-      "herkennen": "Kijk naar de tijd: criterium later gemeten = predictief; tegelijk gemeten = concurrent. Gaat het om een andere test van hetzelfde construct = convergent.",
-      "simpel": "Predictief komt van 'voorspellen'. Een weerbericht is predictief als het morgen ook echt regent. Deze test is predictief als mensen met een hoge score een jaar later echt goed werken.",
-      "zoekterm": "predictieve validiteit concurrente validiteit verschil",
-      "bronnen": [
-        {
-          "titel": "Criteriumvaliditeit (Scribbr, NL)",
-          "url": "https://www.scribbr.nl/onderzoeksmethoden/criteriumvaliditeit/"
-        },
-        {
-          "titel": "Soorten validiteit (Scribbr, NL)",
-          "url": "https://www.scribbr.nl/onderzoeksmethoden/soorten-validiteit/"
-        }
-      ]
-    },
-    {
       "id": "v020",
-      "onderwerp": "Validiteit",
+      "onderwerp": "H7 Het belang van betrouwbaarheid",
       "vraag": "Test X en criterium Y correleren .30. De betrouwbaarheid van X is .81 en die van Y is .64. Hoe groot is de correlatie na correctie voor attenuatie?",
       "opties": {
-        "A": ".30",
-        "B": ".42",
+        "A": ".42",
+        "B": ".30",
         "C": ".22",
         "D": ".58"
       },
-      "juist": "B",
+      "juist": "A",
       "uitleg": "r_gecorrigeerd = r_xy / √(r_xx · r_yy) = .30 / √(.81 · .64) = .30 / (.9 · .8) = .30 / .72 ≈ .42. Dit is een schatting van de samenhang als beide maten perfect betrouwbaar zouden zijn.",
       "denkfouten": {
-        "A": "Dit is de geobserveerde correlatie, zonder correctie. Meetfout drukt correlaties, dus de gecorrigeerde waarde moet hoger zijn.",
+        "B": "Dit is de geobserveerde correlatie, zonder correctie. Meetfout drukt correlaties, dus de gecorrigeerde waarde moet hoger zijn.",
         "C": "Je hebt vermenigvuldigd in plaats van gedeeld (.30 × .72 ≈ .22). Corrigeren voor meetfout maakt de correlatie juist groter.",
         "D": "Je hebt waarschijnlijk alleen door .81 × .64 ≈ .52 gedeeld zonder de wortel te nemen. Vergeet de wortel niet."
       },
@@ -708,181 +970,508 @@
       ]
     },
     {
-      "id": "v021",
-      "onderwerp": "Itemanalyse",
-      "vraag": "Bij welke p-waarde kan een open vraag (waarbij je niet kunt gokken) in principe het best onderscheid maken tussen sterke en zwakke studenten?",
+      "id": "v036",
+      "onderwerp": "H7 Het belang van betrouwbaarheid",
+      "vraag": "Een leerling scoort 130 op een test met gemiddelde 100 en betrouwbaarheid .80. Wat is volgens de klassieke testtheorie de beste schatting van zijn ware score?",
       "opties": {
-        "A": "Rond .10",
-        "B": "Rond .50",
-        "C": "Rond .95",
-        "D": "De p-waarde maakt niets uit voor het onderscheid."
-      },
-      "juist": "B",
-      "uitleg": "De variantie van een goed/fout-item is p · (1 − p). Die is het grootst bij p = .50. Meer variantie betekent meer ruimte om verschillen tussen mensen te laten zien. Bij meerkeuzevragen ligt het optimum iets hoger, omdat je kunt gokken.",
-      "denkfouten": {
-        "A": "Als bijna niemand het item goed heeft, kan het weinig onderscheid maken: bijna iedereen heeft dezelfde score (fout).",
-        "C": "Als bijna iedereen het goed heeft, geldt hetzelfde: het item maakt nauwelijks verschil tussen mensen.",
-        "D": "De p-waarde begrenst juist hoeveel een item kan onderscheiden. Bij extreme p-waarden is er weinig spreiding."
-      },
-      "herkennen": "Onderscheid vraagt om spreiding. Spreiding bij goed/fout-items is maximaal bij p = .50 (p · (1 − p)).",
-      "simpel": "Een vraag die iedereen goed heeft, of die iedereen fout heeft, zegt niets over wie beter is. Een vraag die de helft goed heeft, verdeelt de groep mooi in twee.",
-      "stappen": [
-        "Spreiding van een goed/fout-item = p × (1 − p).",
-        "Bij p = .10: .10 × .90 = .09",
-        "Bij p = .50: .50 × .50 = .25 (het grootst!)",
-        "Bij p = .95: .95 × .05 ≈ .05",
-        "Conclusie: rond .50 is er de meeste spreiding, dus het meeste onderscheid."
-      ],
-      "zoekterm": "optimale p-waarde item discriminatie itemanalyse",
-      "bronnen": [
-        {
-          "titel": "Item analysis (Wikipedia, Engels)",
-          "url": "https://en.wikipedia.org/wiki/Item_analysis"
-        },
-        {
-          "titel": "Item-total correlation (Wikipedia, Engels)",
-          "url": "https://en.wikipedia.org/wiki/Item-total_correlation"
-        }
-      ]
-    },
-    {
-      "id": "v022",
-      "onderwerp": "Itemanalyse",
-      "vraag": "Bij een meerkeuzevraag kiezen vooral de studenten met de hoogste totaalscore afleider C (een fout antwoord). Wat is de meest waarschijnlijke verklaring?",
-      "opties": {
-        "A": "Afleider C is een goede afleider die prima werkt.",
-        "B": "De vraag is mogelijk dubbelzinnig of de antwoordsleutel klopt niet; C is misschien (ook) juist.",
-        "C": "De sterke studenten hebben gegokt.",
-        "D": "Het item is te makkelijk."
-      },
-      "juist": "B",
-      "uitleg": "Een goede afleider wordt vooral gekozen door zwakkere studenten. Als juist de sterke studenten een 'fout' antwoord kiezen, is er waarschijnlijk iets mis met het item: dubbelzinnige formulering, of de sleutel is verkeerd.",
-      "denkfouten": {
-        "A": "Een goede afleider trekt vooral zwakke studenten aan, niet sterke. Dit patroon is juist een waarschuwingssignaal.",
-        "C": "Sterke studenten gokken minder, niet meer. En gokken zou zich over alle opties verspreiden, niet vooral op C.",
-        "D": "Een te makkelijk item heeft een hoge p-waarde (bijna iedereen kiest het goede antwoord), niet veel keuzes voor één afleider."
-      },
-      "herkennen": "Afleideranalyse: kies je sterkste groep. Kiest die vaak een fout antwoord? Dan item of sleutel controleren.",
-      "simpel": "Als de beste koks van het land allemaal zeggen dat er zout in moet, terwijl het recept 'suiker' zegt, dan is misschien het recept fout en niet de koks.",
-      "zoekterm": "afleideranalyse meerkeuzevraag sterke studenten kiezen afleider",
-      "bronnen": [
-        {
-          "titel": "Item analysis (Wikipedia, Engels)",
-          "url": "https://en.wikipedia.org/wiki/Item_analysis"
-        },
-        {
-          "titel": "Item-total correlation (Wikipedia, Engels)",
-          "url": "https://en.wikipedia.org/wiki/Item-total_correlation"
-        }
-      ]
-    },
-    {
-      "id": "v023",
-      "onderwerp": "Factoranalyse",
-      "vraag": "Je verwacht dat de factoren 'angst' en 'depressie' met elkaar samenhangen. Welke rotatie kies je dan het beste?",
-      "opties": {
-        "A": "Een orthogonale rotatie, zoals varimax.",
-        "B": "Een oblique (scheve) rotatie, zoals oblimin of promax.",
-        "C": "Geen rotatie, want roteren verandert de uitkomst.",
-        "D": "Het maakt niet uit; alle rotaties gaan uit van ongecorreleerde factoren."
-      },
-      "juist": "B",
-      "uitleg": "Oblique rotaties (oblimin, promax) staan toe dat factoren met elkaar correleren. Orthogonale rotaties (varimax) dwingen de factoren ongecorreleerd te zijn. Bij constructen die waarschijnlijk samenhangen, zoals angst en depressie, is oblique realistischer.",
-      "denkfouten": {
-        "A": "Varimax dwingt de factoren onafhankelijk (ongecorreleerd) te zijn. Dat past niet bij jouw verwachting.",
-        "C": "Rotatie verandert niet hoeveel variantie er in totaal verklaard wordt; het maakt de ladingen vooral beter interpreteerbaar.",
-        "D": "Alleen orthogonale rotaties gaan uit van ongecorreleerde factoren; oblique rotaties niet."
-      },
-      "herkennen": "Factoren hangen (waarschijnlijk) samen → oblique (oblimin/promax). Factoren onafhankelijk → orthogonaal (varimax). Ezelsbruggetje: ortho = recht = 90 graden = geen samenhang.",
-      "simpel": "Orthogonaal betekent: de factoren staan haaks op elkaar, alsof ze niets met elkaar te maken hebben. Oblique betekent: ze mogen een beetje naar elkaar toe leunen. Angst en depressie zijn een beetje familie, dus laat ze leunen.",
-      "zoekterm": "oblique versus orthogonale rotatie factoranalyse varimax oblimin",
-      "bronnen": [
-        {
-          "titel": "Factoranalyse in SPSS (SPSS Tutorials, Engels)",
-          "url": "https://www.spss-tutorials.com/spss-factor-analysis-tutorial/"
-        },
-        {
-          "titel": "Factoranalyse (Wikipedia, NL)",
-          "url": "https://nl.wikipedia.org/wiki/Factoranalyse"
-        },
-        {
-          "titel": "Exploratory factor analysis (Wikipedia, Engels)",
-          "url": "https://en.wikipedia.org/wiki/Exploratory_factor_analysis"
-        }
-      ]
-    },
-    {
-      "id": "v024",
-      "onderwerp": "Factoranalyse",
-      "vraag": "Een item heeft een lading van .70 op een factor (en laadt op geen andere factor). Welk deel van de variantie van dit item wordt door de factor verklaard?",
-      "opties": {
-        "A": "70%",
-        "B": "49%",
-        "C": "30%",
-        "D": "84%"
-      },
-      "juist": "B",
-      "uitleg": "Het deel verklaarde variantie is de gekwadrateerde lading: .70² = .49, dus 49%. Als het item op maar één factor laadt, is dat ook meteen de communaliteit.",
-      "denkfouten": {
-        "A": "Je hebt de lading zelf als percentage genomen. Een lading is een correlatie; voor verklaarde variantie moet je hem kwadrateren.",
-        "C": "Je hebt 1 − .70 gedaan. Dat zegt niets over verklaarde variantie.",
-        "D": "Je hebt de wortel van .70 genomen (≈ .84). Je moet juist kwadrateren, niet de wortel nemen."
-      },
-      "herkennen": "Lading of correlatie → kwadrateren voor 'verklaarde variantie'. Net als bij r²: r = .70 → r² = .49.",
-      "simpel": "Een lading is een soort correlatie. En bij correlaties geldt altijd: wil je weten hoeveel er 'verklaard' wordt, dan doe je het getal keer zichzelf.",
-      "stappen": [
-        "Wat weet je? Lading = .70",
-        "Kwadrateer: .70 × .70 = .49",
-        "Maak er een percentage van: .49 = 49%",
-        "Controle: het kwadraat van een getal tussen 0 en 1 is altijd kleiner dan het getal zelf. 49% < 70%, klopt."
-      ],
-      "zoekterm": "factorlading kwadraat verklaarde variantie communaliteit",
-      "bronnen": [
-        {
-          "titel": "Factoranalyse (Wikipedia, NL)",
-          "url": "https://nl.wikipedia.org/wiki/Factoranalyse"
-        },
-        {
-          "titel": "Factoranalyse in SPSS (SPSS Tutorials, Engels)",
-          "url": "https://www.spss-tutorials.com/spss-factor-analysis-tutorial/"
-        }
-      ]
-    },
-    {
-      "id": "v025",
-      "onderwerp": "Betrouwbaarheid",
-      "vraag": "Een test van 40 items heeft betrouwbaarheid .90. De test wordt ingekort tot 20 items (de helft). Wat is volgens Spearman-Brown de nieuwe betrouwbaarheid (afgerond)?",
-      "opties": {
-        "A": ".45",
-        "B": ".90",
-        "C": ".82",
-        "D": ".95"
+        "A": "130",
+        "B": "106",
+        "C": "124",
+        "D": "136"
       },
       "juist": "C",
-      "uitleg": "k = 20/40 = 0.5. r_nieuw = k·r / (1 + (k − 1)·r) = 0.5·.90 / (1 − 0.5·.90) = .45 / .55 ≈ .82. Inkorten verlaagt de betrouwbaarheid, maar minder dan je misschien denkt.",
+      "uitleg": "Geschatte ware score = gemiddelde + r_xx × (X − gemiddelde) = 100 + .80 × 30 = 124. Omdat een deel van de afwijking van het gemiddelde meetfout is, schuift de schatting richting het gemiddelde (regressie naar het gemiddelde).",
       "denkfouten": {
-        "A": "Je hebt .90 simpelweg gehalveerd. Betrouwbaarheid daalt niet evenredig met het aantal items; de noemer van Spearman-Brown corrigeert daarvoor.",
-        "B": "Testlengte doet er wél toe: met minder items wordt de meetfout minder goed uitgemiddeld, dus de betrouwbaarheid daalt.",
-        "D": "Bij inkorten daalt de betrouwbaarheid. .95 zou je krijgen bij verlengen, niet bij inkorten."
+        "A": "Je neemt de geobserveerde score als ware score. Maar een extreme score bevat vaak ook wat 'geluk', dus de ware score ligt waarschijnlijk iets dichter bij het gemiddelde.",
+        "B": "Je hebt het onbetrouwbare deel gebruikt: (1 − .80) × 30 = 6, dus 100 + 6. Je moet het betrouwbare deel nemen: .80 × 30 = 24.",
+        "D": "Je schuift de score van het gemiddelde af in plaats van ernaartoe. De schatting moet tussen 100 en 130 liggen."
       },
-      "herkennen": "Inkorten → k kleiner dan 1 (halveren = 0.5). Uitkomst moet lager zijn dan het origineel, maar hoger dan de helft ervan.",
-      "simpel": "Minder vragen betekent dat één pechvraag zwaarder telt, dus de test wordt iets minder betrouwbaar. Maar een goede test van 40 vragen valt niet ineens om als je er 20 overhoudt.",
+      "herkennen": "'Geschatte ware score' → gemiddelde + betrouwbaarheid × afwijking. Uitkomst ligt altijd tussen het gemiddelde en de geobserveerde score.",
+      "simpel": "Als iemand op een dag uitzonderlijk goed scoort, zat er waarschijnlijk ook een beetje geluk bij. Daarom schat je de 'echte' score iets lager: een stukje terug richting het gemiddelde.",
       "stappen": [
-        "Wat weet je? r = .90 en de test wordt half zo lang, dus k = 0.5.",
-        "Boven de streep: k × r = 0.5 × .90 = .45",
-        "Onder de streep: 1 + (k − 1) × r = 1 + (−0.5 × .90) = 1 − .45 = .55",
-        "Deel: .45 ÷ .55 ≈ .82",
-        "Controle: lager dan .90 (inkorten) maar veel hoger dan .45. Klopt!"
+        "Wat weet je? Score = 130, gemiddelde = 100, betrouwbaarheid = .80.",
+        "Afwijking van het gemiddelde: 130 − 100 = 30",
+        "Neem daar het betrouwbare deel van: .80 × 30 = 24",
+        "Tel op bij het gemiddelde: 100 + 24 = 124",
+        "Controle: 124 ligt tussen 100 en 130. Klopt."
       ],
-      "zoekterm": "Spearman-Brown test inkorten berekenen",
+      "zoekterm": "geschatte ware score regressie naar het gemiddelde klassieke testtheorie",
       "bronnen": [
         {
-          "titel": "Spearman-Brown-formule (Wikipedia, Engels)",
-          "url": "https://en.wikipedia.org/wiki/Spearman%E2%80%93Brown_prediction_formula"
+          "titel": "Regression toward the mean (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Regression_toward_the_mean"
         },
         {
-          "titel": "Cronbach's alpha uitgelegd (Scribbr, NL)",
-          "url": "https://www.scribbr.nl/statistiek/cronbachs-alpha/"
+          "titel": "Classical test theory (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Classical_test_theory"
+        }
+      ]
+    },
+    {
+      "id": "v037",
+      "onderwerp": "H7 Het belang van betrouwbaarheid",
+      "vraag": "Een school meet leerwinst als verschil tussen een voor- en een nameting. Beide metingen hebben betrouwbaarheid .80 en ze correleren .70 met elkaar. Wat geldt (ongeveer) voor de betrouwbaarheid van de verschilscore?",
+      "opties": {
+        "A": "Ook .80",
+        "B": ".33",
+        "C": ".10",
+        "D": ".70"
+      },
+      "juist": "B",
+      "uitleg": "Betrouwbaarheid van een verschilscore (bij gelijke varianties) = (gemiddelde betrouwbaarheid − correlatie) / (1 − correlatie) = (.80 − .70) / (1 − .70) = .10 / .30 ≈ .33. Verschilscores zijn vaak veel minder betrouwbaar dan de losse metingen, vooral als die sterk samenhangen.",
+      "denkfouten": {
+        "A": "Het verschil tussen twee betrouwbare metingen is níet vanzelf even betrouwbaar. Het ware deel valt grotendeels tegen elkaar weg, de meetfouten niet.",
+        "C": "Je hebt alleen de teller berekend (.80 − .70 = .10) en vergeten te delen door 1 − .70.",
+        "D": "Dat is de correlatie tussen de metingen, niet de betrouwbaarheid van het verschil."
+      },
+      "herkennen": "Verschilscore, leerwinst, groei, voor-nameting → betrouwbaarheid is vaak laag, zeker als voor- en nameting hoog correleren.",
+      "simpel": "Stel dat je twee keer een kind meet met een meetlat die steeds een centimeter kan afwijken. Als het kind maar twee centimeter is gegroeid, is die groei bijna helemaal 'ruis'. Kleine verschillen tussen twee metingen zijn dus erg onzeker.",
+      "stappen": [
+        "Wat weet je? Betrouwbaarheid voor = .80, na = .80 (gemiddeld .80), correlatie = .70.",
+        "Boven de streep: .80 − .70 = .10",
+        "Onder de streep: 1 − .70 = .30",
+        "Deel: .10 ÷ .30 ≈ .33",
+        "Controle: veel lager dan .80. Dat past bij wat Furr zegt over verschilscores."
+      ],
+      "zoekterm": "betrouwbaarheid verschilscore formule leerwinst",
+      "bronnen": [
+        {
+          "titel": "Betrouwbaarheid (Wikipedia, NL)",
+          "url": "https://nl.wikipedia.org/wiki/Betrouwbaarheid_(statistiek)"
+        },
+        {
+          "titel": "Classical test theory (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Classical_test_theory"
+        }
+      ]
+    },
+    {
+      "id": "v018",
+      "onderwerp": "H8 Validiteit: de basis",
+      "vraag": "Een tentamen psychometrie gaat over zes hoofdstukken, maar bijna alle vragen gaan over hoofdstuk 1. Met welk type validiteit is vooral iets mis?",
+      "opties": {
+        "A": "Discriminante validiteit",
+        "B": "Predictieve validiteit",
+        "C": "Inhoudsvaliditeit",
+        "D": "Interbeoordelaarsbetrouwbaarheid"
+      },
+      "juist": "C",
+      "uitleg": "Inhoudsvaliditeit gaat over de vraag of de items het hele domein goed en evenwichtig dekken. Als vijf van de zes hoofdstukken nauwelijks getoetst worden, is de inhoud niet representatief.",
+      "denkfouten": {
+        "A": "Discriminante validiteit gaat over lage samenhang met andere constructen, niet over welke stof getoetst wordt.",
+        "B": "Predictieve validiteit gaat over het voorspellen van iets in de toekomst, zoals latere studieresultaten. Daar zegt deze situatie niets over.",
+        "D": "Dat is een vorm van betrouwbaarheid (overeenstemming tussen beoordelaars), geen validiteit."
+      },
+      "herkennen": "Gaat het over 'dekt de toets alle stof / het hele domein?' → bewijs op basis van de testinhoud (inhoudsvaliditeit). In Furr de eerste van de vijf bronnen van validiteitsbewijs.",
+      "simpel": "Stel je voor dat een kookwedstrijd alleen beoordeelt hoe goed je eieren kunt koken. Dan weet je niet of iemand echt goed kan koken. Je toetst maar een klein stukje van het geheel.",
+      "zoekterm": "inhoudsvaliditeit voorbeeld toets uitleg",
+      "bronnen": [
+        {
+          "titel": "Inhoudsvaliditeit (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/onderzoeksmethoden/inhoudsvaliditeit/"
+        },
+        {
+          "titel": "Soorten validiteit (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/onderzoeksmethoden/soorten-validiteit/"
+        }
+      ]
+    },
+    {
+      "id": "v019",
+      "onderwerp": "H8 Validiteit: de basis",
+      "vraag": "Leerlingen maken in groep 8 een schoolvaardigheidstoets. Een jaar later blijkt de toetsscore .45 te correleren met hun gemiddelde cijfer in de brugklas. Welk soort validiteitsbewijs is dit?",
+      "opties": {
+        "A": "Concurrente validiteit",
+        "B": "Predictieve validiteit",
+        "C": "Inhoudsvaliditeit",
+        "D": "Convergente validiteit"
+      },
+      "juist": "B",
+      "uitleg": "Het criterium (cijfers in de brugklas) wordt later in de tijd gemeten dan de toets. De toets voorspelt dus iets in de toekomst: predictieve validiteit. In Furr valt dit onder bewijs op basis van relaties met andere variabelen.",
+      "denkfouten": {
+        "A": "Bij concurrente validiteit meet je de test en het criterium op ongeveer hetzelfde moment. Hier zit er een jaar tussen.",
+        "C": "Inhoudsvaliditeit wordt niet met een correlatie vastgesteld, maar door te kijken of de items het domein dekken.",
+        "D": "Convergente validiteit gaat over samenhang met een andere test van hetzelfde construct, niet met een praktisch criterium zoals schoolcijfers."
+      },
+      "herkennen": "Kijk naar de tijd: criterium later gemeten = predictief; tegelijk gemeten = concurrent. Gaat het om een andere test van hetzelfde construct = convergent.",
+      "simpel": "Predictief komt van 'voorspellen'. Een weerbericht is predictief als het morgen ook echt regent. Deze toets is predictief als leerlingen met een hoge score een jaar later echt goede cijfers halen.",
+      "zoekterm": "predictieve validiteit concurrente validiteit verschil",
+      "bronnen": [
+        {
+          "titel": "Criteriumvaliditeit (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/onderzoeksmethoden/criteriumvaliditeit/"
+        },
+        {
+          "titel": "Soorten validiteit (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/onderzoeksmethoden/soorten-validiteit/"
+        }
+      ]
+    },
+    {
+      "id": "v038",
+      "onderwerp": "H8 Validiteit: de basis",
+      "vraag": "Onderzoekers laten kinderen hardop denken terwijl ze een vragenlijst invullen, om te zien of ze de items begrijpen zoals bedoeld. Welk soort validiteitsbewijs (volgens de Standards) levert dit op?",
+      "opties": {
+        "A": "Bewijs op basis van responsprocessen",
+        "B": "Bewijs op basis van de testinhoud",
+        "C": "Bewijs op basis van de interne structuur",
+        "D": "Bewijs op basis van de gevolgen van testgebruik"
+      },
+      "juist": "A",
+      "uitleg": "Bij responsprocessen kijk je naar wat er in iemand omgaat tijdens het beantwoorden: gebruiken respondenten de denkprocessen die de test veronderstelt? Hardop denken, interviews en oogbewegingen zijn typische methodes.",
+      "denkfouten": {
+        "B": "Testinhoud gaat over of de items het domein goed dekken, meestal beoordeeld door experts. Niet over hoe kinderen tijdens het invullen denken.",
+        "C": "Interne structuur gaat over hoe items samenhangen, bijvoorbeeld via factoranalyse.",
+        "D": "Gevolgen gaan over de effecten van het gebruik van de test, bijvoorbeeld wie er wel of geen hulp krijgt."
+      },
+      "herkennen": "De vijf bronnen (Standards/Furr): testinhoud, responsprocessen, interne structuur, relaties met andere variabelen, gevolgen van testgebruik. 'Hardop denken / hoe interpreteren mensen de vragen' = responsprocessen.",
+      "simpel": "Je wilt weten of een kind een vraag echt snapt zoals jij hem bedoelt. Dus vraag je: 'Vertel eens wat je denkt terwijl je antwoordt.' Zo zie je het denkproces.",
+      "zoekterm": "bronnen van validiteitsbewijs standards response processes",
+      "bronnen": [
+        {
+          "titel": "Soorten validiteit (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/onderzoeksmethoden/soorten-validiteit/"
+        },
+        {
+          "titel": "Constructvaliditeit (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/onderzoeksmethoden/constructvaliditeit/"
+        }
+      ]
+    },
+    {
+      "id": "v039",
+      "onderwerp": "H8 Validiteit: de basis",
+      "vraag": "Ouders en leerkrachten vinden dat een nieuwe vragenlijst over opvoedingsvaardigheden 'er goed uitziet' en 'duidelijk over opvoeden gaat'. Is dit volgens Furr bewijs voor validiteit?",
+      "opties": {
+        "A": "Ja, dit is de belangrijkste vorm van validiteit.",
+        "B": "Ja, dit is hetzelfde als inhoudsvaliditeit.",
+        "C": "Nee, want ouders mogen nooit een oordeel geven over een test.",
+        "D": "Nee, dit is indruksvaliditeit (face validity): geen echt validiteitsbewijs, al kan het de motivatie van invullers helpen."
+      },
+      "juist": "D",
+      "uitleg": "Indruksvaliditeit gaat over hoe een test op leken overkomt. Het zegt niets over of de test echt meet wat hij moet meten. Het kan wel praktisch belangrijk zijn, omdat mensen een test die er relevant uitziet serieuzer invullen.",
+      "denkfouten": {
+        "A": "Hoe een test eruitziet is juist de zwakste vorm. Echte validiteit vraagt om empirisch bewijs.",
+        "B": "Inhoudsvaliditeit wordt systematisch beoordeeld door experts op basis van het domein. Indruksvaliditeit is een globale indruk van leken.",
+        "C": "Hun mening kan nuttig zijn (bijvoorbeeld voor acceptatie), maar is geen validiteitsbewijs."
+      },
+      "herkennen": "'Ziet er goed uit', 'lijkt te meten', 'leken vinden' → indruksvaliditeit = geen bewijs voor validiteit.",
+      "simpel": "Een pakje met een mooie strik ziet eruit als een cadeau, maar je weet pas wat erin zit als je het openmaakt. Een test die er goed uitziet, meet daarom nog niet vanzelf het goede.",
+      "zoekterm": "indruksvaliditeit face validity geen validiteitsbewijs",
+      "bronnen": [
+        {
+          "titel": "Indruksvaliditeit (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/onderzoeksmethoden/indruksvaliditeit/"
+        },
+        {
+          "titel": "Soorten validiteit (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/onderzoeksmethoden/soorten-validiteit/"
+        }
+      ]
+    },
+    {
+      "id": "v040",
+      "onderwerp": "H8 Validiteit: de basis",
+      "vraag": "Na invoering van een screeningstest blijken kinderen uit één bevolkingsgroep veel vaker doorverwezen te worden naar speciaal onderwijs, terwijl ze dat niet nodig hebben. Over welke bron van validiteitsbewijs gaat dit vooral?",
+      "opties": {
+        "A": "De responsprocessen",
+        "B": "De interne structuur",
+        "C": "De gevolgen (consequenties) van testgebruik",
+        "D": "De testinhoud"
+      },
+      "juist": "C",
+      "uitleg": "De Standards noemen ook de gevolgen van testgebruik als bron van validiteitsbewijs. Leiden de testscores tot onterechte beslissingen voor bepaalde groepen, dan is dat een probleem voor de validiteit van dat gebruik. Het kan ook wijzen op testbias (H11).",
+      "denkfouten": {
+        "A": "Responsprocessen gaan over wat er in respondenten omgaat bij het beantwoorden.",
+        "B": "Interne structuur gaat over hoe items onderling samenhangen (bijv. factoranalyse), niet over beslissingen die op basis van de scores worden genomen.",
+        "D": "Testinhoud gaat over of de items het domein goed dekken."
+      },
+      "herkennen": "Gaat het over wat er ná de test gebeurt (beslissingen, doorverwijzing, effecten op groepen)? → gevolgen van testgebruik.",
+      "simpel": "Een test is er niet alleen om getallen te geven, maar om goede beslissingen te nemen. Als die beslissingen voor een groep kinderen steeds verkeerd uitpakken, deugt het gebruik van de test niet.",
+      "zoekterm": "consequential validity gevolgen testgebruik",
+      "bronnen": [
+        {
+          "titel": "Soorten validiteit (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/onderzoeksmethoden/soorten-validiteit/"
+        },
+        {
+          "titel": "Meetinvariantie, oftewel testbias tussen groepen (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Measurement_invariance"
+        }
+      ]
+    },
+    {
+      "id": "v004",
+      "onderwerp": "H9 Convergente en discriminante validiteit",
+      "vraag": "Een onderzoeker ontwikkelt een nieuwe vragenlijst over opvoedingsstress. De scores correleren .78 met een bestaande, goed onderbouwde vragenlijst over opvoedingsbelasting (zoals de OBVL). Welk soort validiteitsbewijs is dit vooral?",
+      "opties": {
+        "A": "Inhoudsvaliditeit",
+        "B": "Discriminante validiteit",
+        "C": "Convergente validiteit",
+        "D": "Predictieve validiteit"
+      },
+      "juist": "C",
+      "uitleg": "Convergente validiteit: een test correleert hoog met een andere maat van hetzelfde construct. Het is een vorm van constructvaliditeit.",
+      "denkfouten": {
+        "A": "Inhoudsvaliditeit wordt beoordeeld door experts die kijken of de items het hele domein dekken, niet via een correlatie.",
+        "B": "Discriminante validiteit gaat over een lage correlatie met maten van een ánder construct (bijv. opvoedingsstress tegenover de intelligentie van de ouder).",
+        "D": "Predictieve validiteit vereist een criterium dat later in de tijd wordt gemeten (bijv. of het gezin een half jaar later hulp zoekt)."
+      },
+      "herkennen": "Zelfde construct + hoge correlatie = convergent. Ander construct + lage correlatie = discriminant. Criterium in de toekomst = predictief. Experts/itemdomein = inhoud.",
+      "simpel": "Twee thermometers die allebei koorts meten, moeten ongeveer hetzelfde aangeven. Doen ze dat, dan 'komen ze samen' = convergent. De nieuwe lijst over opvoedingsstress gaat hand in hand met een bekende lijst over opvoedingsbelasting, dus ze meten waarschijnlijk hetzelfde.",
+      "zoekterm": "convergente en discriminante validiteit uitleg",
+      "bronnen": [
+        {
+          "titel": "Constructvaliditeit (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/onderzoeksmethoden/constructvaliditeit/"
+        },
+        {
+          "titel": "Multitrait-multimethod matrix (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Multitrait-multimethod_matrix"
+        },
+        {
+          "titel": "Soorten validiteit (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/onderzoeksmethoden/soorten-validiteit/"
+        }
+      ]
+    },
+    {
+      "id": "v041",
+      "onderwerp": "H9 Convergente en discriminante validiteit",
+      "vraag": "In een multitrait-multimethod (MTMM) matrix staat de correlatie tussen agressie gerapporteerd door ouders en agressie gerapporteerd door leerkrachten. Wat zegt een hoge waarde van deze correlatie?",
+      "opties": {
+        "A": "Het is bewijs voor discriminante validiteit.",
+        "B": "Het is bewijs voor convergente validiteit: hetzelfde construct, gemeten met verschillende methoden.",
+        "C": "Het is de betrouwbaarheid van de ouderrapportage.",
+        "D": "Het wijst op methodevariantie."
+      },
+      "juist": "B",
+      "uitleg": "Dezelfde eigenschap (monotrait) gemeten met verschillende methoden (heteromethod): deze correlaties moeten hoog zijn. Dat is convergente validiteit.",
+      "denkfouten": {
+        "A": "Discriminante validiteit gaat over lage correlaties tussen verschillende constructen, bijvoorbeeld agressie en angst.",
+        "C": "De betrouwbaarheid staat in de MTMM-matrix op de diagonaal: dezelfde eigenschap met dezelfde methode.",
+        "D": "Methodevariantie zie je juist als verschillende constructen hoog correleren wanneer ze met dezelfde methode zijn gemeten."
+      },
+      "herkennen": "MTMM in vier hokjes: zelfde trek + zelfde methode = betrouwbaarheid; zelfde trek + andere methode = convergent (hoog); andere trek + zelfde methode = methodevariantie (liefst laag); andere trek + andere methode = discriminant (laagst).",
+      "simpel": "Als zowel moeder als juf zeggen dat een kind vaak slaat, en dat klopt over veel kinderen heen, dan meten jullie echt iets: agressie. Twee verschillende 'getuigen' zeggen hetzelfde.",
+      "zoekterm": "multitrait multimethod matrix convergente discriminante validiteit uitleg",
+      "bronnen": [
+        {
+          "titel": "Multitrait-multimethod matrix (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Multitrait-multimethod_matrix"
+        },
+        {
+          "titel": "Constructvaliditeit (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/onderzoeksmethoden/constructvaliditeit/"
+        }
+      ]
+    },
+    {
+      "id": "v042",
+      "onderwerp": "H9 Convergente en discriminante validiteit",
+      "vraag": "In een MTMM-studie correleren 'agressie' en 'angst' .65 als ze allebei door de ouders worden gerapporteerd, maar maar .10 als agressie door ouders en angst door leerkrachten wordt gerapporteerd. Wat is de beste verklaring?",
+      "opties": {
+        "A": "Er is sprake van methodevariantie: het hoge verband komt deels doordat dezelfde informant (ouders) beide invult.",
+        "B": "Agressie en angst zijn eigenlijk hetzelfde construct.",
+        "C": "De ouderrapportage is heel betrouwbaar.",
+        "D": "Dit is sterk bewijs voor convergente validiteit."
+      },
+      "juist": "A",
+      "uitleg": "Een hoge correlatie tussen verschillende constructen gemeten met dezelfde methode (heterotrait-monomethod), terwijl dezelfde constructen via andere methoden nauwelijks samenhangen, wijst op gedeelde methodevariantie. Bijvoorbeeld een ouder die zijn kind algemeen negatief beoordeelt.",
+      "denkfouten": {
+        "B": "Als ze hetzelfde construct waren, zouden ze ook via verschillende informanten hoog correleren. Dat gebeurt hier niet (.10).",
+        "C": "Betrouwbaarheid gaat over dezelfde eigenschap met dezelfde methode. Hier gaat het om twee verschillende eigenschappen.",
+        "D": "Convergente validiteit gaat over dezelfde eigenschap via verschillende methoden. Hier worden verschillende eigenschappen vergeleken."
+      },
+      "herkennen": "Andere constructen + zelfde methode hoog, maar via andere methoden laag → methodevariantie (methode-bias).",
+      "simpel": "Een ouder die op een slechte dag invult, ziet alles somberder: het kind lijkt dan zowel agressiever als angstiger. De samenhang komt door de 'bril' van de invuller, niet door het kind.",
+      "zoekterm": "methodevariantie MTMM heterotrait monomethod",
+      "bronnen": [
+        {
+          "titel": "Multitrait-multimethod matrix (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Multitrait-multimethod_matrix"
+        }
+      ]
+    },
+    {
+      "id": "v043",
+      "onderwerp": "H10 Antwoordtendenties",
+      "vraag": "Een ouder antwoordt bij bijna alle stellingen 'mee eens', ook bij stellingen die precies het tegenovergestelde zeggen. Welke antwoordtendentie is dit, en wat helpt ertegen?",
+      "opties": {
+        "A": "Sociale wenselijkheid; helpt: anonimiteit garanderen.",
+        "B": "Simuleren (malingering); helpt: een langere test.",
+        "C": "Extreme antwoordstijl; helpt: minder antwoordcategorieën.",
+        "D": "Instemmingsneiging (acquiescence); helpt: een gebalanceerde schaal met ook omgekeerd geformuleerde items."
+      },
+      "juist": "D",
+      "uitleg": "Instemmingsneiging is de neiging om 'ja' of 'mee eens' te antwoorden, los van de inhoud. Met een gebalanceerde schaal (de helft van de items omgekeerd geformuleerd, en die ompolen bij het scoren) vallen de effecten tegen elkaar weg en kun je de neiging ook opsporen.",
+      "denkfouten": {
+        "A": "Bij sociale wenselijkheid kies je het antwoord dat een goede indruk maakt. Dan zou je bij tegengestelde stellingen niet allebei 'eens' antwoorden.",
+        "B": "Simuleren is bewust klachten overdrijven of verzinnen, vaak met een doel. Dat is iets anders.",
+        "C": "Extreme antwoordstijl is steeds de uiterste categorieën kiezen (helemaal eens óf helemaal oneens), niet steeds 'eens'."
+      },
+      "herkennen": "'Altijd ja / mee eens, ongeacht de inhoud' → instemmingsneiging (acquiescence). Oplossing: gebalanceerde schaal + ompolen.",
+      "simpel": "Sommige mensen zeggen gewoon makkelijk 'ja'. Als je de helft van de vragen omdraait ('Ik ben vaak rustig' en 'Ik ben vaak gespannen'), zie je dat iemand twee tegenstrijdige dingen beaamt.",
+      "zoekterm": "acquiescence instemmingsneiging gebalanceerde schaal",
+      "bronnen": [
+        {
+          "titel": "Acquiescence bias (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Acquiescence_bias"
+        },
+        {
+          "titel": "Response bias (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Response_bias"
+        }
+      ]
+    },
+    {
+      "id": "v044",
+      "onderwerp": "H10 Antwoordtendenties",
+      "vraag": "Bij een intake in de jeugdzorg rapporteren veel ouders nauwelijks problemen in hun opvoeding, terwijl de hulpverleners wel problemen zien. Welke antwoordtendentie ligt het meest voor de hand?",
+      "opties": {
+        "A": "Simuleren (faking bad)",
+        "B": "Instemmingsneiging (acquiescence)",
+        "C": "Sociaal wenselijk antwoorden (bewuste indrukmanagement of zelfbedrog)",
+        "D": "Gokken"
+      },
+      "juist": "C",
+      "uitleg": "Sociale wenselijkheid is de neiging om jezelf positiever voor te stellen dan je bent. Furr onderscheidt bewuste indrukmanagement (impression management) en onbewust zelfbedrog (self-deception). Bij een intake waarbij veel op het spel staat, ligt dit voor de hand. Validiteitsschalen kunnen het helpen opsporen.",
+      "denkfouten": {
+        "A": "Simuleren (faking bad) is het tegenovergestelde: problemen overdrijven, bijvoorbeeld om hulp of een uitkering te krijgen.",
+        "B": "Instemmingsneiging betekent overal 'ja' op zeggen, ongeacht de inhoud. Dat zou juist meer problemen kunnen opleveren als de items problemen beschrijven.",
+        "D": "Gokken speelt bij kennistoetsen, niet bij vragen over je eigen opvoeding."
+      },
+      "herkennen": "Jezelf mooier voordoen → sociale wenselijkheid (faking good). Jezelf slechter voordoen met een doel → simuleren (faking bad / malingering).",
+      "simpel": "Bij een sollicitatiegesprek zeg je ook niet dat je altijd te laat komt. Ouders bij een intake willen ook graag een goede indruk maken, zeker als ze bang zijn voor de gevolgen.",
+      "zoekterm": "sociale wenselijkheid impression management self-deception vragenlijst",
+      "bronnen": [
+        {
+          "titel": "Social desirability bias (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Social-desirability_bias"
+        },
+        {
+          "titel": "Response bias (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Response_bias"
+        }
+      ]
+    },
+    {
+      "id": "v045",
+      "onderwerp": "H10 Antwoordtendenties",
+      "vraag": "Een jongere overdrijft concentratieproblemen bewust, in de hoop extra tijd bij examens te krijgen. Welke antwoordtendentie is dit?",
+      "opties": {
+        "A": "Sociale wenselijkheid",
+        "B": "Simuleren (malingering / faking bad)",
+        "C": "Instemmingsneiging",
+        "D": "Careless responding (onzorgvuldig invullen)"
+      },
+      "juist": "B",
+      "uitleg": "Simuleren is het bewust overdrijven of verzinnen van klachten voor een extern voordeel, zoals extra tijd, een uitkering of het ontlopen van een verplichting. Tests gebruiken soms speciale validiteitsschalen om dit op te sporen.",
+      "denkfouten": {
+        "A": "Sociale wenselijkheid is jezelf juist beter voordoen, niet slechter.",
+        "C": "Instemmingsneiging is overal 'ja' op zeggen, zonder bedoeling of doel.",
+        "D": "Onzorgvuldig invullen is zonder goed te lezen antwoorden (bijv. willekeurig klikken). Hier is het juist bewust en doelgericht."
+      },
+      "herkennen": "Bewust slechter voordoen + iets te winnen → simuleren (malingering).",
+      "simpel": "Het is als doen alsof je ziek bent om niet naar school te hoeven: je overdrijft met een reden.",
+      "zoekterm": "malingering faking bad validiteitsschalen",
+      "bronnen": [
+        {
+          "titel": "Malingering (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Malingering"
+        },
+        {
+          "titel": "Response bias (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Response_bias"
+        }
+      ]
+    },
+    {
+      "id": "v046",
+      "onderwerp": "H11 Testbias",
+      "vraag": "Een rekentoets bestaat vooral uit lange, talige verhaalsommen. Bij nieuwkomerskinderen meet de toets daardoor deels hun Nederlandse taalvaardigheid in plaats van rekenvaardigheid. Welk soort bias is dit?",
+      "opties": {
+        "A": "Constructbias: de toets meet in verschillende groepen niet hetzelfde construct.",
+        "B": "Predictieve bias: de toets voorspelt een criterium verschillend per groep.",
+        "C": "Een antwoordtendentie zoals sociale wenselijkheid.",
+        "D": "Geen bias: het is gewoon een lage betrouwbaarheid."
+      },
+      "juist": "A",
+      "uitleg": "Constructbias betekent dat de testscores in verschillende groepen een andere betekenis hebben: hier meet de toets bij nieuwkomers (ook) taal. Je onderzoekt het bijvoorbeeld door de interne structuur per groep te vergelijken of door te kijken naar differential item functioning (DIF).",
+      "denkfouten": {
+        "B": "Predictieve bias gaat over hoe goed de score een later criterium voorspelt per groep (regressielijnen). Hier gaat het om wat de toets zelf meet.",
+        "C": "Een antwoordtendentie gaat over hoe iemand antwoordt (bijv. mooier voordoen), niet over wat de items meten.",
+        "D": "Een lage betrouwbaarheid geeft toevallige fouten. Hier is de fout systematisch voor één groep: dat is bias."
+      },
+      "herkennen": "Test meet in groep X iets anders dan in groep Y → constructbias. Test voorspelt het criterium anders per groep → predictieve bias.",
+      "simpel": "Als je met een Nederlandse verhaalsom wilt weten of een kind kan rekenen, maar het kind de tekst niet begrijpt, test je eigenlijk taal. De toets is dan niet eerlijk voor dat kind.",
+      "zoekterm": "constructbias testbias differential item functioning uitleg",
+      "bronnen": [
+        {
+          "titel": "Meetinvariantie, oftewel testbias tussen groepen (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Measurement_invariance"
+        },
+        {
+          "titel": "Differential item functioning (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Differential_item_functioning"
+        }
+      ]
+    },
+    {
+      "id": "v047",
+      "onderwerp": "H11 Testbias",
+      "vraag": "Je voorspelt brugklascijfers met een toetsscore uit groep 8. Voor jongens en meisjes hebben de regressielijnen dezelfde helling, maar een ander snijpunt (intercept). Wat betekent dit?",
+      "opties": {
+        "A": "Er is geen bias, want de hellingen zijn gelijk.",
+        "B": "Er is constructbias.",
+        "C": "Er is hellingbias (slope bias): de toets voorspelt in de ene groep sterker dan in de andere.",
+        "D": "Er is interceptbias: bij dezelfde toetsscore wordt de prestatie van één groep systematisch over- of onderschat als je één gezamenlijke regressielijn gebruikt."
+      },
+      "juist": "D",
+      "uitleg": "Gelijke hellingen maar verschillende snijpunten = interceptbias, een vorm van predictieve bias. Met één gezamenlijke lijn voorspel je voor de ene groep structureel te hoog en voor de andere te laag. Verschillende hellingen zouden hellingbias zijn.",
+      "denkfouten": {
+        "A": "Gelijke hellingen sluiten alleen hellingbias uit. Een verschil in snijpunt is óók een vorm van bias.",
+        "B": "Constructbias gaat over wat de toets meet, niet over de voorspelling van een criterium via regressielijnen.",
+        "C": "Bij hellingbias verschillen de hellingen. Hier zijn ze juist gelijk."
+      },
+      "herkennen": "Regressielijnen per groep vergelijken = predictieve bias. Ander snijpunt → interceptbias. Andere helling → hellingbias (slope bias).",
+      "simpel": "Twee lijnen die even steil lopen, maar de een ligt hoger dan de ander. Gebruik je één lijn voor iedereen, dan schat je de ene groep steeds iets te hoog en de andere steeds iets te laag in.",
+      "zoekterm": "predictieve bias intercept bias slope bias regressielijnen",
+      "bronnen": [
+        {
+          "titel": "Meetinvariantie, oftewel testbias tussen groepen (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Measurement_invariance"
+        }
+      ]
+    },
+    {
+      "id": "v048",
+      "onderwerp": "H11 Testbias",
+      "vraag": "Op een taaltoets scoren kinderen uit groep A gemiddeld lager dan kinderen uit groep B. Wat mag je daaruit concluderen?",
+      "opties": {
+        "A": "De toets is zeker gebiased tegen groep A.",
+        "B": "Groep A is minder intelligent.",
+        "C": "Een verschil in gemiddelde scores is op zichzelf géén bewijs van testbias; dat moet je met constructbias- en predictieve-biasanalyses onderzoeken.",
+        "D": "De toets is onbetrouwbaar."
+      },
+      "juist": "C",
+      "uitleg": "Groepen kunnen echt verschillen op een construct (bijvoorbeeld door verschillen in onderwijs of thuistaal). Testbias betekent dat de toets systematisch anders werkt voor groepen: andere betekenis van de scores, of een andere voorspelling. Dat moet je apart onderzoeken. Ook is bias (een technisch begrip) iets anders dan eerlijkheid (fairness, een maatschappelijk oordeel).",
+      "denkfouten": {
+        "A": "Een gemiddeld verschil kan een echt verschil zijn. Bias vraagt om bewijs dat de toets voor de groepen anders werkt.",
+        "B": "Een taaltoets meet taal, geen intelligentie. En de oorzaak van een verschil kun je uit de scores alleen niet afleiden.",
+        "D": "Betrouwbaarheid gaat over meetfout binnen een groep. Een verschil tussen groepen zegt daar niets over."
+      },
+      "herkennen": "'Groepen verschillen gemiddeld, dus bias?' → Nee, niet automatisch. Bias = de test werkt anders (construct of voorspelling) voor groepen.",
+      "simpel": "Als lange kinderen gemiddeld hoger op een meetlat uitkomen, is de meetlat niet oneerlijk: ze zijn echt langer. Een meetlat is pas oneerlijk als hij bij de ene groep anders meet dan bij de andere.",
+      "zoekterm": "testbias groepsverschillen fairness verschil",
+      "bronnen": [
+        {
+          "titel": "Meetinvariantie, oftewel testbias tussen groepen (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Measurement_invariance"
+        },
+        {
+          "titel": "Differential item functioning (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Differential_item_functioning"
         }
       ]
     }
@@ -937,12 +1526,6 @@
       "voorbeeld": "Een depressielijst hoort níét sterk samen te hangen met een rekentoets."
     },
     {
-      "id": "b09",
-      "begrip": "p-waarde (itemanalyse)",
-      "definitie": "Proportie deelnemers die een item goed beantwoordt. Hoge p = makkelijk item.",
-      "voorbeeld": "p = .30: maar 30% had het goed, dus een moeilijke vraag."
-    },
-    {
       "id": "b10",
       "begrip": "Item-restcorrelatie (Rir)",
       "definitie": "Correlatie tussen een item en de totaalscore op de overige items. Maat voor discriminerend vermogen; liefst > .30.",
@@ -991,36 +1574,114 @@
       "voorbeeld": "Angst en depressie hangen samen, dus kies je oblique."
     },
     {
-      "id": "b18",
-      "begrip": "Afleider",
-      "definitie": "Een fout antwoordalternatief bij een meerkeuzevraag. Een goede afleider wordt vooral door zwakkere studenten gekozen.",
-      "voorbeeld": "Kiezen juist de beste studenten een afleider? Dan klopt de vraag of de sleutel misschien niet."
+      "id": "b19",
+      "begrip": "Meetniveaus (Furr: vier eigenschappen)",
+      "definitie": "Identiteit, volgorde, kwantiteit (gelijke eenheden) en absoluut nulpunt. Nominaal = alleen identiteit; ordinaal = + volgorde; interval = + gelijke eenheden; ratio = + absoluut nulpunt.",
+      "voorbeeld": "Aantal driftbuien per week = ratio (0 betekent echt geen)."
+    },
+    {
+      "id": "b20",
+      "begrip": "Variantie van een somscore",
+      "definitie": "Som van alle itemvarianties + 2 × de som van alle covarianties tussen de items.",
+      "voorbeeld": "Varianties 4 en 9, covariantie 3: 4 + 9 + 2·3 = 19."
+    },
+    {
+      "id": "b21",
+      "begrip": "Tau-equivalent",
+      "definitie": "Items of tests meten dezelfde ware scores, maar de foutvarianties mogen verschillen. Voorwaarde voor een zuivere alpha (essentieel tau-equivalent).",
+      "voorbeeld": "Strenger is parallel (ook gelijke foutvariantie), soepeler is congeneriek."
+    },
+    {
+      "id": "b22",
+      "begrip": "Split-half betrouwbaarheid",
+      "definitie": "Correlatie tussen twee helften van een test, daarna opgewaardeerd met Spearman-Brown (k = 2) tot de betrouwbaarheid van de hele test.",
+      "voorbeeld": "Helften correleren .60 → 2·.60 / 1.60 = .75."
+    },
+    {
+      "id": "b23",
+      "begrip": "Geschatte ware score",
+      "definitie": "Gemiddelde + betrouwbaarheid × (geobserveerde score − gemiddelde). Ligt altijd dichter bij het gemiddelde dan de geobserveerde score.",
+      "voorbeeld": "100 + .80 × (130 − 100) = 124."
+    },
+    {
+      "id": "b24",
+      "begrip": "Vijf bronnen van validiteitsbewijs",
+      "definitie": "Volgens de Standards: testinhoud, responsprocessen, interne structuur, relaties met andere variabelen, gevolgen van testgebruik.",
+      "voorbeeld": "Hardop denken bij het invullen = responsprocessen."
+    },
+    {
+      "id": "b25",
+      "begrip": "Indruksvaliditeit (face validity)",
+      "definitie": "Of een test er voor leken uitziet alsof hij meet wat hij moet meten. Géén echt validiteitsbewijs.",
+      "voorbeeld": "'Deze lijst ziet er duidelijk uit als een opvoedlijst' bewijst niets."
+    },
+    {
+      "id": "b26",
+      "begrip": "MTMM-matrix",
+      "definitie": "Multitrait-multimethod (Campbell & Fiske): meerdere constructen, elk met meerdere methoden gemeten. Zelfde trek/andere methode hoog = convergent; andere trek/zelfde methode hoog = methodevariantie.",
+      "voorbeeld": "Agressie via ouders én via leerkrachten: die moeten hoog correleren."
+    },
+    {
+      "id": "b27",
+      "begrip": "Instemmingsneiging (acquiescence)",
+      "definitie": "De neiging om 'ja' of 'mee eens' te antwoorden, ongeacht de inhoud. Remedie: gebalanceerde schaal met omgekeerd geformuleerde items.",
+      "voorbeeld": "Eens met 'Ik ben rustig' én met 'Ik ben gespannen'."
+    },
+    {
+      "id": "b28",
+      "begrip": "Sociale wenselijkheid",
+      "definitie": "Jezelf positiever voordoen dan je bent: bewust (impression management) of onbewust (self-deception).",
+      "voorbeeld": "Ouders die bij een intake geen enkel opvoedprobleem noemen."
+    },
+    {
+      "id": "b29",
+      "begrip": "Simuleren (malingering)",
+      "definitie": "Bewust klachten overdrijven of verzinnen voor een extern voordeel (faking bad).",
+      "voorbeeld": "Concentratieproblemen overdrijven om extra examentijd te krijgen."
+    },
+    {
+      "id": "b30",
+      "begrip": "Constructbias",
+      "definitie": "Een test meet in verschillende groepen niet hetzelfde construct. Onderzocht via interne structuur per groep of DIF.",
+      "voorbeeld": "Talige verhaalsommen meten bij nieuwkomers ook taal."
+    },
+    {
+      "id": "b31",
+      "begrip": "Predictieve bias",
+      "definitie": "De test voorspelt een criterium verschillend per groep: interceptbias (ander snijpunt) of hellingbias (andere helling).",
+      "voorbeeld": "Bij dezelfde toetsscore halen meisjes structureel hogere cijfers dan voorspeld."
+    },
+    {
+      "id": "b32",
+      "begrip": "Betrouwbaarheid van een verschilscore",
+      "definitie": "Vaak laag, vooral als de twee metingen sterk correleren: ((r_xx + r_yy)/2 − r_xy) / (1 − r_xy).",
+      "voorbeeld": "(.80 − .70) / .30 ≈ .33 voor leerwinst."
     }
   ],
   "spss": [
     {
       "id": "s01",
-      "onderwerp": "Analyse kiezen",
-      "vraag": "Een onderzoeker wil weten of studenten uit drie studierichtingen (psychologie, rechten, techniek) verschillen in hun gemiddelde score op een faalangstvragenlijst (intervalniveau). Welke analyse kies je in SPSS en waarom? Noem ook de nul- en alternatieve hypothese en welke voorwaarden je controleert.",
+      "onderwerp": "SPSS: schaal klaarmaken",
+      "vraag": "Je hebt een vragenlijst over opvoedingscompetentie met 8 items (1 = helemaal oneens … 5 = helemaal eens). Items 3 en 7 zijn negatief geformuleerd. Beschrijf stap voor stap hoe je in SPSS een totaalscore maakt. Waarom moet je eerst iets met items 3 en 7 doen, en hoe controleer je daarna of het goed is gegaan?",
       "output": "",
-      "richtlijn": "One-way ANOVA (Analyze > Compare Means > One-Way ANOVA): één nominale onafhankelijke variabele met 3 groepen en één afhankelijke variabele op intervalniveau. H0: µ1 = µ2 = µ3; H1: minstens één gemiddelde verschilt. Voorwaarden: onafhankelijke waarnemingen, normaliteit per groep (of voldoende n), gelijke varianties (Levene's test). Bij significant resultaat: post-hoc toetsen (bijv. Tukey) om te zien welke groepen verschillen. Geen meerdere t-toetsen, vanwege kanskapitalisatie.",
+      "richtlijn": "1) Items 3 en 7 ompolen: Transform > Recode into Different Variables (1→5, 2→4, 3→3, 4→2, 5→1), met nieuwe namen zoals item3_r en item7_r. Ompolen is nodig zodat een hoge score bij alle items hetzelfde betekent (meer competentie). Anders werken deze items de totaalscore tegen en wordt de betrouwbaarheid te laag (negatieve item-totaalcorrelaties). 2) Totaalscore: Transform > Compute Variable, met som of gemiddelde van de 8 items (met de omgepoolde versies). 3) Controle: Frequencies of Descriptives van de nieuwe items (bereik 1–5), en een betrouwbaarheidsanalyse: alle corrected item-total correlations moeten positief zijn.",
       "bronnen": [
         {
-          "titel": "One-way ANOVA uitgelegd (Scribbr, NL)",
-          "url": "https://www.scribbr.nl/statistiek/one-way-anova-uitgelegd/"
+          "titel": "Cronbach's alpha uitgelegd (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/statistiek/cronbachs-alpha/"
         },
         {
-          "titel": "One-way ANOVA in SPSS (SPSS Tutorials, Engels)",
-          "url": "https://www.spss-tutorials.com/spss-one-way-anova/"
+          "titel": "Item-total correlation (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Item-total_correlation"
         }
       ]
     },
     {
       "id": "s02",
-      "onderwerp": "Output interpreteren",
+      "onderwerp": "SPSS: betrouwbaarheid (H6)",
       "vraag": "Hieronder staat (een deel van) de output van een betrouwbaarheidsanalyse op een schaal van 6 items. Is de schaal voldoende betrouwbaar? Welk item zou je eventueel verwijderen of nader bekijken, en wat is de waarschijnlijke oorzaak?",
       "output": "Reliability Statistics\nCronbach's Alpha   N of Items\n      .71              6\n\nItem-Total Statistics\n        Corrected Item-     Cronbach's Alpha\n        Total Correlation   if Item Deleted\nitem1        .52                 .65\nitem2        .58                 .63\nitem3        .47                 .66\nitem4       -.18                 .81\nitem5        .49                 .66\nitem6        .44                 .67",
-      "richtlijn": "Alpha = .71 is net acceptabel voor onderzoek op groepsniveau (vaak > .70), te laag voor individuele beslissingen (> .80/.90). Item 4 valt op: negatieve corrected item-total correlation (−.18) en alpha stijgt naar .81 als het wordt verwijderd. Meest waarschijnlijke oorzaak: item 4 is negatief geformuleerd en niet omgescoord. Eerst controleren/ompolen (Transform > Recode), daarna de analyse opnieuw draaien; pas verwijderen als het inhoudelijk ook niet past.",
+      "richtlijn": "Alpha = .71 is net acceptabel voor onderzoek op groepsniveau, maar te laag voor beslissingen over individuele kinderen (dan liefst > .80/.90). Item 4 valt op: een negatieve corrected item-total correlation (−.18), en alpha stijgt naar .81 als het item wordt verwijderd. Meest waarschijnlijke oorzaak: item 4 is negatief geformuleerd en niet omgepoold. Eerst controleren en ompolen (Transform > Recode), dan de analyse opnieuw draaien. Pas verwijderen als het inhoudelijk ook niet past. Let op: alpha is een ondergrens als de items niet (essentieel) tau-equivalent zijn.",
       "bronnen": [
         {
           "titel": "Cronbach's alpha in SPSS (SPSS Tutorials, Engels)",
@@ -1034,10 +1695,10 @@
     },
     {
       "id": "s03",
-      "onderwerp": "Output interpreteren",
-      "vraag": "Hieronder staat output van een exploratieve factoranalyse op 9 items. Is de data geschikt voor factoranalyse? Hoeveel factoren zou je behouden volgens het Kaiser-criterium, en hoeveel variantie verklaren die samen?",
+      "onderwerp": "SPSS: factoranalyse (H4)",
+      "vraag": "Hieronder staat output van een exploratieve factoranalyse op 9 items van een vragenlijst over schoolbeleving. Is de data geschikt voor factoranalyse? Hoeveel factoren zou je behouden volgens het Kaiser-criterium, en hoeveel variantie verklaren die samen? Wat zegt dit over de dimensionaliteit van de vragenlijst, en welke rotatie zou je kiezen?",
       "output": "KMO and Bartlett's Test\nKaiser-Meyer-Olkin Measure of Sampling Adequacy     .82\nBartlett's Test of Sphericity   Approx. Chi-Square  612.4\n                                df                  36\n                                Sig.                .000\n\nTotal Variance Explained (Initial Eigenvalues)\nComponent   Total   % of Variance   Cumulative %\n1           3.62       40.2            40.2\n2           1.71       19.0            59.2\n3           1.08       12.0            71.2\n4            .74        8.2            79.4\n5            .58        6.4            85.8\n...",
-      "richtlijn": "Geschikt: KMO = .82 (> .60/.70 is goed) en Bartlett's test is significant (p < .001), dus de correlatiematrix is geen identiteitsmatrix. Kaiser-criterium (eigenwaarde > 1): 3 factoren, samen 71.2% verklaarde variantie. Kanttekening: factor 3 zit maar net boven 1 (1.08); controleer ook de scree plot en de inhoudelijke interpreteerbaarheid van de ladingen (na rotatie).",
+      "richtlijn": "Geschikt: KMO = .82 (goed) en Bartlett's test is significant (p < .001), dus de items hangen genoeg samen. Kaiser (eigenwaarde > 1): 3 factoren, samen 71.2% verklaarde variantie. Kanttekening: factor 3 zit maar net boven 1 (1.08), dus kijk ook naar de scree plot (knik) en of de factoren inhoudelijk te interpreteren zijn. Dimensionaliteit: de vragenlijst is multidimensionaal, dus subschaalscores per factor (en alpha per subschaal). Verwacht je dat de factoren samenhangen (bij schoolbeleving waarschijnlijk), kies dan een oblique rotatie (oblimin/promax); anders orthogonaal (varimax).",
       "bronnen": [
         {
           "titel": "Factoranalyse in SPSS (SPSS Tutorials, Engels)",
@@ -1051,82 +1712,71 @@
     },
     {
       "id": "s04",
-      "onderwerp": "Analyse kiezen",
-      "vraag": "Je wilt de test-hertestbetrouwbaarheid van een stemmingsvragenlijst bepalen. Dezelfde 80 deelnemers vullen de lijst twee keer in, met vier weken ertussen. Welke analyse gebruik je in SPSS, hoe interpreteer je de uitkomst, en welke factor kan een lage uitkomst verklaren die niets met meetfout te maken heeft?",
+      "onderwerp": "SPSS: betrouwbaarheid (H6)",
+      "vraag": "Je wilt de test-hertestbetrouwbaarheid van een vragenlijst over leesplezier bij kinderen uit groep 6 bepalen. Dezelfde 80 kinderen vullen de lijst twee keer in, met drie weken ertussen. Welke analyse gebruik je in SPSS, hoe interpreteer je de uitkomst, en welke factoren kunnen de uitkomst beïnvloeden zonder dat ze iets met meetfout te maken hebben?",
       "output": "",
-      "richtlijn": "Pearson-correlatie tussen meting 1 en meting 2 (Analyze > Correlate > Bivariate), of een ICC (Analyze > Scale > Reliability Analysis, optie Intraclass correlation) als ook absolute overeenstemming telt. Hoe hoger, hoe stabieler; vaak wordt > .70 als voldoende gezien. Let op: stemming is een state en geen trait. Een lage correlatie kan dus komen doordat het construct zelf echt verandert in vier weken, en niet door onbetrouwbaarheid. Ook leereffecten/herinnering kunnen een rol spelen.",
+      "richtlijn": "Pearson-correlatie tussen meting 1 en meting 2 (Analyze > Correlate > Bivariate). Hoe hoger, hoe stabieler; vaak geldt > .70 als voldoende. Aanname: de ware scores blijven gelijk tussen de metingen. Bedreigingen: leesplezier kan echt veranderen (ontwikkeling, een leuk boek, de leerkracht); carry-over-effecten (kinderen herinneren zich hun antwoorden, wat de correlatie kunstmatig verhoogt); een te korte of te lange tussenperiode. Een lage correlatie betekent dus niet automatisch een lage betrouwbaarheid.",
       "bronnen": [
         {
           "titel": "Pearson-correlatie (Scribbr, NL)",
           "url": "https://www.scribbr.nl/statistiek/pearson-correlatie/"
         },
         {
-          "titel": "Interbeoordelaarsbetrouwbaarheid (Wikipedia, Engels)",
-          "url": "https://en.wikipedia.org/wiki/Inter-rater_reliability"
+          "titel": "Betrouwbaarheid uitgelegd (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/onderzoeksmethoden/betrouwbaarheid/"
+        }
+      ]
+    },
+    {
+      "id": "s05",
+      "onderwerp": "SPSS: validiteit (H9)",
+      "vraag": "Hieronder staat een correlatiematrix van drie vragenlijsten, ingevuld door ouders: een nieuwe vragenlijst over 'sociale vaardigheid' (SV_nieuw), een bestaande vragenlijst over sociale vaardigheid (SV_bestaand) en een vragenlijst over angst. Wat zeggen deze correlaties over de convergente en discriminante validiteit van SV_nieuw? Wat zou je extra willen doen om methodevariantie uit te sluiten?",
+      "output": "Correlations (Pearson)\n               SV_nieuw   SV_bestaand   Angst\nSV_nieuw        1          .71**        -.18\nSV_bestaand     .71**      1            -.22*\nAngst          -.18       -.22*          1\n** p < .01   * p < .05",
+      "richtlijn": "Convergent: SV_nieuw correleert hoog (.71) met een bestaande maat van hetzelfde construct. Dat is goed bewijs. Discriminant: de correlatie met angst is laag (−.18) en duidelijk lager dan de convergente correlatie. Ook dat is goed; een kleine negatieve samenhang is inhoudelijk logisch. Beperking: alles is door dezelfde informant (ouders) ingevuld, dus gedeelde methodevariantie kan de correlaties opblazen. Oplossing: een MTMM-opzet met meerdere informanten of methoden (bijv. leerkracht, observatie) en kijken of dezelfde trek via verschillende methoden hoog correleert.",
+      "bronnen": [
+        {
+          "titel": "Multitrait-multimethod matrix (Wikipedia, Engels)",
+          "url": "https://en.wikipedia.org/wiki/Multitrait-multimethod_matrix"
+        },
+        {
+          "titel": "Constructvaliditeit (Scribbr, NL)",
+          "url": "https://www.scribbr.nl/onderzoeksmethoden/constructvaliditeit/"
         }
       ]
     }
   ],
   "bronnenPerOnderwerp": {
-    "Klassieke testtheorie": [
+    "H1 Psychometrie en meten": [
       {
-        "titel": "Classical test theory (Wikipedia, Engels)",
-        "url": "https://en.wikipedia.org/wiki/Classical_test_theory"
+        "titel": "Criterion-referenced test (Wikipedia, Engels)",
+        "url": "https://en.wikipedia.org/wiki/Criterion-referenced_test"
       },
       {
-        "titel": "Betrouwbaarheid uitgelegd (Scribbr, NL)",
-        "url": "https://www.scribbr.nl/onderzoeksmethoden/betrouwbaarheid/"
+        "titel": "Norm-referenced test (Wikipedia, Engels)",
+        "url": "https://en.wikipedia.org/wiki/Norm-referenced_test"
       }
     ],
-    "Betrouwbaarheid": [
+    "H2 Schalen en meetniveau": [
       {
-        "titel": "Betrouwbaarheid uitgelegd (Scribbr, NL)",
-        "url": "https://www.scribbr.nl/onderzoeksmethoden/betrouwbaarheid/"
-      },
-      {
-        "titel": "Betrouwbaarheid (Wikipedia, NL)",
-        "url": "https://nl.wikipedia.org/wiki/Betrouwbaarheid_(statistiek)"
-      },
-      {
-        "titel": "Cronbach's alpha uitgelegd (Scribbr, NL)",
-        "url": "https://www.scribbr.nl/statistiek/cronbachs-alpha/"
+        "titel": "Level of measurement (Wikipedia, Engels)",
+        "url": "https://en.wikipedia.org/wiki/Level_of_measurement"
       }
     ],
-    "Validiteit": [
-      {
-        "titel": "Soorten validiteit (Scribbr, NL)",
-        "url": "https://www.scribbr.nl/onderzoeksmethoden/soorten-validiteit/"
-      },
-      {
-        "titel": "Constructvaliditeit (Scribbr, NL)",
-        "url": "https://www.scribbr.nl/onderzoeksmethoden/constructvaliditeit/"
-      },
-      {
-        "titel": "Criteriumvaliditeit (Scribbr, NL)",
-        "url": "https://www.scribbr.nl/onderzoeksmethoden/criteriumvaliditeit/"
-      }
-    ],
-    "Itemanalyse": [
-      {
-        "titel": "Item analysis (Wikipedia, Engels)",
-        "url": "https://en.wikipedia.org/wiki/Item_analysis"
-      },
-      {
-        "titel": "Item-total correlation (Wikipedia, Engels)",
-        "url": "https://en.wikipedia.org/wiki/Item-total_correlation"
-      }
-    ],
-    "Normering": [
+    "H3 Individuele verschillen en correlaties": [
       {
         "titel": "Z-score (Wikipedia, NL)",
         "url": "https://nl.wikipedia.org/wiki/Z-score"
       },
       {
-        "titel": "Standaardnormale verdeling (Scribbr, NL)",
-        "url": "https://www.scribbr.nl/statistiek/standaardnormale-verdeling/"
+        "titel": "Pearson-correlatie (Scribbr, NL)",
+        "url": "https://www.scribbr.nl/statistiek/pearson-correlatie/"
+      },
+      {
+        "titel": "Variantie (Scribbr, NL)",
+        "url": "https://www.scribbr.nl/statistiek/variantie/"
       }
     ],
-    "Factoranalyse": [
+    "H4 Dimensionaliteit en factoranalyse": [
       {
         "titel": "Factoranalyse (Wikipedia, NL)",
         "url": "https://nl.wikipedia.org/wiki/Factoranalyse"
@@ -1136,29 +1786,132 @@
         "url": "https://www.spss-tutorials.com/spss-factor-analysis-tutorial/"
       }
     ],
-    "Analyse kiezen": [
+    "H5 Betrouwbaarheid: de basis": [
       {
-        "titel": "One-way ANOVA uitgelegd (Scribbr, NL)",
-        "url": "https://www.scribbr.nl/statistiek/one-way-anova-uitgelegd/"
+        "titel": "Classical test theory (Wikipedia, Engels)",
+        "url": "https://en.wikipedia.org/wiki/Classical_test_theory"
       },
       {
-        "titel": "Pearson-correlatie (Scribbr, NL)",
-        "url": "https://www.scribbr.nl/statistiek/pearson-correlatie/"
+        "titel": "Betrouwbaarheid uitgelegd (Scribbr, NL)",
+        "url": "https://www.scribbr.nl/onderzoeksmethoden/betrouwbaarheid/"
       }
     ],
-    "Output interpreteren": [
+    "H6 Betrouwbaarheid schatten": [
       {
-        "titel": "Cronbach's alpha in SPSS (SPSS Tutorials, Engels)",
-        "url": "https://www.spss-tutorials.com/cronbachs-alpha-in-spss/"
+        "titel": "Cronbach's alpha uitgelegd (Scribbr, NL)",
+        "url": "https://www.scribbr.nl/statistiek/cronbachs-alpha/"
       },
+      {
+        "titel": "Spearman-Brown-formule (Wikipedia, Engels)",
+        "url": "https://en.wikipedia.org/wiki/Spearman%E2%80%93Brown_prediction_formula"
+      },
+      {
+        "titel": "Congeneric reliability / omega (Wikipedia, Engels)",
+        "url": "https://en.wikipedia.org/wiki/Congeneric_reliability"
+      }
+    ],
+    "H7 Het belang van betrouwbaarheid": [
+      {
+        "titel": "Standard error of measurement (Wikipedia, Engels)",
+        "url": "https://en.wikipedia.org/wiki/Standard_error_of_measurement"
+      },
+      {
+        "titel": "Correctie voor attenuatie (Wikipedia, Engels)",
+        "url": "https://en.wikipedia.org/wiki/Correction_for_attenuation"
+      },
+      {
+        "titel": "Regression toward the mean (Wikipedia, Engels)",
+        "url": "https://en.wikipedia.org/wiki/Regression_toward_the_mean"
+      }
+    ],
+    "H8 Validiteit: de basis": [
+      {
+        "titel": "Soorten validiteit (Scribbr, NL)",
+        "url": "https://www.scribbr.nl/onderzoeksmethoden/soorten-validiteit/"
+      },
+      {
+        "titel": "Inhoudsvaliditeit (Scribbr, NL)",
+        "url": "https://www.scribbr.nl/onderzoeksmethoden/inhoudsvaliditeit/"
+      },
+      {
+        "titel": "Indruksvaliditeit (Scribbr, NL)",
+        "url": "https://www.scribbr.nl/onderzoeksmethoden/indruksvaliditeit/"
+      }
+    ],
+    "H9 Convergente en discriminante validiteit": [
+      {
+        "titel": "Multitrait-multimethod matrix (Wikipedia, Engels)",
+        "url": "https://en.wikipedia.org/wiki/Multitrait-multimethod_matrix"
+      },
+      {
+        "titel": "Constructvaliditeit (Scribbr, NL)",
+        "url": "https://www.scribbr.nl/onderzoeksmethoden/constructvaliditeit/"
+      }
+    ],
+    "H10 Antwoordtendenties": [
+      {
+        "titel": "Response bias (Wikipedia, Engels)",
+        "url": "https://en.wikipedia.org/wiki/Response_bias"
+      },
+      {
+        "titel": "Acquiescence bias (Wikipedia, Engels)",
+        "url": "https://en.wikipedia.org/wiki/Acquiescence_bias"
+      },
+      {
+        "titel": "Social desirability bias (Wikipedia, Engels)",
+        "url": "https://en.wikipedia.org/wiki/Social-desirability_bias"
+      }
+    ],
+    "H11 Testbias": [
+      {
+        "titel": "Meetinvariantie, oftewel testbias tussen groepen (Wikipedia, Engels)",
+        "url": "https://en.wikipedia.org/wiki/Measurement_invariance"
+      },
+      {
+        "titel": "Differential item functioning (Wikipedia, Engels)",
+        "url": "https://en.wikipedia.org/wiki/Differential_item_functioning"
+      }
+    ],
+    "SPSS: schaal klaarmaken": [
+      {
+        "titel": "Cronbach's alpha uitgelegd (Scribbr, NL)",
+        "url": "https://www.scribbr.nl/statistiek/cronbachs-alpha/"
+      }
+    ],
+    "SPSS: betrouwbaarheid (H6)": [
+      {
+        "titel": "Cronbach's alpha uitgelegd (Scribbr, NL)",
+        "url": "https://www.scribbr.nl/statistiek/cronbachs-alpha/"
+      }
+    ],
+    "SPSS: factoranalyse (H4)": [
       {
         "titel": "Factoranalyse in SPSS (SPSS Tutorials, Engels)",
         "url": "https://www.spss-tutorials.com/spss-factor-analysis-tutorial/"
-      },
-      {
-        "titel": "One-way ANOVA in SPSS (SPSS Tutorials, Engels)",
-        "url": "https://www.spss-tutorials.com/spss-one-way-anova/"
       }
+    ],
+    "SPSS: validiteit (H9)": [
+      {
+        "titel": "Multitrait-multimethod matrix (Wikipedia, Engels)",
+        "url": "https://en.wikipedia.org/wiki/Multitrait-multimethod_matrix"
+      }
+    ]
+  },
+  "over": {
+    "vak": "Psychometrie: Een Introductie (bachelor Pedagogische Wetenschappen, Erasmus Universiteit Rotterdam, jaar 3)",
+    "literatuur": "Furr, R. M., & Bacharach, V. R. (2014). Psychometrics: An Introduction (2e druk). SAGE. Hoofdstuk 1 t/m 11.",
+    "hoofdstukken": [
+      "H1 Psychometrie en meten",
+      "H2 Schalen en meetniveau",
+      "H3 Individuele verschillen en correlaties",
+      "H4 Dimensionaliteit en factoranalyse",
+      "H5 Betrouwbaarheid: de basis",
+      "H6 Betrouwbaarheid schatten",
+      "H7 Het belang van betrouwbaarheid",
+      "H8 Validiteit: de basis",
+      "H9 Convergente en discriminante validiteit",
+      "H10 Antwoordtendenties",
+      "H11 Testbias"
     ]
   }
 }
